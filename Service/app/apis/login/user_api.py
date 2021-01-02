@@ -13,11 +13,19 @@ from datetime import date , datetime
 user_api = Blueprint('user_api', __name__)
 
 
-# login
-# Description : ปรับสถานะการเข้าสู่ระบบของผู้ใช้งาน และกำหนด token
-# Author : Athiruj Poositaporn
-# @user_api.route("/login", methods=['POST'])
-# def login():
+login
+Description : ปรับสถานะการเข้าสู่ระบบของผู้ใช้งาน
+Author : Athiruj Poositaporn
+@user_api.route("/login", methods=['POST'])
+def login():
+    try:
+        username = request.form.get('username', None)
+        password = request.form.get('password', None)
+        if not username:
+            result = {"mes": "Missing username parameter" , 'status' : 'error'}
+            return result, 400
+    except expression as identifier:
+        pass
 #     set_folder_name()
 #     try:
 #         username = request.form.get('username', None)

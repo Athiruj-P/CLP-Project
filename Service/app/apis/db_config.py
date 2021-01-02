@@ -1,13 +1,11 @@
+db_username = "clp_admin"
+db_password = "clp_admin"
+db_name = "CLP_DB"
 item = {
-    "db_username" : "admin_clp",
-    "db_password" : "admin_clp",
-    "db_host" : "172.18.0.2",
-    "db_name": "DPML_db",
-    "db_col_user" : "dpml_user",
-    "db_col_role" : "dpml_role",
-    "db_col_mlmo" : "dpml_ml_model",
-    "db_col_remo" : "dpml_ref_model",
-    "db_col_unit" : "dpml_unit",
+    "db_host" : "mongodb+srv://"+(db_username)+":"+(db_password)+"@cluster-ap.akjvz.mongodb.net/"+(db_name)+"?retryWrites=true&w=majority",
+    "db_name": "CLP_DB",
+    "db_col_user" : "clp_user",
+    "db_col_unit" : "clp_unit",
     
     # dpml_ml_model fields
     "fld_mlmo_id" : "mlmo_id",
