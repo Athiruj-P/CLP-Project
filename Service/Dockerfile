@@ -1,13 +1,9 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.8
-
-# RUN pip install --upgrade pip && pip install pymongo && pip install zope.interface
-RUN pip install --upgrade pip
-RUN mkdir database_file
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get install -y python3-dev python3-pip build-essential
 WORKDIR /app 
 COPY ./app /app
-RUN pip install -r ./requirements.txt
-# RUN pip install flask-jwt-extended && pip install pytz
-RUN pip install pytz
-# EXPOSE 5000
-ENTRYPOINT ["python"]
+RUN pip3 install -r ./requirements.txt
+RUN pip3 install pytz && pip3 install dnspython
+ENTRYPOINT ["python3"]
 CMD ["main_api.py"]
