@@ -2,100 +2,94 @@
 # Description : จัดการการเข้าสู่ระบบ/ออกจากระบบของผู้ใช้งาน และการกำหนด token
 # Author : Athiruj Poositaporn
 from flask import Flask, request, jsonify ,Blueprint
-from pytz import timezone
-
+import datetime, pytz
 from pymongo import MongoClient
 from bson.json_util import dumps
+import logging
 import logging.config
-from .. import db_config
-from datetime import date , datetime
+from ..db_config import item
 
 user_api = Blueprint('user_api', __name__)
+logger = logging.getLogger("user_api")
 
+client = MongoClient(item["db_host"])
+db = client.CLP_DB
 
-login
-Description : ปรับสถานะการเข้าสู่ระบบของผู้ใช้งาน
-Author : Athiruj Poositaporn
+#login
+#Description : ปรับสถานะการเข้าสู่ระบบของผู้ใช้งาน
+#Author : Athiruj Poositaporn
 @user_api.route("/login", methods=['POST'])
 def login():
     try:
         username = request.form.get('username', None)
         password = request.form.get('password', None)
+
+        # Check null value
         if not username:
             result = {"mes": "Missing username parameter" , 'status' : 'error'}
             return result, 400
-    except expression as identifier:
-        pass
-#     set_folder_name()
-#     try:
-#         username = request.form.get('username', None)
-#         password = request.form.get('password', None)
-#         logger.info("[{}] is logging in.".format(username))
-#         if not username:
-#             logger.warning("[{}] Missing username parameter.".format(username))
-#             result = {"mes": "Missing username parameter" , 'status' : 'error'}
-#             return result, 400
-#         if not password:
-#             logger.warning("[{}] Missing password parameter.".format(username))
-#             result = {"mes": "Missing password parameter" , 'status' : 'error'}
-#             return result, 400
+        # Check null value
+        elif not password:
+            result = {"mes": "Missing password parameter" , 'status' : 'error'}
+            return result, 400
+            
+        # Query user from DB
+        query_result = db[item['db_col_user']].find_one({
+           item['fld_user_name']: username ,
+           item['fld_user_password']: password
+        })
 
-#         query_result = DPML_db[collection].find_one({
-#             db_config.item['fld_user_name']: username ,
-#             db_config.item['fld_user_password']: password
-#         })
-
-#         if not query_result:
-#             logger.warning("[{}] Wrong username or password.".format(username))
-#             result = {"mes": "Wrong username or password." , 'status' : 'error'}
-#             return result, 401
-#         else:
-#             DPML_db[collection].update(
-#                 { db_config.item['fld_user_id']:query_result['user_id'] },
-#                 { "$set":{ db_config.item['fld_user_login_status']:db_config.item['fld_user_status_login'] }}
-#             )
+        # Query not found
+        if not query_result:
+            logger.warning("[{}] Wrong username or password".format(username))
+            result = {"mes": "Wrong username or password" , 'status' : 'error'}
+            return result, 401
+        # Set user login status
+        else:
+            db[item['db_col_user']].update(
+                { '_id': query_result['_id'] },
+                { "$set": 
+                    {   item['fld_user_status']: item['fld_user_LOGIN'],
+                        item['fld_user_latest_login']: get_datetime_now()
+                    }
+                }
+            )
         
-#         query_result = DPML_db[role_collection].find_one({
-#             db_config.item['fld_role_id']: int(query_result[db_config.item['fld_user_role_id']])
-#         })
+        result = {'status' : 'success'}
+        return result, 200 
 
-#         db_connect.close()
-#         access_token = create_access_token(identity=username)
-#         tokens = {
-#             'access_token': create_access_token(identity=username),
-#             'refresh_token': create_refresh_token(identity=username) 
-#         }
-#         logger.info("[{}] Response tokens to login.".format(username))
-#         result = {'tokens':tokens, 'role':query_result['role_name'], 'status' : 'success'}
-#         return result, 200
-#     except Exception as identifier:
-#         logger.error("{}.".format(str(identifier)))
-#         result = {'mes' : str(identifier), 'status' : "system_error"}
-#         return result , 400
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
+    finally:
+        client.close()
 
 # logout
 # Description : ปรับสถานะการออกจากระบบของผู้ใช้งาน
 # Author : Athiruj Poositaporn
-# @user_api.route('/logout', methods=['POST'])
-# def logout():
-#     set_folder_name()
-#     try:
-#         username = request.form.get('username', None)
-#         logger.info("[{}] Logging out.".format(username))
-#         if not username:
-#             logger.info("[{}] Missing username parameter.".format(username))
-#             result = {"mes": "Missing username parameter." , 'status' : 'error'}
-#             return result, 400
+@user_api.route('/logout', methods=['POST'])
+def logout():
+    try:
+        username = request.form.get('username', None)
+        # Check null value
+        if not username:
+            result = {"mes": "Missing username parameter" , 'status' : 'error'}
+            return result, 400
 
-#         DPML_db[collection].update(
-#             { db_config.item['fld_user_name']:username },
-#             { "$set":{ db_config.item['fld_user_login_status']:db_config.item['fld_user_status_logout'] }}
-#         )
-#         logger.info("[{}] Response logout.".format(username))
-#         result = {"mes": "Logout success" , 'status' : 'success'}
-#         db_connect.close()
-#         return result , 200
-#     except Exception as identifier:
-#         logger.error("{}.".format(str(identifier)))
-#         result = {"mes": str(identifier) , 'status' : 'system_error'}
-#         return result , 400
+        # Set user logout status
+        db[item['db_col_user']].update(
+            { item['fld_user_name']:username },
+            { "$set":{ item['fld_user_status']:item['fld_user_LOGOUT'] }}
+        )
+        result = {'status' : 'success'}
+        return result , 200
+    except Exception as identifier:
+        result = {"mes": str(identifier) , 'status' : 'system_error'}
+        return result , 400
+    finally:
+        client.close()
+
+def get_datetime_now():
+    tz = pytz.timezone('Asia/Bangkok')
+    return datetime.datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S.%f')
