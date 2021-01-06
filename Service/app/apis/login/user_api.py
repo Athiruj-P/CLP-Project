@@ -1,5 +1,5 @@
 # user_api
-# Description : จัดการการเข้าสู่ระบบ/ออกจากระบบของผู้ใช้งาน และการกำหนด token
+# Description : จัดการการเข้าสู่ระบบ/ออกจากระบบของผู้ใช้งาน
 # Author : Athiruj Poositaporn
 from flask import Flask, request, jsonify ,Blueprint
 import datetime, pytz
