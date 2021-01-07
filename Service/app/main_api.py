@@ -6,12 +6,21 @@ from bson.json_util import dumps
 from apis.login.user_api import user_api
 from apis.planner.planner_api import planner_api
 from apis.db_config import item
-
+from logging_config import dict_config, time_zone
 import logging
 import logging.config
+from pytz import timezone
+
+def timetz(*args):
+    return datetime.datetime.now(tz).timetuple()
+
+tz = timezone(time_zone)
+
+logging.Formatter.converter = timetz
+logging.config.dictConfig(dict_config)
+logger = logging.getLogger("main")
 
 app = Flask(__name__)
-app.logger.setLevel(logging.INFO)
 app.register_blueprint(user_api)
 app.register_blueprint(planner_api)
 port = int(os.environ.get("PORT", 5000))
@@ -20,10 +29,9 @@ username = "Athiruj"
 client = MongoClient(item["db_host"])
 db = client.CLP_DB
 
-logger = logging.getLogger("main_api")
-
 @app.route("/")
 def hello():
+  logger.info("Test")
   color = db.clp_color
   arr = []
   for item in color.find():
