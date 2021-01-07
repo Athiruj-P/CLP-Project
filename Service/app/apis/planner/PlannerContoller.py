@@ -28,30 +28,65 @@ class PlannerController:
                                 '_id' : 0,
                                 item['fld_user_planners'] : 1
                             })
-            return query_result
+            
+            rs_arr = query_result[item['fld_user_planners']]
+
+            # Loop to change ObjectId to string
+            for index in range(len(rs_arr)):
+                for key in rs_arr[index]:
+                    # If there are ObjectId instances then change its value to string
+                    if isinstance(rs_arr[index][key],ObjectId):
+                        rs_arr[index][key] = str(rs_arr[index][key])
+            return rs_arr
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
     def get_planner(self, pln_data = PlannerData()):
-        pass
+        try:
+            query_result = clp_user.find_one({
+                                '_id': ObjectId(pln_data.user_id)
+                            },{
+                                '_id' : 0,
+                                item['fld_user_planners'] : 1
+                            })
+            
+            rs_arr = query_result[item['fld_user_planners']]
+            # Loop to change ObjectId to string
+            for index in range(len(rs_arr)):
+                if str(rs_arr[index]['_id']) != pln_data.planner_id:
+                    continue
+                for key in rs_arr[index]:
+                    # If there are ObjectId instances then change its value to string
+                    if isinstance(rs_arr[index][key],ObjectId):
+                        rs_arr[index][key] = str(rs_arr[index][key])
+                # set the result
+                result = rs_arr[index]
+                break
+            return result
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
     
     def add_planner(self, pln_data = PlannerData()):
         try:
             logger.info("[{}] Prepair planner data to be save".format(pln_data.user_id))
             planner = pln_data.planner
             date = Date.get_datetime_now()
+            tmp_arr = []
             new_planner = {
+                   "_id" : ObjectId(),
                    item["fld_pln_name"] : planner['name'],
                    item["fld_pln_width"] : planner['width'],
                    item["fld_pln_height"] : planner['height'],
                    item["fld_pln_depth"] : planner['depth'],
-                   item["fld_pln_unit_id"] : planner['unit'],
+                   item["fld_pln_unit_id"] : ObjectId(planner['unit']),
                    item["fld_pln_created_date"] : date,
                    item["fld_pln_latest_updated"] : date,
                    item["fld_pln_status"] : item["fld_pln_ACTIVE"],
-                   item["fld_pln_boxes"] : None,
+                   item["fld_pln_boxes"] : tmp_arr,
             }
             clp_user.update(
                 {'_id': ObjectId(pln_data.user_id)},
