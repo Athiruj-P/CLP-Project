@@ -4,6 +4,7 @@ import os
 import datetime, pytz
 from bson.json_util import dumps
 from apis.login.user_api import user_api
+from apis.planner.planner_api import planner_api
 from apis.db_config import item
 
 import logging
@@ -12,6 +13,7 @@ import logging.config
 app = Flask(__name__)
 app.logger.setLevel(logging.INFO)
 app.register_blueprint(user_api)
+app.register_blueprint(planner_api)
 port = int(os.environ.get("PORT", 5000))
 username = "Athiruj"
 
@@ -25,7 +27,6 @@ def hello():
   color = db.clp_color
   arr = []
   for item in color.find():
-      # item.pop('_id')
       logger.info(item['_id'])
       item['_id'] = str(item['_id'])
       arr.append(item)

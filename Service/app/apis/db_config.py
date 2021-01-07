@@ -17,6 +17,7 @@ item = {
     "fld_user_password" : "user_password",
     "fld_user_status" : "user_status",
     "fld_user_latest_login" : "user_latest_login",
+    "fld_user_planners" : "user_planners",
     "fld_user_LOGIN" : 1,
     "fld_user_LOGOUT" : 0,
 
