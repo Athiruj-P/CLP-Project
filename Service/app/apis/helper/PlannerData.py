@@ -3,6 +3,7 @@
 # Author : Athiruj Poositaporn
 
 class PlannerData():
-    def __init__(self, user_id=0, planner_id=0):
+    def __init__(self, user_id=0, planner_id=0, planner=None):
         self.user_id = user_id 
         self.planner_id = planner_id 
+        self.planner = planner 
