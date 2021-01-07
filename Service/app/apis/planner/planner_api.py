@@ -22,6 +22,7 @@ def get_all_planner():
     try:
         user_id = request.form.get('user_id', None)
 
+        logger.info("[{}] Call API get_all_planner()".format(user_id))
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
@@ -38,5 +39,39 @@ def get_all_planner():
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
         return result , 400
-    finally:
-        client.close()
+
+#get_all_planner
+#Description : 
+#Author : Athiruj Poositaporn
+@planner_api.route("/add_planner", methods=['POST'])
+def add_planner():
+    try:
+        user_id = request.form.get('user_id', None)
+        new_data = {}
+        new_data['name'] = request.form.get('name', None)
+        new_data['width'] = request.form.get('width', None)
+        new_data['height'] = request.form.get('height', None)
+        new_data['depth'] = request.form.get('depth', None)
+        new_data['unit'] = request.form.get('unit', None)
+
+        logger.info("[{}] Call API add_planner()".format(user_id))
+        # Check null value
+        for data in new_data:
+            logger.info("{} => {}".format(data,new_data[data]))
+            if not new_data[data]:
+                result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
+                return result, 400
+
+        pln_data = PlannerData()
+        pln_data.user_id = user_id
+        pln_data.planner = new_data
+        
+        # pln_cont = PlannerController()
+        # result = pln_cont.get_all_planner(pln_data)
+         
+        return jsonify(pln_data)
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
