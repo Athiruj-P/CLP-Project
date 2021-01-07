@@ -31,6 +31,8 @@ item = {
     "fld_pln_latest_updated" : "pln_latest_updated",
     "fld_pln_status" : "pln_status",
     "fld_pln_boxes" : "boxes",
+    "fld_pln_ACTIVE" : 1,
+    "fld_pln_REMOVE" : 0,
 
     # clp_box fields
     "fld_box_name" : "box_name",
