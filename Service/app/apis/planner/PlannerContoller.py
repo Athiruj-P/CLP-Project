@@ -17,7 +17,7 @@ logger = logging.getLogger("planner_controller")
 
 client = MongoClient(item["db_host"])
 db = client.CLP_DB
-clp_user =db.clp_user
+clp_user = db.clp_user
 
 class PlannerController:
     def get_all_planner(self, pln_data = PlannerData()):
@@ -30,14 +30,19 @@ class PlannerController:
                             })
             
             rs_arr = query_result[item['fld_user_planners']]
-
+            arr = []
             # Loop to change ObjectId to string
             for index in range(len(rs_arr)):
+                # Continue if planner's status is REMOVE (0)
+                if rs_arr[index][item['fld_pln_status']] != item['fld_pln_ACTIVE']:
+                    continue
                 for key in rs_arr[index]:
                     # If there are ObjectId instances then change its value to string
                     if isinstance(rs_arr[index][key],ObjectId):
                         rs_arr[index][key] = str(rs_arr[index][key])
-            return rs_arr
+                # Store ACTIVE planner
+                arr.append(rs_arr[index])
+            return arr
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
@@ -46,16 +51,20 @@ class PlannerController:
     def get_planner(self, pln_data = PlannerData()):
         try:
             query_result = clp_user.find_one({
-                                '_id': ObjectId(pln_data.user_id)
+                                '_id': ObjectId(pln_data.user_id),
                             },{
                                 '_id' : 0,
                                 item['fld_user_planners'] : 1
                             })
             
             rs_arr = query_result[item['fld_user_planners']]
+
+            logger.info("Test => {}".format(rs_arr))
+
+            result = None
             # Loop to change ObjectId to string
             for index in range(len(rs_arr)):
-                if str(rs_arr[index]['_id']) != pln_data.planner_id:
+                if (str(rs_arr[index]['_id']) != pln_data.planner_id) or (rs_arr[index][item['fld_pln_status']] != item['fld_pln_ACTIVE']):
                     continue
                 for key in rs_arr[index]:
                     # If there are ObjectId instances then change its value to string
@@ -64,7 +73,10 @@ class PlannerController:
                 # set the result
                 result = rs_arr[index]
                 break
-            return result
+            if not result:
+                return {}
+            else:
+                return result
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
@@ -119,18 +131,20 @@ class PlannerController:
                 },
                 {
                     '$set' : 
-                    { fld_pln_name: planner['name'] },
-                    { fld_pln_width: planner['width'] },
-                    { fld_pln_height: planner['height'] },
-                    { fld_pln_depth: planner['depth'] },
-                    { fld_pln_unit_id: ObjectId(planner['unit']) },
-                    { fld_pln_latest_updated: date },
+                    {
+                        fld_pln_name: planner['name'] ,
+                        fld_pln_width: planner['width'] ,
+                        fld_pln_height: planner['height'] ,
+                        fld_pln_depth: planner['depth'] ,
+                        fld_pln_unit_id: ObjectId(planner['unit']) ,
+                        fld_pln_latest_updated: date
+                    }
                 },
             )
 
             logger.info("[{}] Edited a planner".format(pln_data.user_id))
             result = { 'mes' : "edited_planner", 'status' : "success"}
-
+            return result
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
@@ -151,14 +165,16 @@ class PlannerController:
                 },
                 {
                     '$set' : 
-                    { fld_pln_status: item['fld_pln_REMOVE'] },
-                    { fld_pln_latest_updated: date },
+                    { 
+                        fld_pln_status: item['fld_pln_REMOVE'] ,
+                        fld_pln_latest_updated: date
+                    }
                 },
             )
 
             logger.info("[{}] Deleted a planner".format(pln_data.user_id))
             result = { 'mes' : "deleted_planner", 'status' : "success"}
-
+            return result
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
@@ -171,5 +187,5 @@ class PlannerController:
         pass
 
     def __del__(self):
-        self.client.close()
+        client.close()
    

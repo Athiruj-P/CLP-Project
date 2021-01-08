@@ -64,7 +64,7 @@ def get_planner():
         
         pln_cont = PlannerController()
         result = pln_cont.get_planner(pln_data)
-         
+        del pln_data
         return jsonify(result) , 200
 
     except Exception as identifier:
@@ -104,6 +104,84 @@ def add_planner():
         pln_cont = PlannerController()
         result = pln_cont.add_planner(pln_data)
          
+        return result , 200
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
+
+#edit_planner
+#Description : แก้ไขข้อมูลของ planner
+#Author : Athiruj Poositaporn
+@planner_api.route("/edit_planner", methods=['POST'])
+def edit_planner():
+    try:
+        user_id = request.form.get('user_id', None)
+        pln_id = request.form.get('pln_id', None)
+
+        new_data = {}
+        new_data['name'] = request.form.get('name', None)
+        new_data['width'] = request.form.get('width', None)
+        new_data['height'] = request.form.get('height', None)
+        new_data['depth'] = request.form.get('depth', None)
+        new_data['unit'] = request.form.get('unit', None)
+
+        logger.info("[{}] Call API edit_planner()".format(user_id))
+        # Check null value
+        if not pln_id:
+            result = {"mes": "Missing {} parameter".format("pln_id") , 'status' : 'error'}
+            return result, 400
+
+        for data in new_data:
+            logger.info("{} => {}".format(data,new_data[data]))
+            if not new_data[data]:
+                result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
+                return result, 400
+
+        new_data['width'] = int(new_data['width'])
+        new_data['height'] = int(new_data['height'])
+        new_data['depth'] = int(new_data['depth'])
+        pln_data = PlannerData()
+        pln_data.user_id = user_id
+        pln_data.planner_id = pln_id
+        pln_data.planner = new_data
+        
+        pln_cont = PlannerController()
+        result = pln_cont.edit_planner(pln_data)
+         
+        return result , 200
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
+
+#delete_planner
+#Description : ลบ planner ตาม ID ที่กำหนด (เปลี่ยนสถานะ)
+#Author : Athiruj Poositaporn
+@planner_api.route("/delete_planner", methods=['POST'])
+def delete_planner():
+    try:
+        user_id = request.form.get('user_id', None)
+        pln_id = request.form.get('pln_id', None)
+
+        logger.info("[{}] Call API delete_planner()".format(user_id))
+        # Check null value
+        if not user_id:
+            result = {"mes": "Missing {} parameter".format(user_id) , 'status' : 'error'}
+            return result, 400
+        elif not pln_id:
+            result = {"mes": "Missing {} parameter".format(pln_id) , 'status' : 'error'}
+            return result, 400
+
+        pln_data = PlannerData()
+        pln_data.user_id = user_id
+        pln_data.planner_id = pln_id
+        
+        pln_cont = PlannerController()
+        result = pln_cont.delete_planner(pln_data)
+        
         return result , 200
 
     except Exception as identifier:
