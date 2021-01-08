@@ -94,9 +94,6 @@ def add_planner():
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
                 return result, 400
 
-        new_data['width'] = int(new_data['width'])
-        new_data['height'] = int(new_data['height'])
-        new_data['depth'] = int(new_data['depth'])
         pln_data = PlannerData()
         pln_data.user_id = user_id
         pln_data.planner = new_data
@@ -139,9 +136,6 @@ def edit_planner():
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
                 return result, 400
 
-        new_data['width'] = int(new_data['width'])
-        new_data['height'] = int(new_data['height'])
-        new_data['depth'] = int(new_data['depth'])
         pln_data = PlannerData()
         pln_data.user_id = user_id
         pln_data.planner_id = pln_id
@@ -183,6 +177,33 @@ def delete_planner():
         result = pln_cont.delete_planner(pln_data)
         
         return result , 200
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
+
+#get_all_unit
+#Description : ดึงข้อมูล unit ทั้งหมด
+#Author : Athiruj Poositaporn
+@planner_api.route("/get_all_unit", methods=['POST'])
+def get_all_unit():
+    try:
+        user_id = request.form.get('user_id', None)
+
+        logger.info("[{}] Call API get_all_unit()".format(user_id))
+        # Check null value
+        if not user_id:
+            result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
+            return result, 400
+            
+        pln_data = PlannerData()
+        pln_data.user_id = user_id
+        
+        pln_cont = PlannerController()
+        result = pln_cont.get_all_unit()
+        del pln_data
+        return jsonify(result) , 200
 
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
