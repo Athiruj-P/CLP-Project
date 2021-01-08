@@ -156,7 +156,9 @@ class PlannerController:
             elif not self.get_planner(pln_data):
                 logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_planner_id']))
                 raise TypeError(msg['wrong_planner_id'])
-
+            elif not self.check_unit_id(planner['unit']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_unit_id']))
+                raise TypeError(msg['wrong_unit_id'])
 
             date = Date.get_datetime_now()
             fld_user_pln = "{}._id".format(item["fld_user_planners"])
@@ -254,7 +256,6 @@ class PlannerController:
             arr = []
             for val in query_result:
                 # If there are ObjectId instances then change its value to string
-                logger.info("test=> {}".format(val))
                 val['_id'] = str(val['_id']) 
                 arr.append(val)
             return arr
