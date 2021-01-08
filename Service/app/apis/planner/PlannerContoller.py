@@ -101,10 +101,68 @@ class PlannerController:
             return result
     
     def edit_planner(self, pln_data = PlannerData()):
-        pass
+        try:
+            planner = pln_data.planner
+            date = Date.get_datetime_now()
+            fld_user_pln = "{}._id".format(item["fld_user_planners"])
+            fld_pln_name = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_name'])
+            fld_pln_width = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_width'])
+            fld_pln_height = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_height'])
+            fld_pln_depth = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_depth'])
+            fld_pln_unit_id = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_unit_id'])
+            fld_pln_latest_updated = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_latest_updated'])
+
+            clp_user.update(
+                {
+                    '_id': ObjectId(pln_data.user_id),
+                    fld_user_pln : ObjectId(pln_data.planner_id),
+                },
+                {
+                    '$set' : 
+                    { fld_pln_name: planner['name'] },
+                    { fld_pln_width: planner['width'] },
+                    { fld_pln_height: planner['height'] },
+                    { fld_pln_depth: planner['depth'] },
+                    { fld_pln_unit_id: ObjectId(planner['unit']) },
+                    { fld_pln_latest_updated: date },
+                },
+            )
+
+            logger.info("[{}] Edited a planner".format(pln_data.user_id))
+            result = { 'mes' : "edited_planner", 'status' : "success"}
+
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
+        
     
     def delete_planner(self, pln_data = PlannerData()):
-        pass
+        try:
+            date = Date.get_datetime_now()
+            fld_user_pln = "{}._id".format(item["fld_user_planners"])
+            fld_pln_status = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_status'])
+            fld_pln_latest_updated = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_latest_updated'])
+            
+            clp_user.update(
+                {
+                    '_id': ObjectId(pln_data.user_id),
+                    fld_user_pln : ObjectId(pln_data.planner_id),
+                },
+                {
+                    '$set' : 
+                    { fld_pln_status: item['fld_pln_REMOVE'] },
+                    { fld_pln_latest_updated: date },
+                },
+            )
+
+            logger.info("[{}] Deleted a planner".format(pln_data.user_id))
+            result = { 'mes' : "deleted_planner", 'status' : "success"}
+
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
     
     def is_duplicate_name(self, name):
         pass
