@@ -13,12 +13,14 @@ from ..db_config import item
 from ..helper.PlannerData import PlannerData
 from ..helper import Date
 from ..err_msg import msg
+import re
 
 logger = logging.getLogger("planner_controller")
 
 client = MongoClient(item["db_host"])
 db = client.CLP_DB
-clp_user = db.clp_user
+clp_user = db[item['db_col_user']]
+clp_unit = db[item['db_col_unit']]
 
 class PlannerController:
     def get_all_planner(self, pln_data = PlannerData()):
@@ -60,8 +62,6 @@ class PlannerController:
             
             rs_arr = query_result[item['fld_user_planners']]
 
-            logger.info("Test => {}".format(rs_arr))
-
             result = None
             # Loop to change ObjectId to string
             for index in range(len(rs_arr)):
@@ -86,6 +86,7 @@ class PlannerController:
     def add_planner(self, pln_data = PlannerData()):
         try:
             logger.info("[{}] Prepair planner data to be save".format(pln_data.user_id))
+            planner = pln_data.planner
 
             # Validation
             if not self.check_name_format(planner['name']):
@@ -100,10 +101,10 @@ class PlannerController:
             elif not self.is_number(planner['depth']):
                 logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_depth']))
                 raise TypeError(msg['wrong_depth'])
-            # elif not self.check_unit_id(ObjectId(planner['unit'])):
-            #     pass
+            elif not self.check_unit_id(planner['unit']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_unit_id']))
+                raise TypeError(msg['wrong_unit_id'])
 
-            planner = pln_data.planner
             date = Date.get_datetime_now()
             tmp_arr = []
             new_planner = {
@@ -126,13 +127,37 @@ class PlannerController:
             result = { 'mes' : "added_planner", 'status' : "success"}
             return result
         except Exception as identifier:
-            logger.error("{}.".format(str(identifier)))
-            result = {'mes' : str(identifier), 'status' : "system_error"}
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
     def edit_planner(self, pln_data = PlannerData()):
         try:
+            logger.info("[{}] Prepair planner data to be save".format(pln_data.user_id))
             planner = pln_data.planner
+
+            # Validation
+            if not self.check_name_format(planner['name']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_name_format']))
+                raise TypeError(msg['wrong_name_format'])
+            elif not self.is_number(planner['width']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_width']))
+                raise TypeError(msg['wrong_width'])
+            elif not self.is_number(planner['height']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_height']))
+                raise TypeError(msg['wrong_height'])
+            elif not self.is_number(planner['depth']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_depth']))
+                raise TypeError(msg['wrong_depth'])
+            elif not self.get_planner(pln_data):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_planner_id']))
+                raise TypeError(msg['wrong_planner_id'])
+
+
             date = Date.get_datetime_now()
             fld_user_pln = "{}._id".format(item["fld_user_planners"])
             fld_pln_name = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_name'])
@@ -151,9 +176,9 @@ class PlannerController:
                     '$set' : 
                     {
                         fld_pln_name: planner['name'] ,
-                        fld_pln_width: planner['width'] ,
-                        fld_pln_height: planner['height'] ,
-                        fld_pln_depth: planner['depth'] ,
+                        fld_pln_width: float(planner['width']) ,
+                        fld_pln_height: float(planner['height']) ,
+                        fld_pln_depth: float(planner['depth']) ,
                         fld_pln_unit_id: ObjectId(planner['unit']) ,
                         fld_pln_latest_updated: date
                     }
@@ -164,11 +189,14 @@ class PlannerController:
             result = { 'mes' : "edited_planner", 'status' : "success"}
             return result
         except Exception as identifier:
-            logger.error("{}.".format(str(identifier)))
-            result = {'mes' : str(identifier), 'status' : "system_error"}
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
         
-    
     def delete_planner(self, pln_data = PlannerData()):
         try:
             date = Date.get_datetime_now()
@@ -214,8 +242,26 @@ class PlannerController:
         else:
             return True
 
-    def check_unit_id(self, unit_id):
-        pass
+    def check_unit_id(self,unit_id):
+        for val in self.get_all_unit():
+            if val['_id'] == unit_id:
+                return True
+        return False
+
+    def get_all_unit(self):
+        try:
+            query_result = clp_unit.find()
+            arr = []
+            for val in query_result:
+                # If there are ObjectId instances then change its value to string
+                logger.info("test=> {}".format(val))
+                val['_id'] = str(val['_id']) 
+                arr.append(val)
+            return arr
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
     
     def render_container(self, pln_data = PlannerData()):
         pass
