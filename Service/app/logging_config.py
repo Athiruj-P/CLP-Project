@@ -42,6 +42,14 @@ dict_config = {
             'handlers': ["default"],
             'level': 'DEBUG',
         },
+        'box_api': {
+            'handlers': ["default"],
+            'level': 'DEBUG',
+        },
+        'box_controller': {
+            'handlers': ["default"],
+            'level': 'DEBUG',
+        },
         'user_api': {
             'handlers': ["default"],
             'level': 'DEBUG',
