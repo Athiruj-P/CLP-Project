@@ -12,6 +12,7 @@ import logging.config
 from ..db_config import item
 from ..helper.PlannerData import PlannerData
 from ..helper import Date
+from ..err_msg import msg
 
 logger = logging.getLogger("planner_controller")
 
@@ -85,15 +86,32 @@ class PlannerController:
     def add_planner(self, pln_data = PlannerData()):
         try:
             logger.info("[{}] Prepair planner data to be save".format(pln_data.user_id))
+
+            # Validation
+            if not self.check_name_format(planner['name']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_name_format']))
+                raise TypeError(msg['wrong_name_format'])
+            elif not self.is_number(planner['width']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_width']))
+                raise TypeError(msg['wrong_width'])
+            elif not self.is_number(planner['height']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_height']))
+                raise TypeError(msg['wrong_height'])
+            elif not self.is_number(planner['depth']):
+                logger.warning("[{}] {}".format(pln_data.user_id,msg['wrong_depth']))
+                raise TypeError(msg['wrong_depth'])
+            # elif not self.check_unit_id(ObjectId(planner['unit'])):
+            #     pass
+
             planner = pln_data.planner
             date = Date.get_datetime_now()
             tmp_arr = []
             new_planner = {
                    "_id" : ObjectId(),
                    item["fld_pln_name"] : planner['name'],
-                   item["fld_pln_width"] : planner['width'],
-                   item["fld_pln_height"] : planner['height'],
-                   item["fld_pln_depth"] : planner['depth'],
+                   item["fld_pln_width"] :float( planner['width']),
+                   item["fld_pln_height"] :float( planner['height']),
+                   item["fld_pln_depth"] :float( planner['depth']),
                    item["fld_pln_unit_id"] : ObjectId(planner['unit']),
                    item["fld_pln_created_date"] : date,
                    item["fld_pln_latest_updated"] : date,
@@ -180,7 +198,23 @@ class PlannerController:
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
-    def is_duplicate_name(self, name):
+    def is_number(self, number):
+        try:
+            float(number)
+            int(number)
+            return True
+        except ValueError:
+            return False
+    
+    def check_name_format(self, name):
+        name_rex = "^([\wก-๙]+ )+[\wก-๙]+$|^[\wก-๙]+$"
+        result_regex = re.search(name_rex, name)
+        if((not result_regex) or len(name) < 3 or len(name) > 30):
+            return False
+        else:
+            return True
+
+    def check_unit_id(self, unit_id):
         pass
     
     def render_container(self, pln_data = PlannerData()):

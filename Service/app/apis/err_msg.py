@@ -1,5 +1,11 @@
 msg = {
 
+    # Error message for image planner controller
+    'wrong_name_format' : "Planner name must contain minimum 3 characters and maximum 30 characters. English, Thai, number, a space ( ) and underscore (_) are allow.",
+    'wrong_width' : "Width must be either int or float.",
+    'wrong_height' : "Height must be either int or float.",
+    'wrong_depth' : "Depth must be either int or float.",
+
     # Error message for image processing API
     'other_err' : "Something went wrong, Please try again later.",
     'file_empty' : "Image file is empty, Please upload an new image.",
