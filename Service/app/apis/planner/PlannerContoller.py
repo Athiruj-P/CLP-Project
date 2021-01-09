@@ -39,6 +39,7 @@ class PlannerController:
                 # Continue if planner's status is REMOVE (0)
                 if rs_arr[index][item['fld_pln_status']] != item['fld_pln_ACTIVE']:
                     continue
+                rs_arr[index].pop(item['fld_pln_boxes'])
                 for key in rs_arr[index]:
                     # If there are ObjectId instances then change its value to string
                     if isinstance(rs_arr[index][key],ObjectId):
@@ -69,8 +70,10 @@ class PlannerController:
                 return None
             else:
                 query_result = query_result[item['fld_user_planners']][0]
-                query_result.pop(item['fld_pln_boxes'])
                 for key in query_result:
+                    if key == item['fld_pln_boxes']:
+                        for index in query_result[key]:
+                            query_result[key][index] =str(query_result[key][index])
                     if isinstance(query_result[key],ObjectId):
                         query_result[key] = str(query_result[key])
                 return query_result
