@@ -48,13 +48,17 @@ class PlannerController:
                 arr.append(rs_arr[index])
             return arr
         except Exception as identifier:
-            logger.error("{}.".format(str(identifier)))
-            result = {'mes' : str(identifier), 'status' : "system_error"}
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
     def get_planner(self, pln_data = PlannerData()):
         try:
-            srt_fild = "{}._id.$".format(item['fld_user_planners'])
+            srt_fild = "{}.$".format(item['fld_user_planners'])
             query_result = clp_user.find_one(
                 {
                     item['fld_user_planners']:{
@@ -72,14 +76,18 @@ class PlannerController:
                 query_result = query_result[item['fld_user_planners']][0]
                 for key in query_result:
                     if key == item['fld_pln_boxes']:
-                        for index in query_result[key]:
-                            query_result[key][index] =str(query_result[key][index])
+                        for index in range(len(query_result[key])):
+                            query_result[key][index] = str(query_result[key][index])
                     if isinstance(query_result[key],ObjectId):
                         query_result[key] = str(query_result[key])
                 return query_result
         except Exception as identifier:
-            logger.error("{}.".format(str(identifier)))
-            result = {'mes' : str(identifier), 'status' : "system_error"}
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
     def add_planner(self, pln_data = PlannerData()):
