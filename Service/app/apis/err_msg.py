@@ -1,12 +1,14 @@
 msg = {
 
-    # Error message for image planner controller
+    # Error message for image planner controller and box controller
     'wrong_name_format' : "Planner name must contain minimum 3 characters and maximum 30 characters. English, Thai, number, a space ( ) and underscore (_) are allow.",
     'wrong_width' : "Width must be either int or float.",
     'wrong_height' : "Height must be either int or float.",
     'wrong_depth' : "Depth must be either int or float.",
-    'wrong_planner_id' : "Wrong planner id.",
+    'wrong_qty' : "Quantity must be int.",
+    'wrong_planner_id' : "The planner id does not exist.",
     'wrong_unit_id' : "Wrong unit id, this ID dose not match any unit id on clp_unit.",
+    'wrong_color_id' : "Wrong color id, this ID dose not match any unit id on clp_unit.",
 
     # Error message for image processing API
     # 'other_err' : "Something went wrong, Please try again later.",
