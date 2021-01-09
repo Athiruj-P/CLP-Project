@@ -32,7 +32,7 @@ item = {
     "fld_pln_created_date" : "pln_created_date",
     "fld_pln_latest_updated" : "pln_latest_updated",
     "fld_pln_status" : "pln_status",
-    "fld_pln_boxes" : "boxes",
+    "fld_pln_boxes" : "pln_boxes",
     "fld_pln_ACTIVE" : 1,
     "fld_pln_REMOVE" : 0,
 
@@ -46,6 +46,9 @@ item = {
     "fld_box_color_id" : "box_color_id",
     "fld_box_created_date" : "box_created_date",
     "fld_box_latest_updated" : "box_latest_updated",
+    "fld_box_status" : "box_status",
+    "fld_box_ACTIVE" : 1,
+    "fld_box_REMOVE" : 0,
 
     # clp_color fields
     "fld_color_hex" : "color_hex",
