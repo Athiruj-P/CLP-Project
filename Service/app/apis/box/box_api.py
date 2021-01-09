@@ -75,6 +75,7 @@ def add_box():
         box_data = BoxData()
         box_data.user_id = user_id
         box_data.planner_id = pln_id
+        box_data.boxes = new_data
         
         box_cont = BoxController()
         result = box_cont.add_box(box_data)
