@@ -53,31 +53,27 @@ class PlannerController:
     
     def get_planner(self, pln_data = PlannerData()):
         try:
-            query_result = clp_user.find_one({
-                                '_id': ObjectId(pln_data.user_id),
-                            },{
-                                '_id' : 0,
-                                item['fld_user_planners'] : 1
-                            })
+            srt_fild = "{}._id.$".format(item['fld_user_planners'])
+            query_result = clp_user.find_one(
+                {
+                    item['fld_user_planners']:{
+                        '$elemMatch': {"_id" : ObjectId(pln_data.planner_id) }
+                    }
+                },
+                {
+                    srt_fild : 1
+                }
+            )
             
-            rs_arr = query_result[item['fld_user_planners']]
-
-            result = None
-            # Loop to change ObjectId to string
-            for index in range(len(rs_arr)):
-                if (str(rs_arr[index]['_id']) != pln_data.planner_id) or (rs_arr[index][item['fld_pln_status']] != item['fld_pln_ACTIVE']):
-                    continue
-                for key in rs_arr[index]:
-                    # If there are ObjectId instances then change its value to string
-                    if isinstance(rs_arr[index][key],ObjectId):
-                        rs_arr[index][key] = str(rs_arr[index][key])
-                # set the result
-                result = rs_arr[index]
-                break
-            if not result:
-                return {}
+            if not query_result:
+                return None
             else:
-                return result
+                query_result = query_result[item['fld_user_planners']][0]
+                query_result.pop(item['fld_pln_boxes'])
+                for key in query_result:
+                    if isinstance(query_result[key],ObjectId):
+                        query_result[key] = str(query_result[key])
+                return query_result
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
