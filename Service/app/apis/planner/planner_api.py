@@ -89,7 +89,6 @@ def add_planner():
         logger.info("[{}] Call API add_planner()".format(user_id))
         # Check null value
         for data in new_data:
-            logger.info("{} => {}".format(data,new_data[data]))
             if not new_data[data]:
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
                 return result, 400
