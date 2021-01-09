@@ -99,7 +99,7 @@ def add_planner():
         
         pln_cont = PlannerController()
         result = pln_cont.add_planner(pln_data)
-         
+        del pln_cont
         return result , 200
 
     except Exception as identifier:
@@ -142,7 +142,7 @@ def edit_planner():
         
         pln_cont = PlannerController()
         result = pln_cont.edit_planner(pln_data)
-         
+        del pln_cont
         return result , 200
 
     except Exception as identifier:
@@ -174,7 +174,7 @@ def delete_planner():
         
         pln_cont = PlannerController()
         result = pln_cont.delete_planner(pln_data)
-        
+        del pln_cont
         return result , 200
 
     except Exception as identifier:
