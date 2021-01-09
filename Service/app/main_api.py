@@ -5,6 +5,7 @@ import datetime, pytz
 from bson.json_util import dumps
 from apis.login.user_api import user_api
 from apis.planner.planner_api import planner_api
+from apis.box.box_api import box_api
 from apis.db_config import item
 from logging_config import dict_config, time_zone
 import logging
@@ -23,6 +24,7 @@ logger = logging.getLogger("main")
 app = Flask(__name__)
 app.register_blueprint(user_api)
 app.register_blueprint(planner_api)
+app.register_blueprint(box_api)
 port = int(os.environ.get("PORT", 5000))
 username = "Athiruj"
 
