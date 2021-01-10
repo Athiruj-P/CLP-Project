@@ -1,4 +1,4 @@
-from constants import RotationType, Axis
+from constants import RotationType
 from auxiliary_methods import intersect, set_to_decimal
 
 START_POSITION = [0, 0, 0]
@@ -255,6 +255,7 @@ class Packer:
                     print(len(UNFITTED_ITEMS))
 
     # A function to do preorder tree traversal 
+
 def printPreorder(root,file): 
     print("root: {}".format(root))
     if root: 
