@@ -132,7 +132,7 @@ class BoxController:
                    item["fld_box_width"] :float( boxes['width']),
                    item["fld_box_height"] :float( boxes['height']),
                    item["fld_box_depth"] :float( boxes['depth']),
-                   item["fld_box_quantity"] :float( boxes['qty']),
+                   item["fld_box_quantity"] :int( boxes['qty']),
                    item["fld_box_unit_id"] : ObjectId(boxes['unit']),
                    item["fld_box_color_id"] : ObjectId(boxes['color']),
                    item["fld_box_created_date"] : date,
@@ -166,7 +166,7 @@ class BoxController:
             return result
 
     def add_box_by_excel(self, box_data = BoxData()):
-        pass
+        return box_data.boxes
 
     def edit_box(self, box_data = BoxData()):
         try:
@@ -209,7 +209,7 @@ class BoxController:
                    item["fld_box_width"] :float( boxes['width']),
                    item["fld_box_height"] :float( boxes['height']),
                    item["fld_box_depth"] :float( boxes['depth']),
-                   item["fld_box_quantity"] :float( boxes['qty']),
+                   item["fld_box_quantity"] :int( boxes['qty']),
                    item["fld_box_unit_id"] : ObjectId(boxes['unit']),
                    item["fld_box_color_id"] : ObjectId(boxes['color']),
             }
