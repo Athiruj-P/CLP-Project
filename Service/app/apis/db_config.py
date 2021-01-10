@@ -13,7 +13,7 @@ item = {
     # clp_unit fields
     "fld_un_id" : "un_id",
     "fld_un_name" : "un_name",
-    "fld_un_abb_name" : "un_abb_name",
+    "fld_un_abb" : "un_abb",
 
     # clp_user fields
     "fld_user_name" : "user_name",
