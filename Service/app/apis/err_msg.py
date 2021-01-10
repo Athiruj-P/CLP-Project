@@ -1,6 +1,6 @@
 msg = {
 
-    # Error message for image planner controller and box controller
+    # Error message for planner controller , box controller and excel controller 
     'wrong_name_format' : "Planner name must contain minimum 3 characters and maximum 30 characters. English, Thai, number, a space ( ) and underscore (_) are allow.",
     'wrong_width' : "Width must be either int or float.",
     'wrong_height' : "Height must be either int or float.",
@@ -9,6 +9,12 @@ msg = {
     'wrong_planner_id' : "The planner id does not exist.",
     'wrong_unit_id' : "Wrong unit id, this ID dose not match any unit id on clp_unit.",
     'wrong_color_id' : "Wrong color id, this ID dose not match any unit id on clp_unit.",
+
+    # Error message for excel controller 
+    'wrong_column_name' : 'Column name must be "name", "width", "height", "depth", "qty" and "unit" ',
+    'wrong_unit' : 'Box unit must be "cm" or "in"',
+    'duplicate_name' : 'Each box name must be unique',
+
 
     # Error message for image processing API
     # 'other_err' : "Something went wrong, Please try again later.",
