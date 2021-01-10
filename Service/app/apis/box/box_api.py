@@ -10,6 +10,7 @@ import logging.config
 from ..db_config import item
 from ..helper.BoxData import BoxData
 from .BoxController import BoxController
+from .ExcelController import ExcelController
 
 box_api = Blueprint('box_api', __name__)
 logger = logging.getLogger("box_api")
@@ -139,6 +140,47 @@ def add_box():
         result = box_cont.add_box(box_data)
         
         del box_cont 
+        return jsonify(result) , 200
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
+
+#add_box_by_excel
+#Description :
+#Author : Athiruj Poositaporn
+@box_api.route("/add_box_by_excel", methods=['POST'])
+def add_box_by_excel():
+    try:
+        user_id = request.form.get('user_id', None)
+        pln_id = request.form.get('pln_id', None)
+        excel_file = request.files.get('file',None)
+        
+        logger.info("[{}] Call API add_box_by_excel()".format(user_id))
+        # Check null value
+        if not user_id:
+            result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
+            return result, 400
+        elif not pln_id:
+            result = {"mes": "Missing pln_id parameter" , 'status' : 'error'}
+            return result, 400
+        elif not excel_file:
+            result = {"mes": "Missing file parameter" , 'status' : 'error'}
+            return result, 400
+
+        box_data = BoxData()
+        box_data.user_id = user_id
+        box_data.planner_id = pln_id
+        box_data.excel_file = excel_file.read()
+
+        excel_cont = ExcelController()
+
+        boxes = excel_cont.get_excel_box(box_data)
+        box_data.boxes = boxes 
+        result = excel_cont.add_box_by_excel(box_data)
+        
+        del excel_cont 
         return jsonify(result) , 200
 
     except Exception as identifier:
