@@ -7,6 +7,6 @@ from .PlannerData import PlannerData
 class BoxData(PlannerData):
     def __init__(self, box_id=0, boxes=None, excel_file=None):
         super().__init__()
-        self.box_id = box_id 
+        self.box_id = box_id
         self.boxes = boxes
         self.excel_file = excel_file
