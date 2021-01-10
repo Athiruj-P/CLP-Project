@@ -66,7 +66,7 @@ class ExcelController(BoxController):
             for index in range(len(df[self.COLUMNS[self.UNIT]])):
                 try:
                     row = df[self.COLUMNS[self.UNIT]][index]
-                    unit_index = arr_abb.index(row)
+                    unit_index = arr_abb.index(row.lower())
                     df[self.COLUMNS[self.UNIT]].at[index] = arr_id[unit_index]
                 except Exception as identifier:
                     logger.warning("[{}] {}".format(data.user_id,msg['wrong_unit_abb']))
@@ -81,14 +81,14 @@ class ExcelController(BoxController):
                 date = Date.get_datetime_now()
                 color_id = arr_color[index % len(arr_color)]['_id']
                 arr_result.append({
-                    "_id" : str(ObjectId()),
+                    "_id" : ObjectId(),
                     item["fld_box_name"] : row['name'],
                     item["fld_box_width"] : float( row['width']),
                     item["fld_box_height"] : float( row['height']),
                     item["fld_box_depth"] : float( row['depth']),
                     item["fld_box_quantity"] : int( row['qty']),
-                    item["fld_box_unit_id"] : str(row['unit']),
-                    item["fld_box_color_id"] : str(color_id),
+                    item["fld_box_unit_id"] : row['unit'],
+                    item["fld_box_color_id"] : color_id,
                     item["fld_box_created_date"] : date,
                     item["fld_box_latest_updated"] : date,
                     item["fld_box_status"] : item["fld_box_ACTIVE"],
