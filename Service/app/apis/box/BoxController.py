@@ -166,7 +166,33 @@ class BoxController:
             return result
 
     def add_box_by_excel(self, box_data = BoxData()):
-        return box_data.boxes
+        try:
+            fld_user_pln = "{}._id".format(item["fld_user_planners"])
+            fld_pln_box = "{}.$.{}".format(item['fld_user_planners'], item['fld_pln_boxes'])
+            
+            for box in box_data.boxes:
+                new_boxes_id = box['_id']
+                clp_box.insert_one(box)
+                clp_user.update(
+                    {
+                        '_id': ObjectId(box_data.user_id),
+                        fld_user_pln : ObjectId(box_data.planner_id),
+                    },
+                    { '$push': {fld_pln_box : new_boxes_id} }
+                )
+
+
+            logger.info("[{}] Added boxes from an excel to planner".format(box_data.user_id))
+            result = { 'mes' : "added_excel_to_planner", 'status' : "success"}
+            return result
+        except Exception as identifier:
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
 
     def edit_box(self, box_data = BoxData()):
         try:
