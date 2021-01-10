@@ -71,6 +71,33 @@ def get_all_box():
         result = {'mes' : str(identifier), 'status' : "system_error"}
         return result , 400
 
+#get_all_color
+#Description :
+#Author : Athiruj Poositaporn
+@box_api.route("/get_all_color", methods=['POST'])
+def get_all_color():
+    try:
+        user_id = request.form.get('user_id', None)
+
+        logger.info("[{}] Call API get_all_color()".format(user_id))
+        # Check null value
+        if not user_id:
+            result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
+            return result, 400
+
+        box_data = BoxData()
+        box_data.user_id = user_id
+        
+        box_cont = BoxController()
+        result = box_cont.get_all_color()
+        del box_cont
+        return jsonify(result) , 200
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 400
+
 #add_box
 #Description :
 #Author : Athiruj Poositaporn
