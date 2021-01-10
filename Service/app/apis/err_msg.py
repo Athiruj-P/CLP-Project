@@ -11,8 +11,8 @@ msg = {
     'wrong_color_id' : "Wrong color id, this ID dose not match any unit id on clp_unit.",
 
     # Error message for excel controller 
-    'wrong_column_name' : 'Column name must be "name", "width", "height", "depth", "qty" and "unit" ',
-    'wrong_unit' : 'Box unit must be "cm" or "in"',
+    'wrong_column_name' : 'Column name must be name, width, height, depth, qty and unit ',
+    'wrong_unit_abb' : 'Box unit must contain lenght abbreviation either cm or in',
     'duplicate_name' : 'Each box name must be unique',
 
 
