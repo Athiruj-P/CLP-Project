@@ -399,6 +399,7 @@ print("used: {}".format(USED_VOLUME))
 print("UNFITTED_ITEMS: {}".format(len(UNFITTED_ITEMS))) 
 
 print("##################")
+# opt ใช้บังคับไม่ให้ Node ที่เป็นฐานไปดึงข้อมูลจากส่วนอื่นที่ไม่ใช่ "ด้านบน" หรือ Left node
 def get_stack(root,file,opt=True):
         if(root.box):
             file.write(root.get_box_dimension()+"\n")
