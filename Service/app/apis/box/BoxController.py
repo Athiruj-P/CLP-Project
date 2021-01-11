@@ -74,8 +74,12 @@ class BoxController:
                     if query_box_detail[item['fld_box_status']] == item['fld_box_REMOVE']:
                         continue
                     query_box_detail['_id'] = str(query_box_detail['_id'])
-                    query_box_detail[item['fld_box_unit_id']] = str(query_box_detail[item['fld_box_unit_id']])
-                    query_box_detail[item['fld_box_color_id']] = str(query_box_detail[item['fld_box_color_id']])
+                    unit_id = str(query_box_detail[item['fld_box_unit_id']])
+                    color_id = str(query_box_detail[item['fld_box_color_id']])
+                    query_box_detail[item['fld_box_unit_id']] = unit_id
+                    query_box_detail[item['fld_box_color_id']] = color_id
+                    query_box_detail['box_unit'] = self.get_unit(unit_id)
+                    query_box_detail['box_color'] = self.get_color(color_id)
                     arr.append(query_box_detail)
                 
                 return arr
@@ -337,6 +341,17 @@ class BoxController:
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    def get_unit(self, unit_id):
+        try:
+            query_result = clp_unit.find_one(
+                {'_id' : ObjectId(unit_id)}
+            )
+            return query_result[item['fld_un_abb']]
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
+
     def get_all_color(self):
         try:
             query_result = clp_color.find()
@@ -346,6 +361,17 @@ class BoxController:
                 val['_id'] = str(val['_id']) 
                 arr.append(val)
             return arr
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
+    
+    def get_color(self, color_id):
+        try:
+            query_result = clp_color.find_one(
+                {'_id' : ObjectId(color_id)}
+            )
+            return query_result[item['fld_color_hex']]
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
