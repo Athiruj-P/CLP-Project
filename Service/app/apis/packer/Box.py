@@ -24,7 +24,7 @@ class Box:
     def get_detail(self):
         return {
             'box_name' : self.name,
-            'box_widht' : self.widht,
+            'box_width' : self.width,
             'box_height' : self.height,
             'box_depth' : self.depth,
             'box_unit' : self.unit,
