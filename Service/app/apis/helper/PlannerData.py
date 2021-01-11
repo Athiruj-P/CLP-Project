@@ -3,7 +3,8 @@
 # Author : Athiruj Poositaporn
 
 class PlannerData():
-    def __init__(self, user_id=0, planner_id=0, planner=None):
+    def __init__(self, user_id=0, planner_id=0, planner=None, unit=None):
         self.user_id = user_id 
         self.planner_id = planner_id 
         self.planner = planner 
+        self.unit = unit 
