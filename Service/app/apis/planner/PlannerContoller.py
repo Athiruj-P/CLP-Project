@@ -14,7 +14,9 @@ from ..helper.PlannerData import PlannerData
 from ..helper import Date
 from ..err_msg import msg
 import re
-
+from unit_converter.converter import converts
+from ..box.BoxController import BoxController, BoxData
+from ..packer import global_var, Packer, Box, Node
 logger = logging.getLogger("planner_controller")
 
 client = MongoClient(item["db_host"])
@@ -44,6 +46,10 @@ class PlannerController:
                     # If there are ObjectId instances then change its value to string
                     if isinstance(rs_arr[index][key],ObjectId):
                         rs_arr[index][key] = str(rs_arr[index][key])
+
+                box_cont = BoxController()
+                pln_unit = box_cont.get_unit(rs_arr[index][item['fld_pln_unit_id']])
+                rs_arr[index]['pln_unit'] = pln_unit
                 # Store ACTIVE planner
                 arr.append(rs_arr[index])
             return arr
@@ -74,12 +80,16 @@ class PlannerController:
                 return None
             else:
                 query_result = query_result[item['fld_user_planners']][0]
+                
                 for key in query_result:
                     if key == item['fld_pln_boxes']:
                         for index in range(len(query_result[key])):
                             query_result[key][index] = str(query_result[key][index])
                     if isinstance(query_result[key],ObjectId):
                         query_result[key] = str(query_result[key])
+                box_cont = BoxController()
+                pln_unit = box_cont.get_unit(query_result[item['fld_pln_unit_id']])
+                query_result['pln_unit'] = pln_unit
                 return query_result
         except Exception as identifier:
             try:
@@ -231,8 +241,12 @@ class PlannerController:
             result = { 'mes' : "deleted_planner", 'status' : "success"}
             return result
         except Exception as identifier:
-            logger.error("{}.".format(str(identifier)))
-            result = {'mes' : str(identifier), 'status' : "system_error"}
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
     def is_number(self, number):
@@ -267,12 +281,97 @@ class PlannerController:
                 arr.append(val)
             return arr
         except Exception as identifier:
-            logger.error("{}.".format(str(identifier)))
-            result = {'mes' : str(identifier), 'status' : "system_error"}
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
     def render_container(self, pln_data = PlannerData()):
-        pass
+        try:
+            # Prepare boxes data
+            box_data = BoxData()
+            box_data.planner_id = pln_data.planner_id
+            box_data.user_id = pln_data.user_id
+            box_cont = BoxController()
+            arr_boxes = box_cont.get_all_box(box_data)
+
+            global_var.init()
+            # Init global variables
+            
+            # Create packer
+            box_packer = Packer.Packer()
+            
+            # Prepare planner data
+            planner = self.get_planner(pln_data)
+            planner_width = planner[item['fld_pln_width']]
+            planner_height = planner[item['fld_pln_height']]
+            planner_depth = planner[item['fld_pln_depth']]
+            planner_unit = planner['pln_unit']
+
+            # Add container dimension
+            box_packer.add_root_node(Node.Node(planner_width, planner_height, planner_depth))
+
+            # Loop for add boxes to packer
+            for box in arr_boxes:
+                qty = box[item['fld_box_quantity']]
+                for number in range(qty):
+                    box_unit = box['box_unit']
+                    box_width = self.unit_converter(box[item['fld_box_width']], box_unit, planner_unit)
+                    box_height = self.unit_converter(box[item['fld_box_height']], box_unit, planner_unit)
+                    box_depth = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
+                    new_box = Box.Box()
+                    new_box.name = "{}-{}".format(box[item['fld_box_name']], number)
+                    new_box.width = box_width
+                    new_box.height = box_height
+                    new_box.depth = box_depth
+                    new_box.unit = planner_unit
+                    new_box.color = box['box_color']
+
+                    box_packer.add_box(new_box)
+
+            
+            # Pack all boxes
+            box_packer.pack()
+
+
+            # Get boxes all result
+            arr_result = {}
+            logger.info("len(global_var.UNFITTED_ITEMS) : {}".format(len(global_var.UNFITTED_ITEMS)))
+            global_var.BASE_BOXES.sort(key=lambda x: (x.position[2]), reverse=False)
+            for index in range(len(global_var.BASE_BOXES)):
+                logger.info(global_var.BASE_BOXES[index])
+                box_packer.get_stack(root = global_var.BASE_BOXES[index], opt = False)
+                arr_result['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
+            
+            logger.info("test8")
+            return arr_result
+        except Exception as identifier:
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
+
+    def unit_converter(self,number, old_unit, new_unit):
+        try:
+            if old_unit == new_unit:
+                return number
+            elif(new_unit == 'in' or old_unit == 'in'):
+                new_unit = 'inch'
+                old_unit = 'inch'
+            old_num = '{} {}'.format(number,old_unit)
+            num = converts(old_num , new_unit)
+            return round(float(num), 4)
+        except Exception as identifier:
+            logger.error("{}.".format(str(identifier)))
+            result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result
+
 
     def __del__(self):
         client.close()
