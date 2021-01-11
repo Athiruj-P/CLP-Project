@@ -65,7 +65,7 @@ class Packer:
             for box in self.boxes:
                 fited = self.pack_to_node(node, box)
                 if(not fited):
-                    global_var.UNFITTED_ITEMS.append(box)
+                    global_var.UNFITTED_ITEMS.append(box.get_detail())
     
     def get_stack(self, root, opt=True):
         # opt ใช้บังคับไม่ให้ Node ที่เป็นฐานไปดึงข้อมูลจากส่วนอื่นที่ไม่ใช่ "ด้านบน" หรือ Left node
