@@ -1,5 +1,10 @@
+import logging
+import logging.config
+from .RotationType import RotationType
+logger = logging.getLogger("planner_controller")
+
 class Box:
-    def __init__(self, data):
+    def __init__(self):
         self.name = ""
         self.width = 0
         self.height = 0
@@ -11,6 +16,20 @@ class Box:
 
     def get_volume(self):
         return self.width * self.height * self.depth
+    
+    def get_int_dimension(self):
+        dim = self.get_dimension()
+        return int(dim[0]),int(dim[1]),int(dim[2])
+
+    def get_detail(self):
+        return {
+            'box_name' : self.name,
+            'box_widht' : self.widht,
+            'box_height' : self.height,
+            'box_depth' : self.depth,
+            'box_unit' : self.unit,
+            'box_color' : self.color,
+        }
         
     def get_dimension(self):
         if self.rotation_type == RotationType.RT_WHD:
