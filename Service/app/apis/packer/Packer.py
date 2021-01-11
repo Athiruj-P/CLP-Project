@@ -1,11 +1,13 @@
 from .Box import Box
 from .Node import Node
 # from .global_var import BASE_BOXES, UNFITTED_ITEMS
-import global_var
+from . import global_var
+import logging
+import logging.config
+logger = logging.getLogger("planner_controller")
 
 class Packer:
     def __init__(self):
-        global_var.init()
         self.root_nodes = []
         self.boxes = []
         self.total_boxes = 0
@@ -20,10 +22,12 @@ class Packer:
 
     # Recursive function: To pack a box into a node
     def pack_to_node(self, node, box):
+
         fitted = True
         # ใส่กล่องให้ Node
         if not node.box:            
             response = node.put_item(box)
+            
             # global BASE_BOXES
             if not response:
                 return not fitted
@@ -49,12 +53,12 @@ class Packer:
 
 
     def pack(self, bigger_first=False):
-        self.root_nodes.sort(
-            key=lambda node: node.get_volume(), reverse=bigger_first
-        )
-        self.boxes.sort(
-            key=lambda box: box.get_volume(), reverse=bigger_first
-        )
+        # self.root_nodes.sort(
+        #     key=lambda node: node.get_volume(), reverse=bigger_first
+        # )
+        # self.boxes.sort(
+        #     key=lambda box: box.get_volume(), reverse=bigger_first
+        # )
         
         # global UNFITTED_ITEMS
         for node in self.root_nodes:
@@ -62,5 +66,16 @@ class Packer:
                 fited = self.pack_to_node(node, box)
                 if(not fited):
                     global_var.UNFITTED_ITEMS.append(box)
-
-    # A function to do preorder tree traversal 
+    
+    def get_stack(self, root, opt=True):
+        # opt ใช้บังคับไม่ให้ Node ที่เป็นฐานไปดึงข้อมูลจากส่วนอื่นที่ไม่ใช่ "ด้านบน" หรือ Left node
+        if(root.box):
+            # file.write(root.get_box_dimension()+"\n")
+            # global_var.BOXES_STACK.append(root.get_box_dimension())
+            global_var.BOXES_STACK_DETAIL.append(root.get_box_detail())
+            if(root.left != None):
+                self.get_stack(root.left)
+            if(root.center != None and opt):
+                self.get_stack(root.center)
+            if(root.right != None and opt):
+                self.get_stack(root.right)
