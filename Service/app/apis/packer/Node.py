@@ -1,8 +1,10 @@
 from .RotationType import RotationType
 from .Box import Box
 # from .global_var import START_POSITION, USED_VOLUME
-import global_var
-
+from . import global_var
+import logging
+import logging.config
+logger = logging.getLogger("planner_controller")
 class Node: 
     def __init__(self, width, height, depth) : 
         # Leaf
@@ -17,15 +19,36 @@ class Node:
         self.depth = depth
 
         # Box data
-        self.box = Box()
+        self.box = None
 
     def get_volume(self):
         return self.width * self.height * self.depth
 
+    def get_box_dimension(self):
+        dim1, dim2, dim3 = self.box.get_int_dimension()
+        x1 = self.position[0] # width
+        y1 = self.position[2] # depth
+        z1 = self.position[1] # height
+
+        x2 = self.position[0] + dim1
+        y2 = self.position[2] + dim3
+        z2 = self.position[1] + dim2
+
+        box_dim = {
+            'x' : [x1,x1,x2,x2,x1,x1,x2,x2],
+            'y' : [y1,y2,y1,y2,y1,y2,y1,y2],
+            'z' : [z1,z1,z1,z1,z2,z2,z2,z2],
+        }
+
+        return box_dim
+    
+    def get_box_detail(self):
+        box_dim = self.get_box_dimension()
+        box_detail = self.box.get_detail()
+        return {'box_dim' : box_dim, 'box_detail' : box_detail}
+
     def put_item(self, box):
         fit = False
-        # valid_box_position = box.position
-        # box.position = self.position
 
         # Loop ตามการหมุนของกล่องเพื่อหาด้านที่ fit กับพื้นที่
         # เริ่มจากกล่องในมุมแบบเดิมก่อน แล้วถ้าใสไม่ได้ค่อยเปลี่ยนแนวกล่อง
@@ -40,7 +63,7 @@ class Node:
             box_w = dimension[0]
             box_h = dimension[1]
             box_d = dimension[2]
-
+             
             # ถ้าขนาดของกล่องเทียบกับพื้นที่แล้วใส่ไม่ได้จะข้ามไปเพื่อหมุนกล่อง
             if (
                 self.width < box_w or
@@ -92,10 +115,6 @@ class Node:
                     y = self.position[1]
                     z = self.position[2] + box_d
                     self.right.position = [x,y,z] 
-     
-            print(self.get_box_dimension_and_position())
-            FILE.write("0 {}\n".format(self.get_box_dimension_and_position()))
-            FILE_html.write("{}\n".format(self.get_box_dimension()))
             # return fit (True)
             return fit
         
