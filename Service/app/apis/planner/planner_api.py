@@ -1,5 +1,5 @@
 # planner_api
-# Description : 
+# Description : API ของการจัดการแผนการจัดเรียง
 # Author : Athiruj Poositaporn
 from flask import Flask, request, jsonify ,Blueprint
 import datetime, pytz

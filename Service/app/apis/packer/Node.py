@@ -1,3 +1,7 @@
+# Node
+# Description : คลาสจัดการข้อมูลภายใน Node
+# Author : Athiruj Poositaporn
+
 from .RotationType import RotationType
 from .Box import Box
 # from .global_var import START_POSITION, USED_VOLUME
@@ -21,9 +25,15 @@ class Node:
         # Box data
         self.box = None
 
+    # get_volume
+    # Description : ฟังก์ชันคำนวณปริมาตรของพื้นที่ว่างที่ Node มีอยู่
+    # Author : Athiruj Poositaporn
     def get_volume(self):
         return self.width * self.height * self.depth
 
+    # get_box_dimension
+    # Description : ฟังก์ชันดึงข้อมูลตำแหน่งภายในตู้บรรจุสินค้าของกล่องบรรจุสินค้า 
+    # Author : Athiruj Poositaporn
     def get_box_dimension(self):
         dim1, dim2, dim3 = self.box.get_int_dimension()
         x1 = self.position[0] # width
@@ -41,12 +51,18 @@ class Node:
         }
 
         return box_dim
-    
+
+    # get_box_detail
+    # Description : ฟังก์ชันดึงข้อมูลของกล่องบรรจุสินค้า รวมไปถึงตำแหน่งภายในตู้บรรจุสินค้า
+    # Author : Athiruj Poositaporn
     def get_box_detail(self):
         box_dim = self.get_box_dimension()
         box_detail = self.box.get_detail()
         return {'box_dim' : box_dim, 'box_detail' : box_detail}
 
+    # put_item
+    # Description : ฟังก์ชันคำนวณการนำกล่องไปใส่ใน Node 
+    # Author : Athiruj Poositaporn
     def put_item(self, box):
         fit = False
 
@@ -120,9 +136,3 @@ class Node:
         
         # return not fit (False)
         return fit
-
-    # def get_box_dimension_and_position(self):
-    #     x = self.position[0]
-    #     y = self.position[1]
-    #     z = self.position[2]
-    #     return "{} {} {} {}".format(self.box.get_data(),int(x),int(y),int(z))

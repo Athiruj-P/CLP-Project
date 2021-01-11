@@ -1,5 +1,5 @@
 # BoxController
-# Description : สำหรับ CRUD ข้อมูลของกล่องบรรจุสินค้า
+# Description : คลาสสำหรับ CRUD ข้อมูลของกล่องบรรจุสินค้า (ฺBox)
 # Author : Athiruj Poositaporn
 
 from flask import jsonify
@@ -26,6 +26,9 @@ clp_color = db[item['db_col_color']]
 clp_box = db[item['db_col_box']]
 
 class BoxController:
+    # get_box_std
+    # Description : ฟังก์ชันดึงข้อมูลของ Box ขนาดมาตราฐานทั้งหมด
+    # Author : Athiruj Poositaporn  
     def get_box_std(self, box_data = BoxData()):
         try:
             query_result = clp_box_std.find()
@@ -34,6 +37,7 @@ class BoxController:
             for val in query_result:
                 val['_id'] = str(val['_id'])
                 val[item['fld_box_std_unit_id']] = str(val[item['fld_box_std_unit_id']])
+                val['box_std_unit'] = self.get_unit(val[item['fld_box_std_unit_id']])
                 arr.append(val)
             return arr
         except Exception as identifier:
@@ -45,6 +49,9 @@ class BoxController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # get_all_box
+    # Description : ฟังก์ชันดึงข้อมูลของ Box ทั้งหมดตาม planner_id
+    # Author : Athiruj Poositaporn 
     def get_all_box(self, box_data = BoxData()):
         try:
             srt_fild = "{}.$".format(item['fld_user_planners'])
@@ -95,6 +102,9 @@ class BoxController:
     # def get_box(self, box_data = BoxData()):
     #     pass
 
+    # add_box
+    # Description : ฟังก์ชันเพิ่มข้อมูลของ 1 Box ให้แก่ planner_id และ user_id
+    # Author : Athiruj Poositaporn 
     def add_box(self, box_data = BoxData()):
         try:
             logger.info("[{}] Prepair Boxes data to be save".format(box_data.user_id))
@@ -169,6 +179,9 @@ class BoxController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # add_box_by_excel
+    # Description : ฟังก์ชันเพิ่มข้อมูลของ Box จากไฟล์ Excel ให้แก่ planner_id และ user_id
+    # Author : Athiruj Poositaporn 
     def add_box_by_excel(self, box_data = BoxData()):
         try:
             fld_user_pln = "{}._id".format(item["fld_user_planners"])
@@ -198,6 +211,9 @@ class BoxController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # edit_box
+    # Description : ฟังก์ชันแก้ไขข้อมูลของ 1 Box ตาม planner_id และ user_id
+    # Author : Athiruj Poositaporn 
     def edit_box(self, box_data = BoxData()):
         try:
             logger.info("[{}] Prepair Boxes data to be save".format(box_data.user_id))
@@ -276,6 +292,9 @@ class BoxController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # delete_box
+    # Description : ฟังก์ชันเปลี่ยนสถานะของ 1 Box เป็น "REMOVE" ตาม box_id
+    # Author : Athiruj Poositaporn 
     def delete_box(self, box_data = BoxData()):
         try:
             date = Date.get_datetime_now()
@@ -299,6 +318,9 @@ class BoxController:
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # is_number
+    # Description : ฟังก์ชันตรวจสอบข้อมูลนำเข้าเป็นตัวเลขหรือไม่
+    # Author : Athiruj Poositaporn
     def is_number(self, number):
         try:
             float(number)
@@ -306,7 +328,10 @@ class BoxController:
             return True
         except ValueError:
             return False
-    
+
+    # check_name_format
+    # Description : ฟังก์ชันตรวจสอบชื่อของ Planner ว่าตรงตามรูปแบบที่กำหนดหรือไม่
+    # Author : Athiruj Poositaporn   
     def check_name_format(self, name):
         name_rex = "^([\wก-๙]+ )+[\wก-๙]+$|^[\wก-๙]+$"
         result_regex = re.search(name_rex, name)
@@ -315,18 +340,27 @@ class BoxController:
         else:
             return True
 
+    # check_unit_id
+    # Description : ฟังก์ชันตรวจสอบ unit_id มีจริงหรือไม่
+    # Author : Athiruj Poositaporn 
     def check_unit_id(self,unit_id):
         for val in self.get_all_unit():
             if val['_id'] == unit_id:
                 return True
         return False
 
+    # check_color_id
+    # Description : ฟังก์ชันตรวจสอบ color_id มีจริงหรือไม่
+    # Author : Athiruj Poositaporn 
     def check_color_id(self,color_id):
         for val in self.get_all_color():
             if val['_id'] == color_id:
                 return True
         return False
 
+    # get_all_unit
+    # Description : ฟังก์ชันดึงข้อมูลของหน่วยความยาวทั้งหมด
+    # Author : Athiruj Poositaporn  
     def get_all_unit(self):
         try:
             query_result = clp_unit.find()
@@ -341,6 +375,9 @@ class BoxController:
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # get_unit
+    # Description : ฟังก์ชันดึงข้อมูลของหน่วยความยาวตาม unit_id
+    # Author : Athiruj Poositaporn 
     def get_unit(self, unit_id):
         try:
             query_result = clp_unit.find_one(
@@ -352,6 +389,9 @@ class BoxController:
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # get_all_color
+    # Description : ฟังก์ชันดึงข้อมูลสีทั้งหมด
+    # Author : Athiruj Poositaporn
     def get_all_color(self):
         try:
             query_result = clp_color.find()
@@ -366,6 +406,9 @@ class BoxController:
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
+    # get_color
+    # Description : ฟังก์ชันดึงข้อมูลของสีตาม color_id
+    # Author : Athiruj Poositaporn 
     def get_color(self, color_id):
         try:
             query_result = clp_color.find_one(

@@ -1,5 +1,5 @@
 # PlannerController
-# Description : สำหรับ CRUD ข้อมูลของแผนการจัดเรียง
+# Description : คลาสสำหรับ CRUD ข้อมูลของแผนการจัดเรียง (Planner)
 # Author : Athiruj Poositaporn
 
 from flask import jsonify
@@ -25,6 +25,9 @@ clp_user = db[item['db_col_user']]
 clp_unit = db[item['db_col_unit']]
 
 class PlannerController:
+    # get_all_planner
+    # Description : ฟังก์ชันดึงข้อมูลของ Planner ทั้งหมดตาม user_id
+    # Author : Athiruj Poositaporn
     def get_all_planner(self, pln_data = PlannerData()):
         try:
             query_result = clp_user.find_one({
@@ -62,6 +65,9 @@ class PlannerController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
+    # get_planner
+    # Description : ฟังก์ชันดึงข้อมูลของ 1 Planner ตาม planner_id และ user_id
+    # Author : Athiruj Poositaporn
     def get_planner(self, pln_data = PlannerData()):
         try:
             srt_fild = "{}.$".format(item['fld_user_planners'])
@@ -99,7 +105,10 @@ class PlannerController:
                 logger.error("{}.".format(str(identifier)))
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
-    
+
+    # add_planner
+    # Description : ฟังก์ชันเพิ่ม Planner ให้แก่ user_id
+    # Author : Athiruj Poositaporn
     def add_planner(self, pln_data = PlannerData()):
         try:
             logger.info("[{}] Prepair planner data to be save".format(pln_data.user_id))
@@ -152,6 +161,9 @@ class PlannerController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
+    # edit_planner
+    # Description : ฟังก์ชันแก้ไข 1 Planner ตาม planner_id และ user_id
+    # Author : Athiruj Poositaporn
     def edit_planner(self, pln_data = PlannerData()):
         try:
             logger.info("[{}] Prepair planner data to be save".format(pln_data.user_id))
@@ -216,6 +228,9 @@ class PlannerController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
         
+    # delete_planner
+    # Description : ฟังก์ชันเปลี่ยนสถานะของ 1 Planner ให้เป็น REMOVE ตาม planner_id และ user_id
+    # Author : Athiruj Poositaporn
     def delete_planner(self, pln_data = PlannerData()):
         try:
             date = Date.get_datetime_now()
@@ -248,7 +263,10 @@ class PlannerController:
                 logger.error("{}.".format(str(identifier)))
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
-    
+
+    # is_number
+    # Description : ฟังก์ชันตรวจสอบข้อมูลนำเข้าเป็นตัวเลขหรือไม่
+    # Author : Athiruj Poositaporn
     def is_number(self, number):
         try:
             float(number)
@@ -256,7 +274,10 @@ class PlannerController:
             return True
         except ValueError:
             return False
-    
+
+    # check_name_format
+    # Description : ฟังก์ชันตรวจสอบชื่อของ Planner ว่าตรงตามรูปแบบที่กำหนดหรือไม่
+    # Author : Athiruj Poositaporn   
     def check_name_format(self, name):
         name_rex = "^([\wก-๙]+ )+[\wก-๙]+$|^[\wก-๙]+$"
         result_regex = re.search(name_rex, name)
@@ -265,12 +286,18 @@ class PlannerController:
         else:
             return True
 
+    # check_unit_id
+    # Description : ฟังก์ชันตรวจสอบ unit_id มีจริงหรือไม่
+    # Author : Athiruj Poositaporn  
     def check_unit_id(self,unit_id):
         for val in self.get_all_unit():
             if val['_id'] == unit_id:
                 return True
         return False
 
+    # get_all_unit
+    # Description : ฟังก์ชันดึงข้อมูลของหน่วยความยาวทั้งหมด
+    # Author : Athiruj Poositaporn  
     def get_all_unit(self):
         try:
             query_result = clp_unit.find()
@@ -288,7 +315,10 @@ class PlannerController:
                 logger.error("{}.".format(str(identifier)))
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
-    
+
+    # render_container
+    # Description : ฟังก์ชันประมวลผลการจัดเรียงกล่องบรรจุสินค้าในตู้บรรทุกสินค้า
+    # Author : Athiruj Poositaporn     
     def render_container(self, pln_data = PlannerData()):
         try:
             # Prepare boxes data
@@ -365,6 +395,9 @@ class PlannerController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
 
+    # unit_converter
+    # Description : ฟังก์ชันแปลงหน่วยความยาว
+    # Author : Athiruj Poositaporn   
     def unit_converter(self,number, old_unit, new_unit):
         try:
             if old_unit == new_unit:
@@ -379,7 +412,6 @@ class PlannerController:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
-
 
     def __del__(self):
         client.close()

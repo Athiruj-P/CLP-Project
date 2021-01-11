@@ -1,3 +1,7 @@
+# Box
+# Description : คลาสจัดการข้อมูลภายใน Box
+# Author : Athiruj Poositaporn
+
 import logging
 import logging.config
 from .RotationType import RotationType
@@ -14,13 +18,22 @@ class Box:
         self.rotation_type = 0
         self.fixed_direction = False
 
+    # get_volume
+    # Description : ฟังก์ชันคำนวณปริมาตรของ Box
+    # Author : Athiruj Poositaporn
     def get_volume(self):
         return self.width * self.height * self.depth
-    
+
+    # get_int_dimension
+    # Description : ฟังก์ชันคือค่าขนาดของ Box ในรูปแบบ Int
+    # Author : Athiruj Poositaporn  
     def get_int_dimension(self):
         dim = self.get_dimension()
         return int(dim[0]),int(dim[1]),int(dim[2])
 
+    # get_int_dimension
+    # Description : ฟังก์ชันคือค่าข้อมูลของ Box
+    # Author : Athiruj Poositaporn
     def get_detail(self):
         return {
             'box_name' : self.name,
@@ -30,7 +43,10 @@ class Box:
             'box_unit' : self.unit,
             'box_color' : self.color,
         }
-        
+
+    # get_dimension
+    # Description : ฟังก์ชันคือค่าขนาดของ Box ตามทิศทางการหมุน (rotation_type)
+    # Author : Athiruj Poositaporn   
     def get_dimension(self):
         if self.rotation_type == RotationType.RT_WHD:
             dimension = [self.width, self.height, self.depth]

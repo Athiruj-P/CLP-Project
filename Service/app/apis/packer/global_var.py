@@ -1,3 +1,6 @@
+# global_var
+# Description : เก็บตัวแปรในรูปแบบ Global ซึ่งใช้ใน PlannerController, Packer และ Node 
+# Author : Athiruj Poositaporn
 def init():
     global UNFITTED_ITEMS
     global BASE_BOXES

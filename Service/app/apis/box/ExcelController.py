@@ -1,3 +1,7 @@
+# ExcelController
+# Description : คลาสสำหรับจัดการข้อมูลของกล่องบรรจุสินค้าจากไฟล์ Excel
+# Author : Athiruj Poositaporn
+
 import pandas as pd
 from .BoxController import BoxController, BoxData , item, msg, Date, ObjectId
 import logging
@@ -14,7 +18,9 @@ class ExcelController(BoxController):
         self.DEPTH = 3
         self.QTY = 4
         self.UNIT = 5
-
+    # ExcelController
+    # Description : ฟังก์ชันดึงข้อมูลของกล่องบรรจุสินค้าจากไฟล์ Excel
+    # Author : Athiruj Poositaporn
     def get_excel_box(self, data = BoxData()):
         try:
             df = pd.read_excel(data.excel_file)

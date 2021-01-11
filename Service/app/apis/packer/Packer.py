@@ -1,6 +1,9 @@
+# Packer
+# Description : คลาสสำหรับจัดเรียงกล่องบรรจุสินค้า
+# Author : Athiruj Poositaporn
+
 from .Box import Box
 from .Node import Node
-# from .global_var import BASE_BOXES, UNFITTED_ITEMS
 from . import global_var
 import logging
 import logging.config
@@ -12,17 +15,24 @@ class Packer:
         self.boxes = []
         self.total_boxes = 0
 
-    # Set container dimension
+    # add_root_node
+    # Description : ฟังก์ชันกำหนดค่า Root node (Node ของ container)
+    # Author : Athiruj Poositaporn
     def add_root_node(self, node):
         return self.root_nodes.append(node)
-    
+
+    # add_box
+    # Description : ฟังก์ชันเพิ่มกล่องบรรจุสินค้าสำหรับเตรียมการจัดเรียง
+    # Author : Athiruj Poositaporn
     def add_box(self, box):
         self.total_boxes = len(self.boxes) + 1
         return self.boxes.append(box)
 
-    # Recursive function: To pack a box into a node
+    # pack_to_node
+    # Description : ฟังก์ชันเพิ่มกล่องบรรจุสินค้าให้แก่ Node ที่สามารถบรรจุได้
+    # Author : Athiruj Poositaporn
     def pack_to_node(self, node, box):
-
+    # Recursive function: To pack a box into a node
         fitted = True
         # ใส่กล่องให้ Node
         if not node.box:            
@@ -51,7 +61,9 @@ class Packer:
         
         return not fitted
 
-
+    # pack
+    # Description : ฟังก์ชันนำกล่องที่ได้จัดเตรียมไว้มาใส่ใน Node
+    # Author : Athiruj Poositaporn
     def pack(self, bigger_first=False):
         # self.root_nodes.sort(
         #     key=lambda node: node.get_volume(), reverse=bigger_first
@@ -66,7 +78,10 @@ class Packer:
                 fited = self.pack_to_node(node, box)
                 if(not fited):
                     global_var.UNFITTED_ITEMS.append(box.get_detail())
-    
+
+    # get_stack
+    # Description : ฟังก์ชันท่องไปใน Ternary tree เพิ่มนำข้อมูลของกล่องมาจัดเรียงเป็น Stack
+    # Author : Athiruj Poositaporn
     def get_stack(self, root, opt=True):
         # opt ใช้บังคับไม่ให้ Node ที่เป็นฐานไปดึงข้อมูลจากส่วนอื่นที่ไม่ใช่ "ด้านบน" หรือ Left node
         if(root.box):
