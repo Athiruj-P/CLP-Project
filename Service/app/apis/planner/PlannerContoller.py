@@ -323,7 +323,7 @@ class PlannerController:
                     box_height = self.unit_converter(box[item['fld_box_height']], box_unit, planner_unit)
                     box_depth = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
                     new_box = Box.Box()
-                    new_box.name = "{}-{}".format(box[item['fld_box_name']], number)
+                    new_box.name = "{}-{}".format(box[item['fld_box_name']], number+1)
                     new_box.width = box_width
                     new_box.height = box_height
                     new_box.depth = box_depth
@@ -331,23 +331,31 @@ class PlannerController:
                     new_box.color = box['box_color']
 
                     box_packer.add_box(new_box)
-
             
             # Pack all boxes
             box_packer.pack()
 
 
             # Get boxes all result
-            arr_result = {}
+            arr_stack = {}
             logger.info("len(global_var.UNFITTED_ITEMS) : {}".format(len(global_var.UNFITTED_ITEMS)))
             global_var.BASE_BOXES.sort(key=lambda x: (x.position[2]), reverse=False)
             for index in range(len(global_var.BASE_BOXES)):
                 logger.info(global_var.BASE_BOXES[index])
                 box_packer.get_stack(root = global_var.BASE_BOXES[index], opt = False)
-                arr_result['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
+                arr_stack['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
             
-            logger.info("test8")
-            return arr_result
+            total_volume = global_var.USED_VOLUME / box_packer.root_nodes[0].get_volume() * 100
+            total_volume = round(total_volume, 4)
+            container_detail = {
+                'total_volume' : total_volume,
+                'unfit_boxes' : global_var.UNFITTED_ITEMS,
+            }
+            result = {
+                'container_detail' : container_detail,
+                'boxes_stack' : arr_stack,
+            }
+            return result
         except Exception as identifier:
             try:
                 list(msg.keys())[list(msg.values()).index(identifier)]
