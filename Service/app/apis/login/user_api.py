@@ -23,15 +23,15 @@ def login():
     try:
         username = request.form.get('username', None)
         password = request.form.get('password', None)
-
+        # logger.info("{} {}".format(username,password))
         # Check null value
         if not username:
             result = {"mes": "Missing username parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         # Check null value
         elif not password:
             result = {"mes": "Missing password parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
             
         # Query user from DB
         query_result = db[item['db_col_user']].find_one({
@@ -43,7 +43,7 @@ def login():
         if not query_result:
             logger.warning("[{}] Wrong username or password".format(username))
             result = {"mes": "Wrong username or password" , 'status' : 'error'}
-            return result, 401
+            return result, 200
         # Set user login status
         else:
             db[item['db_col_user']].update(
@@ -61,7 +61,7 @@ def login():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
     finally:
         client.close()
 
@@ -86,7 +86,7 @@ def logout():
         return result , 200
     except Exception as identifier:
         result = {"mes": str(identifier) , 'status' : 'system_error'}
-        return result , 400
+        return result , 200
     finally:
         client.close()
 

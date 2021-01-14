@@ -26,7 +26,7 @@ def get_all_planner():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         pln_data = PlannerData()
         pln_data.user_id = user_id
         
@@ -38,7 +38,7 @@ def get_all_planner():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #get_planner
 #Description : ดึงข้อมูล planner ตาม id จากผู้ใช้งาน
@@ -53,10 +53,10 @@ def get_planner():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not pln_id:
             result = {"mes": "Missing pln_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
             
         pln_data = PlannerData()
         pln_data.user_id = user_id
@@ -70,7 +70,7 @@ def get_planner():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #add_planner
 #Description : เพิ่ม planner
@@ -91,7 +91,7 @@ def add_planner():
         for data in new_data:
             if not new_data[data]:
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
-                return result, 400
+                return result, 200
 
         pln_data = PlannerData()
         pln_data.user_id = user_id
@@ -105,7 +105,7 @@ def add_planner():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #edit_planner
 #Description : แก้ไขข้อมูลของ planner
@@ -127,13 +127,13 @@ def edit_planner():
         # Check null value
         if not pln_id:
             result = {"mes": "Missing {} parameter".format("pln_id") , 'status' : 'error'}
-            return result, 400
+            return result, 200
 
         for data in new_data:
             logger.info("{} => {}".format(data,new_data[data]))
             if not new_data[data]:
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
-                return result, 400
+                return result, 200
 
         pln_data = PlannerData()
         pln_data.user_id = user_id
@@ -148,7 +148,7 @@ def edit_planner():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #delete_planner
 #Description : ลบ planner ตาม ID ที่กำหนด (เปลี่ยนสถานะ)
@@ -163,10 +163,10 @@ def delete_planner():
         # Check null value
         if not user_id:
             result = {"mes": "Missing {} parameter".format(user_id) , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not pln_id:
             result = {"mes": "Missing {} parameter".format(pln_id) , 'status' : 'error'}
-            return result, 400
+            return result, 200
 
         pln_data = PlannerData()
         pln_data.user_id = user_id
@@ -180,7 +180,7 @@ def delete_planner():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #render_container
 #Description : คำนวณการจัดเรียง Box ใน Container
@@ -195,10 +195,10 @@ def render_container():
         # Check null value
         if not user_id:
             result = {"mes": "Missing {} parameter".format(user_id) , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not pln_id:
             result = {"mes": "Missing {} parameter".format(pln_id) , 'status' : 'error'}
-            return result, 400
+            return result, 200
 
         pln_data = PlannerData()
         pln_data.user_id = user_id
@@ -212,7 +212,7 @@ def render_container():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #get_all_unit
 #Description : ดึงข้อมูล unit ทั้งหมด
@@ -226,7 +226,7 @@ def get_all_unit():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
             
         pln_data = PlannerData()
         pln_data.user_id = user_id
@@ -239,4 +239,4 @@ def get_all_unit():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200

@@ -27,7 +27,7 @@ def get_box_std():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         box_data = BoxData()
         box_data.user_id = user_id
         
@@ -39,7 +39,7 @@ def get_box_std():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #get_all_box
 #Description :
@@ -54,10 +54,10 @@ def get_all_box():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not pln_id:
             result = {"mes": "Missing pln_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         box_data = BoxData()
         box_data.user_id = user_id
         box_data.planner_id = pln_id
@@ -70,7 +70,7 @@ def get_all_box():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #get_all_color
 #Description :
@@ -84,7 +84,7 @@ def get_all_color():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
 
         box_data = BoxData()
         box_data.user_id = user_id
@@ -97,7 +97,7 @@ def get_all_color():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #add_box
 #Description :
@@ -121,15 +121,15 @@ def add_box():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not pln_id:
             result = {"mes": "Missing pln_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         
         for data in new_data:
             if not new_data[data]:
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
-                return result, 400
+                return result, 200
 
         box_data = BoxData()
         box_data.user_id = user_id
@@ -145,7 +145,7 @@ def add_box():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #add_box_by_excel
 #Description :
@@ -161,13 +161,13 @@ def add_box_by_excel():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not pln_id:
             result = {"mes": "Missing pln_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not excel_file:
             result = {"mes": "Missing file parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
 
         box_data = BoxData()
         box_data.user_id = user_id
@@ -186,7 +186,7 @@ def add_box_by_excel():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #edit_box
 #Description :
@@ -210,15 +210,15 @@ def edit_box():
         # Check null value
         if not user_id:
             result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not box_id:
             result = {"mes": "Missing box_id parameter" , 'status' : 'error'}
-            return result, 400
+            return result, 200
         
         for data in new_data:
             if not new_data[data]:
                 result = {"mes": "Missing {} parameter".format(data) , 'status' : 'error'}
-                return result, 400
+                return result, 200
 
         box_data = BoxData()
         box_data.user_id = user_id
@@ -234,7 +234,7 @@ def edit_box():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
 
 #delete_box
 #Description : ลบ box ตาม ID ที่กำหนด (เปลี่ยนสถานะ)
@@ -249,10 +249,10 @@ def delete_box():
         # Check null value
         if not user_id:
             result = {"mes": "Missing {} parameter".format(user_id) , 'status' : 'error'}
-            return result, 400
+            return result, 200
         elif not box_id:
             result = {"mes": "Missing {} parameter".format(box_id) , 'status' : 'error'}
-            return result, 400
+            return result, 200
 
         box_data = BoxData()
         box_data.user_id = user_id
@@ -266,4 +266,4 @@ def delete_box():
     except Exception as identifier:
         logger.error("{}.".format(str(identifier)))
         result = {'mes' : str(identifier), 'status' : "system_error"}
-        return result , 400
+        return result , 200
