@@ -7,6 +7,7 @@ item = {
     "db_col_user" : "clp_user",
     "db_col_unit" : "clp_unit",
     "db_col_box_std" : "clp_box_std",
+    "db_col_container_std" : "clp_container_std",
     "db_col_color" : "clp_color",
     "db_col_box" : "clp_box",
 
