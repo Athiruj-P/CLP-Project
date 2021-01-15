@@ -55,7 +55,7 @@ def login():
                 }
             )
         
-        result = {'status' : 'success'}
+        result = {'status' : 'success', 'user_id': str(query_result['_id'])}
         return result, 200 
 
     except Exception as identifier:
