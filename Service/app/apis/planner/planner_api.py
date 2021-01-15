@@ -40,6 +40,32 @@ def get_all_planner():
         result = {'mes' : str(identifier), 'status' : "system_error"}
         return result , 200
 
+#get_continer_std
+#Description :
+#Author : Athiruj Poositaporn
+@planner_api.route("/get_continer_std", methods=['POST'])
+def get_continer_std():
+    try:
+        user_id = request.form.get('user_id', None)
+
+        logger.info("[{}] Call API get_continer_std()".format(user_id))
+        # Check null value
+        if not user_id:
+            result = {"mes": "Missing user_id parameter" , 'status' : 'error'}
+            return result, 200
+        pln_data = PlannerData()
+        pln_data.user_id = user_id
+        
+        pln_cont = PlannerController()
+        result = pln_cont.get_continer_std(pln_data)
+        del pln_cont
+        return jsonify(result) , 200
+
+    except Exception as identifier:
+        logger.error("{}.".format(str(identifier)))
+        result = {'mes' : str(identifier), 'status' : "system_error"}
+        return result , 200
+
 #get_planner
 #Description : ดึงข้อมูล planner ตาม id จากผู้ใช้งาน
 #Author : Athiruj Poositaporn
