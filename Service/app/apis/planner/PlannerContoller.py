@@ -23,6 +23,7 @@ client = MongoClient(item["db_host"])
 db = client.CLP_DB
 clp_user = db[item['db_col_user']]
 clp_unit = db[item['db_col_unit']]
+clp_container_std = db[item['db_col_container_std']]
 
 class PlannerController:
     # get_all_planner
@@ -64,7 +65,30 @@ class PlannerController:
                 logger.error("{}.".format(str(identifier)))
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
-    
+
+    # get_continer_std
+    # Description : ฟังก์ชันดึงข้อมูลของ continer ขนาดมาตราฐานทั้งหมด
+    # Author : Athiruj Poositaporn  
+    def get_continer_std(self, pln_data = PlannerData()):
+        try:
+            query_result = clp_container_std.find()
+            arr = []
+            box_cont = BoxController()
+            for val in query_result:
+                val['_id'] = str(val['_id'])
+                val[item['fld_con_std_unit_id']] = str(val[item['fld_con_std_unit_id']])
+                val['con_std_unit'] = box_cont.get_unit(val[item['fld_con_std_unit_id']])
+                arr.append(val)
+            return arr
+        except Exception as identifier:
+            try:
+                list(msg.keys())[list(msg.values()).index(identifier)]
+                result = {'mes' : str(identifier), 'status' : "error"}
+            except:
+                logger.error("{}.".format(str(identifier)))
+                result = {'mes' : str(identifier), 'status' : "system_error"}
+            return result    
+
     # get_planner
     # Description : ฟังก์ชันดึงข้อมูลของ 1 Planner ตาม planner_id และ user_id
     # Author : Athiruj Poositaporn
