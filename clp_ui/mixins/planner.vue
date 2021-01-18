@@ -6,28 +6,24 @@ export default {
       data.append("user_id", this.$store.state.user_id);
       let planners = await this.$axios.$post("get_all_planner", data);
       this.$store.commit("planner/set_planner", planners);
-      console.log(planners);
     },
     async get_all_container() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       let container = await this.$axios.$post("get_continer_std", data);
       this.$store.commit("planner/set_std_container", container);
-      console.log(container);
     },
     async get_all_unit() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       let units = await this.$axios.$post("get_all_unit", data);
       this.$store.commit("planner/set_unit", units);
-      console.log(units);
     },
     async get_all_color() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       let color = await this.$axios.$post("get_all_color", data);
       this.$store.commit("planner/set_colors", color);
-      console.log(color);
     },
     async add_planner() {
       let data = new FormData();
@@ -37,9 +33,20 @@ export default {
       data.append("height", parseFloat(this.$store.state.planner_dialog.height));
       data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
       data.append("unit", this.$store.state.planner_dialog.unit);
-      console.log('Add planner');
       let result = await this.$axios.$post("add_planner", data);
-      console.log('Result');
+      this.get_all_planner()
+      this.close_dialog()
+    },
+    async edit_planner() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      data.append("pln_id", this.$store.state.planner_dialog.planner_id);
+      data.append("name", this.$store.state.planner_dialog.name);
+      data.append("width", parseFloat(this.$store.state.planner_dialog.width));
+      data.append("height", parseFloat(this.$store.state.planner_dialog.height));
+      data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
+      data.append("unit", this.$store.state.planner_dialog.unit);
+      let result = await this.$axios.$post("edit_planner", data);
       console.log(result);
       this.get_all_planner()
       this.close_dialog()

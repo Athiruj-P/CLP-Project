@@ -130,6 +130,10 @@ export default {
       type: Boolean,
       required: true
     },
+    is_edit: {
+      type: Boolean,
+      required: false
+    },
     unit: {
       type: String,
       required: false
@@ -152,7 +156,9 @@ export default {
       else return number;
     },
     change_width() {
-      let status = this.$store.state.planner_dialog.validation_status;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
       status.width = false;
       if (this.length_validate(this.width)) {
         status.width = true;
@@ -162,7 +168,9 @@ export default {
       this.check_btn_active();
     },
     change_height() {
-      let status = this.$store.state.planner_dialog.validation_status;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
       status.height = false;
       if (this.length_validate(this.height)) {
         status.height = true;
@@ -172,7 +180,9 @@ export default {
       this.check_btn_active();
     },
     change_depth() {
-      let status = this.$store.state.planner_dialog.validation_status;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
       status.depth = false;
       if (this.length_validate(this.depth)) {
         status.depth = true;
@@ -248,13 +258,30 @@ export default {
     },
     async show(newValue, oldValue) {
       if (newValue) {
-        this.tab = 0;
+        this.tab = this.$store.state.planner_dialog.tab;
         this.width = this.$store.state.planner_dialog.width;
         this.height = this.$store.state.planner_dialog.height;
         this.depth = this.$store.state.planner_dialog.depth;
         this.selected_container = this.$store.state.planner_dialog.selected_container;
         this.err_msg.length = "";
       }
+    }
+  },
+  mounted: function() {
+    if (this.is_edit) {
+      this.tab = this.$store.state.planner_dialog.tab;
+      this.width = this.$store.state.planner_dialog.width;
+      this.height = this.$store.state.planner_dialog.height;
+      this.depth = this.$store.state.planner_dialog.depth;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
+      status.width = true;
+      status.height = true;
+      status.depth = true;
+      this.$store.commit("planner_dialog/set_validation_status", status);
+      this.check_btn_active();
+      console.log(this.$store.state.planner_dialog.validation_status);
     }
   }
 };

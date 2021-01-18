@@ -4,9 +4,7 @@
       <v-list-item-content>
         <v-list-item-title class="headline mb-1 flex justify-space-between">
           <v-icon>fas fa-truck-loading</v-icon>
-          <v-btn icon>
-            <v-icon>fas fa-ellipsis-h</v-icon>
-          </v-btn>
+          <EditDialog show="card" :obj_planner="planner"/>
           <!-- {{card_data}} -->
         </v-list-item-title>
         <span class="text-sm text-gray-600 font-semibold">{{ planner.pln_name }}</span>
@@ -23,6 +21,7 @@
 </template>
 
 <script>
+import EditDialog from "@/components/planner/EditDialog";
 export default {
   props: {
     planner: {
@@ -35,8 +34,6 @@ export default {
   //   }),
   methods: {},
   mounted: function() {
-    // console.log("this.planner");
-    // console.log(this.planner);
   }
 };
 </script>
