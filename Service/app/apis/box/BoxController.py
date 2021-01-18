@@ -324,7 +324,7 @@ class BoxController:
     def is_number(self, number):
         try:
             float(number)
-            int(number)
+            # int(number)
             return True
         except ValueError:
             return False
