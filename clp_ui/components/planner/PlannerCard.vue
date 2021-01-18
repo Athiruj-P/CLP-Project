@@ -11,9 +11,9 @@
         </v-list-item-title>
         <span class="text-sm text-gray-600 font-semibold">{{ planner.pln_name }}</span>
         <br />
-        <span class="text-sm text-gray-600">Widht : {{ planner.pln_width }} {{ planner.pln_unit }}</span>
+        <span class="text-sm text-gray-600">Width : {{ planner.pln_width }} {{ planner.pln_unit }}</span>
         <br />
-        <span class="text-sm text-gray-600">Height : {{ planner.pln_height }} {{ planner.pln_unit }}</span>
+        <span class="text-sm text-gray-600">Heigth : {{ planner.pln_height }} {{ planner.pln_unit }}</span>
         <br />
         <span class="text-sm text-gray-600">Depth : {{ planner.pln_depth }} {{ planner.pln_unit }}</span>
         <br />

@@ -6,14 +6,94 @@ export default {
       data.append("user_id", this.$store.state.user_id);
       let planners = await this.$axios.$post("get_all_planner", data);
       this.$store.commit("planner/set_planner", planners);
-      console.log(this.planners);
+      console.log(planners);
+    },
+    async get_all_container() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      let container = await this.$axios.$post("get_continer_std", data);
+      this.$store.commit("planner/set_std_container", container);
+      console.log(container);
     },
     async get_all_unit() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       let units = await this.$axios.$post("get_all_unit", data);
       this.$store.commit("planner/set_unit", units);
-      console.log(this.units);
+      console.log(units);
+    },
+    async get_all_color() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      let color = await this.$axios.$post("get_all_color", data);
+      this.$store.commit("planner/set_colors", color);
+      console.log(color);
+    },
+    async add_planner() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      data.append("name", this.$store.state.planner_dialog.name);
+      data.append("width", parseFloat(this.$store.state.planner_dialog.width));
+      data.append("height", parseFloat(this.$store.state.planner_dialog.height));
+      data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
+      data.append("unit", this.$store.state.planner_dialog.unit);
+      console.log('Add planner');
+      let result = await this.$axios.$post("add_planner", data);
+      console.log('Result');
+      console.log(result);
+      this.get_all_planner()
+      this.close_dialog()
+    },
+    length_validate(length) {
+      let cm_lower = 1;
+      let cm_upper = 1500;
+      let in_lower = 0.39;
+      let in_upper = 590;
+      if (this.$store.state.main_unit.un_abb === "cm") {
+        var lower = cm_lower;
+        var upper = cm_upper;
+      } else if (this.$store.state.main_unit.un_abb === "in") {
+        var lower = in_lower;
+        var upper = in_upper;
+      }
+      length = Number(length);
+      let status;
+      status = false;
+      if (this.count_decimals(length) > 4) {
+        this.err_msg.length = "Length must contain maximum 4 decimal digits.";
+      } else if (length < lower || length > upper) {
+        let un_abb = this.$store.state.main_unit.un_abb;
+        this.err_msg.length = `Length must contain minimum ${lower} ${un_abb} and maximum ${upper} ${un_abb}.`;
+      } else {
+        status = true;
+      }
+
+      if (this.tab === 0) {
+        this.err_msg.length = "";
+      }
+      return status;
+    },
+    count_decimals(number) {
+      if (Math.floor(number) === number) return 0;
+      return number.toString().split(".")[1].length || 0;
+    },
+    check_btn_active() {
+      const status = this.$store.state.planner_dialog.validation_status;
+      if (
+        status.name &&
+        status.unit &&
+        status.width &&
+        status.height &&
+        status.depth
+      ) {
+        this.err_msg.length = "";
+        this.$store.commit("planner_dialog/set_btn_active", false);
+      } else {
+        this.$store.commit("planner_dialog/set_btn_active", true);
+      }
+    },
+    clear_dialog() {
+      this.$store.commit("planner_dialog/clear_dialog");
     }
   }
 };

@@ -47,8 +47,8 @@
         </v-col>
       </v-row>
       <v-row class="">
-        <div v-if="planners" class="flex flex-wrap">
-          <div v-for="(item, index) in planners" :key="index" class="m-4">
+        <div v-if="this.$store.state.planner.planners" class="flex flex-wrap">
+          <div v-for="(item, index) in this.$store.state.planner.planners" :key="index" class="m-4">
             <PlannerCard :planner="item" />
           </div>
         </div>
@@ -96,7 +96,8 @@ export default {
     console.log(this.planners);
   },
   mounted: function() {
-    // this.get_all_planner();
+    this.get_all_container();
+    this.get_all_unit();
     this.show_alert = true;
     this.text_alert = "Login success";
     this.color_alert = "success";
