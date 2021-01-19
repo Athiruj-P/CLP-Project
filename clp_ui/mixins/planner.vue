@@ -6,6 +6,8 @@ export default {
       data.append("user_id", this.$store.state.user_id);
       let planners = await this.$axios.$post("get_all_planner", data);
       this.$store.commit("planner/set_planner", planners);
+      localStorage.removeItem("planners");
+      localStorage.setItem("planners", JSON.stringify(planners));
     },
     async get_all_container() {
       let data = new FormData();
@@ -30,12 +32,16 @@ export default {
       data.append("user_id", this.$store.state.user_id);
       data.append("name", this.$store.state.planner_dialog.name);
       data.append("width", parseFloat(this.$store.state.planner_dialog.width));
-      data.append("height", parseFloat(this.$store.state.planner_dialog.height));
+      data.append(
+        "height",
+        parseFloat(this.$store.state.planner_dialog.height)
+      );
       data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
       data.append("unit", this.$store.state.planner_dialog.unit);
       let result = await this.$axios.$post("add_planner", data);
-      this.get_all_planner()
-      this.close_dialog()
+      this.get_all_planner();
+      this.show_alert(result);
+      this.close_dialog();
     },
     async edit_planner() {
       let data = new FormData();
@@ -43,13 +49,27 @@ export default {
       data.append("pln_id", this.$store.state.planner_dialog.planner_id);
       data.append("name", this.$store.state.planner_dialog.name);
       data.append("width", parseFloat(this.$store.state.planner_dialog.width));
-      data.append("height", parseFloat(this.$store.state.planner_dialog.height));
+      data.append(
+        "height",
+        parseFloat(this.$store.state.planner_dialog.height)
+      );
       data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
       data.append("unit", this.$store.state.planner_dialog.unit);
       let result = await this.$axios.$post("edit_planner", data);
       console.log(result);
-      this.get_all_planner()
-      this.close_dialog()
+      this.get_all_planner();
+      this.show_alert(result);
+      this.close_dialog();
+    },
+    async delete_planner() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      data.append("pln_id", this.$store.state.planner_dialog.planner_id);
+      let result = await this.$axios.$post("delete_planner", data);
+      console.log(result);
+      this.show_alert(result);
+      this.get_all_planner();
+      this.close_dialog();
     },
     length_validate(length) {
       let cm_lower = 1;
