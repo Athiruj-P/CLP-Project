@@ -175,7 +175,9 @@ export default {
   },
   watch: {
     async unit(newValue, oldValue) {
-      let status = this.$store.state.planner_dialog.validation_status;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
       status.unit = true;
       let un_id = this.$store.state.planner.units[this.unit]._id;
       let un_abb = this.$store.state.planner.units[this.unit].un_abb;

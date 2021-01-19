@@ -257,14 +257,14 @@ export default {
       }
     },
     async show(newValue, oldValue) {
-      if (newValue) {
+      // if (newValue) {
         this.tab = this.$store.state.planner_dialog.tab;
         this.width = this.$store.state.planner_dialog.width;
         this.height = this.$store.state.planner_dialog.height;
         this.depth = this.$store.state.planner_dialog.depth;
         this.selected_container = this.$store.state.planner_dialog.selected_container;
+      // }
         this.err_msg.length = "";
-      }
     }
   },
   mounted: function() {
@@ -281,7 +281,6 @@ export default {
       status.depth = true;
       this.$store.commit("planner_dialog/set_validation_status", status);
       this.check_btn_active();
-      console.log(this.$store.state.planner_dialog.validation_status);
     }
   }
 };
