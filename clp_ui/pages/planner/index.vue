@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <!-- Header -->
     <v-card flat>
       <v-toolbar dense height="70px">
@@ -48,7 +48,11 @@
       </v-row>
       <v-row class="">
         <div v-if="this.$store.state.planner.planners" class="flex flex-wrap">
-          <div v-for="(item, index) in this.$store.state.planner.planners" :key="index" class="m-4">
+          <div
+            v-for="(item, index) in this.$store.state.planner.planners"
+            :key="index"
+            class="m-4"
+          >
             <PlannerCard :planner="item" />
           </div>
         </div>
@@ -77,7 +81,7 @@
       </template>
     </v-snackbar>
     <!-- Alert -->
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -88,12 +92,20 @@ import PlannerCard from "@/components/planner/PlannerCard";
 
 export default {
   mixins: [login, planner],
-  async fetch({store, $axios}) {
-    let data = new FormData();
-    data.append("user_id", store.state.user_id);
-    let planners = await $axios.$post("get_all_planner", data);
-    store.commit("planner/set_planner", planners);
-    console.log(this.planners);
+  async beforeMount() {
+    try {
+      var local_store_planners = localStorage.getItem("planners");
+      if (local_store_planners) {
+        this.$store.commit(
+          "planner/set_planner",
+          JSON.parse(local_store_planners)
+        );
+      } else {
+        this.get_all_planner();
+      }
+    } catch {
+      this.logout();
+    }
   },
   mounted: function() {
     this.get_all_container();
@@ -104,8 +116,6 @@ export default {
     this.icon_alert = "fas fa-check-circle";
     this.username = this.$store.state.username;
     this.planners = this.$store.state.planner.planners;
-    console.log("planner");
-    console.log(this.planners);
   },
   data: () => ({
     planners: null,
@@ -116,6 +126,11 @@ export default {
     icon_alert: "",
     timeout: 2000
   }),
+  computed: {
+    change_alert() {
+      return this.$store.state.counter;
+    }
+  },
   watch: {
     async planners(newValue, oldValue) {
       if (newValue.status === "error" || newValue.status === "system_error") {
