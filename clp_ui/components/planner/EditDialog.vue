@@ -116,6 +116,40 @@
           Cancel
         </v-btn>
         <v-spacer></v-spacer>
+        <!-- Delete section -->
+        <v-menu
+          v-if="edit_icon"
+          v-model="popover"
+          :close-on-content-click="false"
+          :nudge-width="150"
+          offset-y
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="error" dark v-bind="attrs" v-on="on">
+              Delete
+            </v-btn>
+          </template>
+
+          <v-card>
+            <v-container class="text-center">
+              <v-icon color="red" class="x-large"
+                >fas fa-exclamation-triangle</v-icon
+              >
+              <br />
+              <span>Are you sure<br />to delete this planner</span>
+            </v-container>
+            <v-card-actions>
+              <v-btn @click="popover = false">
+                Cancel
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="error" @click="delete_planner">
+                Yes
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
+        <!-- Delete section -->
         <v-btn
           color="warning"
           @click="edit_planner"
@@ -131,8 +165,9 @@
 <script>
 import ContainerSizeTabs from "@/components/planner/ContainerSizeTabs";
 import planner from "@/mixins/planner";
+import alert from "@/mixins/alert";
 export default {
-  mixins: [planner],
+  mixins: [planner, alert],
   props: {
     show: {
       type: String,
@@ -144,6 +179,7 @@ export default {
     }
   },
   data: () => ({
+    popover: false,
     is_edit: true,
     pattern: /^([\wก-๙]+ )+[\wก-๙]+$|^[\wก-๙]+$/,
     dialog: false,
@@ -205,7 +241,6 @@ export default {
       status.unit = true;
       this.$store.commit("planner_dialog/set_validation_status", status);
       this.check_btn_active();
-      console.log(this.$store.state.planner_dialog.validation_status);
       this.dialog = true;
     },
     on_keyup_name() {
@@ -213,9 +248,6 @@ export default {
         JSON.stringify(this.$store.state.planner_dialog.validation_status)
       );
 
-      console.log(this.$store.state.planner_dialog.validation_status);
-      console.log(typeof this.$store.state.planner_dialog.validation_status);
-      console.log(typeof status.name);
       status.name = false;
       if (this.name.length < 3 || this.name.length > 20) {
         this.err_msg.name =
@@ -238,7 +270,9 @@ export default {
   },
   watch: {
     async unit(newValue, oldValue) {
-      let status = this.$store.state.planner_dialog.validation_status;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
       status.unit = true;
       let un_id = this.$store.state.planner.units[this.unit]._id;
       let un_abb = this.$store.state.planner.units[this.unit].un_abb;
