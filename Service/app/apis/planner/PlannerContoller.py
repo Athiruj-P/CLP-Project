@@ -174,7 +174,7 @@ class PlannerController:
                 { '$push': {item["fld_user_planners"] : new_planner} }
             )
             logger.info("[{}] Added a planner to database".format(pln_data.user_id))
-            result = { 'mes' : "added_planner", 'status' : "success"}
+            result = { 'mes' : "Added a planner successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             try:
@@ -241,7 +241,7 @@ class PlannerController:
             )
 
             logger.info("[{}] Edited a planner".format(pln_data.user_id))
-            result = { 'mes' : "edited_planner", 'status' : "success"}
+            result = { 'mes' : "Edited a planner successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             try:
@@ -277,7 +277,7 @@ class PlannerController:
             )
 
             logger.info("[{}] Deleted a planner".format(pln_data.user_id))
-            result = { 'mes' : "deleted_planner", 'status' : "success"}
+            result = { 'mes' : "Deleted a planner successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             try:

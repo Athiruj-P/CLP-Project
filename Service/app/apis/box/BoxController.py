@@ -167,8 +167,8 @@ class BoxController:
             )
 
 
-            logger.info("[{}] Added a box planner".format(box_data.user_id))
-            result = { 'mes' : "added_planner", 'status' : "success"}
+            logger.info("[{}] Added boxes to planner".format(box_data.user_id))
+            result = { 'mes' : "Added boxes successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             try:
@@ -200,7 +200,7 @@ class BoxController:
 
 
             logger.info("[{}] Added boxes from an excel to planner".format(box_data.user_id))
-            result = { 'mes' : "added_excel_to_planner", 'status' : "success"}
+            result = { 'mes' : "Added boxes from excel successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             try:
@@ -281,7 +281,7 @@ class BoxController:
             )
 
             logger.info("[{}] Edited a box planner".format(box_data.user_id))
-            result = { 'mes' : "edited_planner", 'status' : "success"}
+            result = { 'mes' : "Edited boxes successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             try:
@@ -311,7 +311,7 @@ class BoxController:
             )
 
             logger.info("[{}] Deleted boxes".format(box_data.user_id))
-            result = { 'mes' : "deleted_boxes", 'status' : "success"}
+            result = { 'mes' : "Deleted boxes successfully", 'status' : "success"}
             return result
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
