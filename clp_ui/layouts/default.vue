@@ -6,8 +6,12 @@
 </template>
 <script>
 import Alert from "@/components/Alert";
-
+import login from "@/mixins/login";
 export default {
+  head: {
+    titleTemplate: "CLP app"
+  },
+  mixins: [login],
   async beforeMount() {
     try {
       var local_store_user_id = localStorage.getItem("user_id");
@@ -36,8 +40,5 @@ export default {
 .v-application {
   position: relative;
   background-color: rgb(238, 235, 235);
-}
-::-webkit-scrollbar {
-  display: none;
 }
 </style>
