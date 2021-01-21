@@ -103,6 +103,7 @@ export default {
           "planner/set_planner",
           JSON.parse(local_store_planners)
         );
+        this.get_all_planner();
       } else {
         this.get_all_planner();
       }

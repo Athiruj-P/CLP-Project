@@ -88,6 +88,10 @@
         <!-- Box BTN -->
         <v-divider color="white"></v-divider>
 
+        <!-- Box list -->
+        <BoxList />
+        <!-- Box list -->
+
         <!-- Browse file and Render BTN -->
         <template v-slot:append>
           <div class="p-2">
@@ -112,6 +116,7 @@ import box from "@/mixins/box";
 import login from "@/mixins/login";
 import EditDialog from "@/components/planner/EditDialog";
 import AddBoxDialog from "@/components/planner_manager/AddBoxDialog";
+import BoxList from "@/components/planner_manager/BoxList";
 export default {
   mixins: [login, box],
   async beforeMount() {
@@ -141,25 +146,9 @@ export default {
   async destroyed() {
     localStorage.removeItem("selected_planner");
     localStorage.removeItem("boxes");
+    this.$store.commit("box/set_boxes", []);
+    this.$store.commit("box_dialog/clear_dialog");
     console.log("destroyed ");
   }
 };
 </script>
-
-<style scoped>
-/* width */
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
-}
-</style>
