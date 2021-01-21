@@ -27,7 +27,7 @@
 
           <v-list>
             <v-list-item>
-              <v-list-item-title @click="logout">
+              <v-list-item-title class="cursor-pointer" @click="logout">
                 <span>
                   <v-icon>fas fa-sign-out-alt</v-icon>
                 </span>
@@ -46,8 +46,11 @@
           <AddDialog />
         </v-col>
       </v-row>
-      <v-row class="">
-        <div v-if="this.$store.state.planner.planners" class="flex flex-wrap">
+      <v-row>
+        <div
+          v-if="this.$store.state.planner.planners"
+          class="flex flex-wrap overflow-y-auto"
+        >
           <div
             v-for="(item, index) in this.$store.state.planner.planners"
             :key="index"
@@ -110,12 +113,15 @@ export default {
   mounted: function() {
     this.get_all_container();
     this.get_all_unit();
-    this.show_alert = true;
-    this.text_alert = "Login success";
-    this.color_alert = "success";
-    this.icon_alert = "fas fa-check-circle";
-    this.username = this.$store.state.username;
-    this.planners = this.$store.state.planner.planners;
+    var local_store_username = localStorage.getItem("username");
+    if (!local_store_username) {
+      this.show_alert = true;
+      this.text_alert = "Login success";
+      this.color_alert = "success";
+      this.icon_alert = "fas fa-check-circle";
+      this.username = this.$store.state.username;
+      this.planners = this.$store.state.planner.planners;
+    }
   },
   data: () => ({
     planners: null,
