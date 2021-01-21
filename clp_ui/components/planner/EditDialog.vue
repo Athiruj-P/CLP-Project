@@ -1,15 +1,14 @@
 <template>
   <v-dialog v-model="dialog" persistent width="600">
     <template v-slot:activator="{ attrs }">
-      <div v-if="edit_icon">
+      <div v-if="edit_icon()">
         <v-btn icon v-bind="attrs" @click="open_dialog">
           <v-icon>fas fa-ellipsis-h</v-icon>
         </v-btn>
       </div>
       <div v-else>
-        <v-btn color="Warning" dark v-bind="attrs" @click="open_dialog">
-          <v-icon left>fas fa-plus</v-icon>
-          Edit planner
+        <v-btn color="white" icon v-bind="attrs" @click="open_dialog">
+          <v-icon>fas fa-ellipsis-h</v-icon>
         </v-btn>
       </div>
     </template>
@@ -118,7 +117,7 @@
         <v-spacer></v-spacer>
         <!-- Delete section -->
         <v-menu
-          v-if="edit_icon"
+          v-if="edit_icon()"
           v-model="popover"
           :close-on-content-click="false"
           :nudge-width="150"
@@ -171,7 +170,8 @@ export default {
   props: {
     show: {
       type: String,
-      required: false
+      required: false,
+      default: null
     },
     obj_planner: {
       type: Object,
@@ -197,7 +197,7 @@ export default {
     edit_icon() {
       if (this.show === "card") {
         return true;
-      } else {
+      } else if (this.show === "manage") {
         return false;
       }
     },
@@ -258,9 +258,9 @@ export default {
         this.err_msg.name = "";
         status.name = true;
       }
-      this.check_btn_active();
       this.$store.commit("planner_dialog/set_name", this.name);
       this.$store.commit("planner_dialog/set_validation_status", status);
+      this.check_btn_active();
     },
     close_dialog() {
       this.dialog = false;
