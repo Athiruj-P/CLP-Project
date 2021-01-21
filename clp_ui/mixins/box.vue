@@ -142,7 +142,7 @@ export default {
       }
     },
     clear_dialog() {
-      this.$store.commit("planner_dialog/clear_dialog");
+      this.$store.commit("box_dialog/clear_dialog");
     }
   }
 };
