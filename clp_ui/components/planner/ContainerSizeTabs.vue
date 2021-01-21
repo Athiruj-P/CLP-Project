@@ -6,7 +6,7 @@
 
     <v-tabs v-model="tab" background-color="transparent" grow>
       <v-tab>Container</v-tab>
-      <v-tab>Other</v-tab>
+      <v-tab>Custom</v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">

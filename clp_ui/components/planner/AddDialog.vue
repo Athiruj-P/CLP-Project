@@ -163,9 +163,9 @@ export default {
         this.err_msg.name = "";
         status.name = true;
       }
-      this.check_btn_active();
       this.$store.commit("planner_dialog/set_name", this.name);
       this.$store.commit("planner_dialog/set_validation_status", status);
+      this.check_btn_active();
     },
     close_dialog() {
       this.dialog = false;
