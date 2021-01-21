@@ -201,11 +201,12 @@ export default {
       this.check_btn_active();
     },
     close_dialog() {
-      this.dialog = false;
+      this.clear_dialog();
+      this.name = "";
       this.btn_active = false;
       this.selected_color = 0;
       this.qty = 1;
-      this.clear_dialog();
+      this.dialog = false;
     }
   },
   watch: {

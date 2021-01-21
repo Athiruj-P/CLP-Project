@@ -274,9 +274,15 @@ export default {
       this.width = this.$store.state.box_dialog.width;
       this.height = this.$store.state.box_dialog.height;
       this.depth = this.$store.state.box_dialog.depth;
-      // this.selected_box = this.$store.state.box_dialog.selected_container;
+      this.selected_box = this.$store.state.box_dialog.selected_box;
       // }
       this.err_msg.length = "";
+      console.log(this.tab);
+      console.log(this.width);
+      console.log(this.height);
+      console.log(this.depth);
+      console.log(this.selected_box);
+      console.log(this.$store.state.box_dialog);
     }
   },
   mounted: function() {
@@ -298,24 +304,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-/* width */
-.light::-webkit-scrollbar,
-.dark::-webkit-scrollbar {
-  width: 7px;
-}
-
-/* Track */
-.light::-webkit-scrollbar-track,
-.dark::-webkit-scrollbar {
-  background: #f1f1f1;
-}
-
-/* Handle */
-.light::-webkit-scrollbar-thumb,
-.dark::-webkit-scrollbar {
-  background: #555;
-  border-radius: 10px;
-}
-</style>
