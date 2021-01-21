@@ -14,7 +14,7 @@ export default {
     },
     async logout() {
       let data = new FormData();
-      data.append("username", this.username);
+      data.append("username", this.$store.state.username);
       await this.$axios.$post("logout", data);
       this.$store.commit("clear_login");
       localStorage.clear();
