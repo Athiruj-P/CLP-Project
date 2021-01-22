@@ -123,8 +123,9 @@
 <script>
 import ContainerSizeTabs from "@/components/planner/ContainerSizeTabs";
 import planner from "@/mixins/planner";
+import alert from "@/mixins/alert";
 export default {
-  mixins: [planner],
+  mixins: [planner, alert],
   props: {
     // show: {
     //   type: Boolean,
@@ -171,7 +172,7 @@ export default {
       this.dialog = false;
       this.btn_active = false;
       this.clear_dialog();
-    },
+    }
   },
   watch: {
     async unit(newValue, oldValue) {

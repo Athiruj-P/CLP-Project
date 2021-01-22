@@ -152,7 +152,7 @@ export default {
   methods: {
     unit_convert(number, old_unit, new_unit) {
       if (old_unit !== new_unit)
-        return conversions(number, old_unit, new_unit).toFixed(4);
+        return conversions(number, old_unit, new_unit).toFixed(2);
       else return number;
     },
     change_width() {
