@@ -13,3 +13,7 @@
   background: #555;
   border-radius: 10px;
 }
+
+.v-navigation-drawer__content {
+  overflow-y: hidden !important;
+}
