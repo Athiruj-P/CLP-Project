@@ -1,10 +1,19 @@
 <script>
+import conversions from "conversions";
 export default {
   methods: {
+    unit_convert(number, old_unit, new_unit) {
+      if (old_unit !== new_unit)
+        return conversions(number, old_unit, new_unit).toFixed(2);
+      else return number;
+    },
     async get_all_box() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
-      data.append("pln_id", this.selected_planner._id);
+      data.append(
+        "pln_id",
+        this.$store.state.planner_manage.selected_planner._id
+      );
       let boxes = await this.$axios.$post("get_all_box", data);
       this.$store.commit("box/set_boxes", boxes);
       localStorage.removeItem("boxes");
@@ -15,6 +24,8 @@ export default {
       data.append("user_id", this.$store.state.user_id);
       let boxes = await this.$axios.$post("get_box_std", data);
       this.$store.commit("box/set_std_boxes", boxes);
+      localStorage.removeItem("box_std");
+      localStorage.setItem("box_std", JSON.stringify(boxes));
     },
     async get_all_color() {
       let data = new FormData();
@@ -24,57 +35,49 @@ export default {
     },
     //
     async add_box() {
-      console.log(this.$store.state.planner_manage.selected_planner._id);
-      console.log(this.$store.state.box_dialog.name);
-      console.log(this.$store.state.box_dialog.width);
-      console.log(this.$store.state.box_dialog.height);
-      console.log(this.$store.state.box_dialog.depth);
-      console.log(this.$store.state.main_unit.un_id);
-      console.log(this.$store.state.box_dialog.qty);
-      console.log(this.$store.state.box_dialog.color);
-      //   let data = new FormData();
-      //   data.append("user_id", this.$store.state.user_id);
-      //   data.append("name", this.$store.state.planner_dialog.name);
-      //   data.append("width", parseFloat(this.$store.state.planner_dialog.width));
-      //   data.append(
-      //     "height",
-      //     parseFloat(this.$store.state.planner_dialog.height)
-      //   );
-      //   data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
-      //   data.append("unit", this.$store.state.planner_dialog.unit);
-      //   let result = await this.$axios.$post("add_planner", data);
-      //   this.get_all_planner();
-      //   this.show_alert(result);
-      //   this.close_dialog();
-    },
-    //
-    async edit_planner() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
-      data.append("pln_id", this.$store.state.planner_dialog.planner_id);
-      data.append("name", this.$store.state.planner_dialog.name);
-      data.append("width", parseFloat(this.$store.state.planner_dialog.width));
       data.append(
-        "height",
-        parseFloat(this.$store.state.planner_dialog.height)
+        "pln_id",
+        this.$store.state.planner_manage.selected_planner._id
       );
-      data.append("depth", parseFloat(this.$store.state.planner_dialog.depth));
-      data.append("unit", this.$store.state.planner_dialog.unit);
-      let result = await this.$axios.$post("edit_planner", data);
-      console.log(result);
-      this.get_all_planner();
+      data.append("name", this.$store.state.box_dialog.name);
+      data.append("width", this.$store.state.box_dialog.width);
+      data.append("height", this.$store.state.box_dialog.height);
+      data.append("depth", this.$store.state.box_dialog.depth);
+      data.append("unit", this.$store.state.main_unit.un_id);
+      data.append("color", this.$store.state.box_dialog.color);
+      data.append("qty", this.$store.state.box_dialog.qty);
+      let result = await this.$axios.$post("add_box", data);
+      this.get_all_box();
       this.show_alert(result);
       this.close_dialog();
     },
     //
-    async delete_planner() {
+    async edit_box() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
-      data.append("pln_id", this.$store.state.planner_dialog.planner_id);
-      let result = await this.$axios.$post("delete_planner", data);
-      console.log(result);
+      data.append("box_id", this.obj_box._id);
+      data.append("name", this.$store.state.box_dialog.name);
+      data.append("width", this.$store.state.box_dialog.width);
+      data.append("height", this.$store.state.box_dialog.height);
+      data.append("depth", this.$store.state.box_dialog.depth);
+      data.append("unit", this.$store.state.main_unit.un_id);
+      data.append("color", this.$store.state.box_dialog.color);
+      data.append("qty", this.$store.state.box_dialog.qty);
+      let result = await this.$axios.$post("edit_box", data);
+      this.get_all_box();
       this.show_alert(result);
-      this.get_all_planner();
+      this.close_dialog();
+    },
+    //
+    async delete_box() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      data.append("box_id", this.obj_box._id);
+      let result = await this.$axios.$post("delete_box", data);
+      this.show_alert(result);
+      this.get_all_box();
       this.close_dialog();
     },
     length_validate(length) {

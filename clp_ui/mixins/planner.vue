@@ -9,6 +9,15 @@ export default {
       localStorage.removeItem("planners");
       localStorage.setItem("planners", JSON.stringify(planners));
     },
+    async get_planner() {
+      let data = new FormData();
+      data.append("user_id", this.$store.state.user_id);
+      data.append("pln_id", this.$store.state.planner_dialog.planner_id);
+      let planner = await this.$axios.$post("get_planner", data);
+      this.$store.commit("planner_manage/set_selected_planner", planner);
+      localStorage.removeItem("selected_planner");
+      localStorage.setItem("selected_planner", JSON.stringify(planner));
+    },
     async get_all_container() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
@@ -57,6 +66,7 @@ export default {
       data.append("unit", this.$store.state.planner_dialog.unit);
       let result = await this.$axios.$post("edit_planner", data);
       console.log(result);
+      this.get_planner();
       this.get_all_planner();
       this.show_alert(result);
       this.close_dialog();
