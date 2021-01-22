@@ -14,7 +14,8 @@
     "boxicons": "^2.0.7",
     "conversions": "^1.5.2",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "plotly.js": "^1.58.4"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
