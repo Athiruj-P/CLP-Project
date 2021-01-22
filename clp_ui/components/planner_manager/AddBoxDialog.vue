@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" scrollable persistent width="600">
     <template v-slot:activator="{ attrs }">
       <v-btn color="white" icon v-bind="attrs" @click="open_dialog">
-        <v-icon>fas fa-ellipsis-h</v-icon>
+        <v-icon>fas fa-plus</v-icon>
       </v-btn>
     </template>
     <v-card>
@@ -84,7 +84,7 @@
         </v-row>
         <v-row>
           <v-col md="12">
-            <BoxSizeTabs :show="dialog" :unit="$store.state.main_unit.un_abb" />
+            <BoxSizeTabs :show="dialog" :unit="$store.state.planner_manage.selected_planner.pln_unit" />
           </v-col>
         </v-row>
         <!-- Size -->
@@ -152,8 +152,9 @@
 <script>
 import BoxSizeTabs from "@/components/planner_manager/BoxSizeTabs";
 import box from "@/mixins/box";
+import alert from "@/mixins/alert";
 export default {
-  mixins: [box],
+  mixins: [box, alert],
   data: () => ({
     selected_color: null,
     qty_rules: [
@@ -179,7 +180,7 @@ export default {
       this.dialog = true;
       this.selected_color = 0;
       this.qty = this.$store.state.box_dialog.qty;
-      this.unit = this.$store.state.main_unit.un_abb;
+      this.unit = this.$store.state.planner_manage.selected_planner.pln_unit;
       this.err_msg.name = "";
     },
     on_keyup_name() {

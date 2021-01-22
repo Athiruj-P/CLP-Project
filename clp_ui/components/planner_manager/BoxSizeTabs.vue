@@ -32,16 +32,16 @@
                           `${unit_convert(
                             item.box_std_width,
                             item.box_std_unit,
-                            $store.state.main_unit.un_abb
+                            $store.state.planner_manage.selected_planner.pln_unit
                           )} x ${unit_convert(
                             item.box_std_height,
                             item.box_std_unit,
-                            $store.state.main_unit.un_abb
+                            $store.state.planner_manage.selected_planner.pln_unit
                           )} x ${unit_convert(
                             item.box_std_depth,
                             item.box_std_unit,
-                            $store.state.main_unit.un_abb
-                          )} ${$store.state.main_unit.un_abb}`
+                            $store.state.planner_manage.selected_planner.pln_unit
+                          )} ${$store.state.planner_manage.selected_planner.pln_unit}`
                         }}
                       </span>
                     </div>
@@ -60,7 +60,7 @@
               <v-col md="4" class="pb-0">
                 <v-row class="my-2 mx-0 flex justify-center">
                   <span class="text-base font-normal text-black"
-                    >Width [{{ $store.state.main_unit.un_abb }}]</span
+                    >Width [{{ $store.state.planner_manage.selected_planner.pln_unit }}]</span
                   >
                 </v-row>
                 <v-row class="my-2">
@@ -79,7 +79,7 @@
               <v-col md="4" class="pb-0">
                 <v-row class="my-2 mx-0 flex justify-center">
                   <span class="text-base font-normal text-black"
-                    >Height [{{ $store.state.main_unit.un_abb }}]</span
+                    >Height [{{ $store.state.planner_manage.selected_planner.pln_unit }}]</span
                   >
                 </v-row>
                 <v-row class="my-2">
@@ -98,7 +98,7 @@
               <v-col md="4" class="pb-0">
                 <v-row class="my-2 mx-0 flex justify-center">
                   <span class="text-base font-normal text-black"
-                    >Depth [{{ $store.state.main_unit.un_abb }}]</span
+                    >Depth [{{ $store.state.planner_manage.selected_planner.pln_unit }}]</span
                   >
                 </v-row>
                 <v-row class="my-2">
@@ -156,11 +156,6 @@ export default {
     }
   }),
   methods: {
-    unit_convert(number, old_unit, new_unit) {
-      if (old_unit !== new_unit)
-        return conversions(number, old_unit, new_unit).toFixed(4);
-      else return number;
-    },
     clear_selected_box() {
       if (this.tab) {
         this.selected_box = null;
@@ -225,19 +220,19 @@ export default {
         this.width = this.unit_convert(
           obj_box.box_std_width,
           obj_box.box_std_unit,
-          this.$store.state.main_unit.un_abb
+          this.$store.state.planner_manage.selected_planner.pln_unit
         );
         this.change_width();
         this.height = this.unit_convert(
           obj_box.box_std_height,
           obj_box.box_std_unit,
-          this.$store.state.main_unit.un_abb
+          this.$store.state.planner_manage.selected_planner.pln_unit
         );
         this.change_height();
         this.depth = this.unit_convert(
           obj_box.box_std_depth,
           obj_box.box_std_unit,
-          this.$store.state.main_unit.un_abb
+          this.$store.state.planner_manage.selected_planner.pln_unit
         );
         this.change_depth();
       } else if (!this.tab) {
@@ -289,9 +284,21 @@ export default {
     if (this.is_edit) {
       this.tab = this.$store.state.box_dialog.tab;
       this.qty = this.$store.state.box_dialog.qty;
-      this.width = this.$store.state.box_dialog.width;
-      this.height = this.$store.state.box_dialog.height;
-      this.depth = this.$store.state.box_dialog.depth;
+      this.width = this.unit_convert(
+        this.$store.state.box_dialog.width,
+        this.$store.state.box_dialog.unit,
+        this.$store.state.planner_manage.selected_planner.pln_unit
+      );
+      this.height = this.unit_convert(
+        this.$store.state.box_dialog.height,
+        this.$store.state.box_dialog.unit,
+        this.$store.state.planner_manage.selected_planner.pln_unit
+      );
+      this.depth = this.unit_convert(
+        this.$store.state.box_dialog.depth,
+        this.$store.state.box_dialog.unit,
+        this.$store.state.planner_manage.selected_planner.pln_unit
+      );
       let status = JSON.parse(
         JSON.stringify(this.$store.state.box_dialog.validation_status)
       );

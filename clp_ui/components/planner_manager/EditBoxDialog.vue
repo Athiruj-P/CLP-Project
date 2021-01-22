@@ -84,7 +84,11 @@
         </v-row>
         <v-row>
           <v-col md="12">
-            <BoxSizeTabs :show="dialog" :unit="$store.state.main_unit.un_abb" />
+            <BoxSizeTabs
+              :show="dialog"
+              :unit="$store.state.planner_manage.selected_planner.pln_unit"
+              :is_edit="true"
+            />
           </v-col>
         </v-row>
         <!-- Size -->
@@ -137,12 +141,45 @@
           Cancel
         </v-btn>
         <v-spacer></v-spacer>
+        <!-- Delete section -->
+        <v-menu
+          v-model="popover"
+          :close-on-content-click="false"
+          :nudge-width="150"
+          offset-y
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="error" dark v-bind="attrs" v-on="on">
+              Delete
+            </v-btn>
+          </template>
+
+          <v-card>
+            <v-container class="text-center">
+              <v-icon color="red" class="x-large"
+                >fas fa-exclamation-triangle</v-icon
+              >
+              <br />
+              <span>Are you sure<br />to delete these boxes</span>
+            </v-container>
+            <v-card-actions>
+              <v-btn @click="popover = false">
+                Cancel
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="error" @click="delete_box">
+                Yes
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
+        <!-- Delete section -->
         <v-btn
-          color="primary"
-          @click="add_box"
+          color="warning"
+          @click="edit_box"
           :disabled="this.$store.state.box_dialog.btn_active"
         >
-          Add
+          Edit
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -152,8 +189,9 @@
 <script>
 import BoxSizeTabs from "@/components/planner_manager/BoxSizeTabs";
 import box from "@/mixins/box";
+import alert from "@/mixins/alert";
 export default {
-  mixins: [box],
+  mixins: [box, alert],
   props: {
     obj_box: {
       type: Object,
@@ -161,6 +199,7 @@ export default {
     }
   },
   data: () => ({
+    popover: false,
     selected_color: null,
     qty_rules: [
       v => !!v || "Required",
@@ -182,46 +221,72 @@ export default {
   }),
   methods: {
     open_dialog() {
-    //   let status = JSON.parse(
-    //     JSON.stringify(this.$store.state.planner_dialog.validation_status)
-    //   );
-    //   this.$store.commit("planner_dialog/set_planner_id", this.obj_planner._id);
-    //   this.$store.commit("planner_dialog/set_name", this.obj_planner.pln_name);
-    //   this.$store.commit(
-    //     "planner_dialog/set_width",
-    //     this.obj_planner.pln_width
-    //   );
-    //   this.$store.commit(
-    //     "planner_dialog/set_height",
-    //     this.obj_planner.pln_height
-    //   );
-    //   this.$store.commit(
-    //     "planner_dialog/set_depth",
-    //     this.obj_planner.pln_depth
-    //   );
-    //   this.$store.commit(
-    //     "planner_dialog/set_unit",
-    //     this.obj_planner.pln_unit_id
-    //   );
-    //   this.$store.commit("planner_dialog/set_tab", 1);
-    //   this.name = this.obj_planner.pln_name;
-    //   this.$store.state.planner.units.some((val, index) => {
-    //     if (val.un_abb === this.obj_planner.pln_unit) {
-    //       this.unit = index;
-    //       return true;
-    //     }
-    //   });
-    //   this.err_msg.name = "";
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
 
-    //   // ปรับให้สถานะของ validation เป็น true ทั้งหมดเสมอ
-    //   status.name = true;
-    //   status.width = true;
-    //   status.height = true;
-    //   status.depth = true;
-    //   status.unit = true;
-    //   this.$store.commit("planner_dialog/set_validation_status", status);
-    //   this.check_btn_active();
-    //   this.dialog = true;
+      const pln_unit = this.$store.state.planner_manage.selected_planner
+        .pln_unit;
+
+      this.$store.commit("box_dialog/set_name", this.obj_box.box_name);
+      this.$store.commit(
+        "box_dialog/set_width",
+        this.unit_convert(
+          this.obj_box.box_width,
+          this.obj_box.box_unit,
+          pln_unit
+        )
+      );
+      this.$store.commit(
+        "box_dialog/set_height",
+        this.unit_convert(
+          this.obj_box.box_height,
+          this.obj_box.box_unit,
+          pln_unit
+        )
+      );
+      this.$store.commit(
+        "box_dialog/set_depth",
+        this.unit_convert(
+          this.obj_box.box_depth,
+          this.obj_box.box_unit,
+          pln_unit
+        )
+      );
+      this.$store.commit("box_dialog/set_unit", pln_unit);
+      //   this.$store.commit(
+      //     "box_dialog/set_unit",
+      //     this.$store.state.main_unit.un_id
+      //   );
+      this.$store.commit("box_dialog/set_qty", this.obj_box.box_quantity);
+      this.$store.commit("box_dialog/set_color", this.obj_box.box_color);
+      this.$store.commit("box_dialog/set_tab", 1);
+      this.name = this.obj_box.box_name;
+      this.qty = this.obj_box.box_quantity;
+      this.$store.state.planner.units.some((val, index) => {
+        if (val.un_abb === this.obj_box.box_unit) {
+          this.unit = index;
+          return true;
+        }
+      });
+      this.$store.state.box.colors.some((val, index) => {
+        if (val.color_hex === this.obj_box.box_color) {
+          this.selected_color = index;
+          return true;
+        }
+      });
+      this.err_msg.name = "";
+
+      // ปรับให้สถานะของ validation เป็น true ทั้งหมดเสมอ
+      status.name = true;
+      status.width = true;
+      status.height = true;
+      status.depth = true;
+      status.qty = true;
+      status.color = true;
+      this.$store.commit("box_dialog/set_validation_status", status);
+      this.check_btn_active();
+      this.dialog = true;
     },
     on_keyup_name() {
       let status = JSON.parse(

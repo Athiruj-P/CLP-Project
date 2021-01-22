@@ -1,33 +1,60 @@
 <template>
-  <div dense class="bg-gray-200 overflow-y-auto overflow-x-hidden h-96">
-    <div class="" v-for="(item, index) in $store.state.box.boxes" :key="index">
-      <v-card class="h-20" color="#E5E7EB" tile outlined>
-        <v-row class="h-full w-full pa-1 ma-0">
+  <div dense class="bg-gray-200 overflow-y-auto overflow-x-hidden" style="height:56.5vh">
+    <div v-for="(item, index) in $store.state.box.boxes" :key="index">
+      <v-card class="h-20" color="#E5E7EB" tile>
+        <v-row
+          v-if="$store.state.box.boxes.length > 0"
+          class="h-full w-full pa-1 ma-0"
+        >
           <v-col md="2" class="flex justify-center pl-0 pr-0">
             <v-icon large :color="`#${item.box_color}`">fas fa-dice-d6</v-icon>
           </v-col>
           <v-col md="8" class="flex flex-col justify-start pa-0">
             <div class="text-gray-600 font-black">{{ item.box_name }}</div>
             <div class="text-sm text-gray-600 flex justify-between">
-                <span>Size: {{`${item.box_width} x ${item.box_height} x ${item.box_depth} ${item.box_unit}`}}</span>
-                <span>Qty: {{ item.box_quantity }}</span>
+              <span>
+                Size:
+                <!-- W x H x D:  -->
+                {{
+                  `${unit_convert(
+                    item.box_width,
+                    item.box_unit,
+                    $store.state.planner_manage.selected_planner.pln_unit
+                  )} x ${unit_convert(
+                    item.box_height,
+                    item.box_unit,
+                    $store.state.planner_manage.selected_planner.pln_unit
+                  )} x ${unit_convert(
+                    item.box_depth,
+                    item.box_unit,
+                    $store.state.planner_manage.selected_planner.pln_unit
+                  )} ${$store.state.planner_manage.selected_planner.pln_unit}`
+                }}
+              </span>
+              <span>Qty: {{ item.box_quantity }}</span>
             </div>
             <div class="text-sm text-gray-600 flex justify-between">
-                <span>Loaded: X</span>
-                <span>Unloaded: X</span>
+              <span>Loaded: X</span>
+              <span>Unloaded: X</span>
             </div>
           </v-col>
-          <v-col md="2" class="flex justify-center pl-4 pr-0">
-            <EditBoxDialog />
+          <v-col md="2" class="flex justify-center items-center my-0 pl-4 pr-0">
+            <EditBoxDialog :obj_box="item" />
           </v-col>
         </v-row>
       </v-card>
+      <v-divider color="white" class="mt-0.5"></v-divider>
     </div>
-    <v-divider color="white"></v-divider>
+    <div v-if="$store.state.box.boxes.length === 0" class="h-full flex justify-center items-center">
+      <span class="text-gray-600  font-semibold">Click <v-icon dense class="mx-1">fas fa-plus</v-icon> to add new boxes</span>
+    </div>
   </div>
 </template>
 
 <script>
 import EditBoxDialog from "@/components/planner_manager/EditBoxDialog";
-export default {};
+import box from "@/mixins/box";
+export default {
+  mixins: [box]
+};
 </script>
