@@ -1,5 +1,5 @@
 <template>
-  <v-app class="h-full overflow-y-hidden">
+  <v-app class="h-screen overflow-y-hidden overflow-x-hidden">
     <nuxt />
     <Alert />
   </v-app>
