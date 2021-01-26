@@ -35,7 +35,8 @@ class Node:
     # Description : ฟังก์ชันดึงข้อมูลตำแหน่งภายในตู้บรรจุสินค้าของกล่องบรรจุสินค้า 
     # Author : Athiruj Poositaporn
     def get_box_dimension(self):
-        dim1, dim2, dim3 = self.box.get_int_dimension()
+        # dim1, dim2, dim3 = self.box.get_int_dimension()
+        dim1, dim2, dim3 = self.box.get_dimension()
         x1 = self.position[0] # width
         y1 = self.position[2] # depth
         z1 = self.position[1] # height
@@ -132,6 +133,7 @@ class Node:
                     z = self.position[2] + box_d
                     self.right.position = [x,y,z] 
             # return fit (True)
+                logger.info('------------') 
             return fit
         
         # return not fit (False)
