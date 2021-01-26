@@ -192,6 +192,7 @@ export default {
     localStorage.removeItem("boxes");
     this.$store.commit("box/set_boxes", []);
     this.$store.commit("box_dialog/clear_dialog");
+    this.$store.commit("planner_manage/clear_value");
     console.log("destroyed ");
   }
 };
