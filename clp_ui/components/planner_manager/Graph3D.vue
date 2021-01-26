@@ -45,15 +45,12 @@ export default {
     CON_Z: null,
     CON_Y: null,
     plot_data: [],
-    boxes_stack: null
+    boxes_stack: []
   }),
   beforeMount() {
-    this.render_container();
-    if (process.browser) {
-      var local_store_render_result = localStorage.getItem("render_result");
-      if (local_store_render_result) {
-        this.boxes_stack = JSON.parse(local_store_render_result).boxes_stack;
-      }
+    if (this.$store.state.planner_manage.selected_stack_list) {
+      this.boxes_stack = this.$store.state.planner_manage.selected_stack_list;
+      // this.boxes_stack = JSON.parse(local_store_render_result).boxes_stack;
     }
     this.Plotly = require("plotly.js/dist/plotly");
     this.set_container();
@@ -103,10 +100,9 @@ export default {
       );
       data.push(container.data);
       // Temporary
-      if (this.boxes_stack) {
-        Object.entries(this.boxes_stack).forEach(stack => {
-          const [key, stack_val] = stack;
-          stack_val.forEach(element => {
+      if (this.boxes_stack.length > 0) {
+        this.boxes_stack.forEach(item_index => {
+          item_index.forEach(element => {
             const obj = new Box(
               Object.values(element.box_dim.x),
               Object.values(element.box_dim.y),
@@ -129,7 +125,11 @@ export default {
   },
   watch: {
     "$store.state.planner_manage.render_data"(render_data) {
-      this.boxes_stack = render_data.boxes_stack;
+      // this.boxes_stack = render_data.boxes_stack;
+      // this.plot_redraw();
+    },
+    "$store.state.planner_manage.selected_stack_list"(data) {
+      this.boxes_stack = this.$store.state.planner_manage.selected_stack_list;
       this.plot_redraw();
     },
     "$store.state.planner_manage.selected_planner"(data) {
