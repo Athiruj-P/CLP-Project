@@ -393,12 +393,14 @@ class PlannerController:
 
 
             # Get boxes all result
-            arr_stack = {}
+            # arr_stack = {}
+            arr_stack = []
             logger.info("len(global_var.UNFITTED_ITEMS) : {}".format(len(global_var.UNFITTED_ITEMS)))
             global_var.BASE_BOXES.sort(key=lambda x: (x.position[2]), reverse=False)
             for index in range(len(global_var.BASE_BOXES)):
                 box_packer.get_stack(root = global_var.BASE_BOXES[index], opt = False)
-                arr_stack['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
+                # arr_stack['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
+                arr_stack.append(global_var.BOXES_STACK_DETAIL)
                 global_var.BOXES_STACK_DETAIL = []
             
             total_volume = global_var.USED_VOLUME / box_packer.root_nodes[0].get_volume() * 100
