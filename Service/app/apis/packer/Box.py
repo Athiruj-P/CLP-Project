@@ -31,7 +31,7 @@ class Box:
         dim = self.get_dimension()
         return int(dim[0]),int(dim[1]),int(dim[2])
 
-    # get_int_dimension
+    # get_detail
     # Description : ฟังก์ชันคือค่าข้อมูลของ Box
     # Author : Athiruj Poositaporn
     def get_detail(self):
