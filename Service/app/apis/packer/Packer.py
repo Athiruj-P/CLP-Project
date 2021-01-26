@@ -64,14 +64,14 @@ class Packer:
     # pack
     # Description : ฟังก์ชันนำกล่องที่ได้จัดเตรียมไว้มาใส่ใน Node
     # Author : Athiruj Poositaporn
-    def pack(self, bigger_first=False):
-        # self.root_nodes.sort(
-        #     key=lambda node: node.get_volume(), reverse=bigger_first
-        # )
-        # self.boxes.sort(
-        #     key=lambda box: box.get_volume(), reverse=bigger_first
-        # )
-        
+    def pack(self, bigger_first=True):
+        self.root_nodes.sort(
+            key=lambda node: node.get_volume(), reverse=bigger_first
+        )
+        self.boxes.sort(
+            key=lambda box: box.get_volume(), reverse=bigger_first
+        )
+
         # global UNFITTED_ITEMS
         for node in self.root_nodes:
             for box in self.boxes:
