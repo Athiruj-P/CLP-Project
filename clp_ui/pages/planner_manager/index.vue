@@ -119,6 +119,7 @@
                 v-if="$store.state.box.boxes.length > 0"
                 block
                 color="warning"
+                @click="render_container"
               >
                 Render
               </v-btn>
@@ -137,9 +138,9 @@
       <div class="h-3/4 pa-2">
         <Graph3D />
       </div>
-      <v-card style="height:30%" color="#E5E7EB" tile class="mb-3">
-        dddd
-      </v-card>
+      <div style="height:30%" class="mb-3 ">
+        <StackTabs />
+      </div>
     </v-col>
   </v-row>
 </template>
@@ -147,37 +148,45 @@
 <script>
 import box from "@/mixins/box";
 import login from "@/mixins/login";
+import stack from "@/mixins/stack";
 import EditDialog from "@/components/planner/EditDialog";
 import AddBoxDialog from "@/components/planner_manager/AddBoxDialog";
 import BoxList from "@/components/planner_manager/BoxList";
 import Graph3D from "@/components/planner_manager/Graph3D";
+import StackTabs from "@/components/planner_manager/StackTabs";
 export default {
   layout: "planner_manager",
-  mixins: [login, box],
+  mixins: [login, box, stack],
   async beforeMount() {
-    var local_store_selected_planner = localStorage.getItem("selected_planner");
-    if (local_store_selected_planner) {
-      this.$store.commit(
-        "planner_manage/set_selected_planner",
-        JSON.parse(local_store_selected_planner)
+    if (process.browser) {
+      var local_store_selected_planner = localStorage.getItem(
+        "selected_planner"
       );
-      this.selected_planner = JSON.parse(local_store_selected_planner);
-      this.planner_name = this.selected_planner.pln_name;
-      this.$store.commit("set_main_unit", {
-        un_id: this.selected_planner.pln_unit_id,
-        un_abb: this.selected_planner.pln_unit
-      });
-      this.get_all_box();
-      this.get_box_std();
-      this.get_all_color();
-    } else {
-      this.$router.push("planner");
+      if (local_store_selected_planner) {
+        this.$store.commit(
+          "planner_manage/set_selected_planner",
+          JSON.parse(local_store_selected_planner)
+        );
+        this.selected_planner = JSON.parse(local_store_selected_planner);
+        this.planner_name = this.selected_planner.pln_name;
+        this.$store.commit("set_main_unit", {
+          un_id: this.selected_planner.pln_unit_id,
+          un_abb: this.selected_planner.pln_unit
+        });
+        this.render_container();
+        this.get_all_box();
+        this.get_box_std();
+        this.get_all_color();
+      } else {
+        this.$router.push("planner");
+      }
     }
   },
   data: () => ({
     selected_planner: null,
     planner_name: null
   }),
+  methods: {},
   async destroyed() {
     localStorage.removeItem("selected_planner");
     localStorage.removeItem("boxes");
