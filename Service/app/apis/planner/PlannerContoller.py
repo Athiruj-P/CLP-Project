@@ -373,9 +373,11 @@ class PlannerController:
                 qty = box[item['fld_box_quantity']]
                 for number in range(qty):
                     box_unit = box['box_unit']
-                    box_width = self.unit_converter(box[item['fld_box_width']], box_unit, planner_unit)
+                    # box_width = self.unit_converter(box[item['fld_box_width']], box_unit, planner_unit)
+                    box_depth = self.unit_converter(box[item['fld_box_width']], box_unit, planner_unit)
                     box_height = self.unit_converter(box[item['fld_box_height']], box_unit, planner_unit)
-                    box_depth = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
+                    box_width = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
+                    # box_depth = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
                     new_box = Box.Box()
                     new_box.name = "{}-{}".format(box[item['fld_box_name']], number+1)
                     new_box.width = box_width
@@ -395,9 +397,9 @@ class PlannerController:
             logger.info("len(global_var.UNFITTED_ITEMS) : {}".format(len(global_var.UNFITTED_ITEMS)))
             global_var.BASE_BOXES.sort(key=lambda x: (x.position[2]), reverse=False)
             for index in range(len(global_var.BASE_BOXES)):
-                logger.info(global_var.BASE_BOXES[index])
                 box_packer.get_stack(root = global_var.BASE_BOXES[index], opt = False)
                 arr_stack['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
+                global_var.BOXES_STACK_DETAIL = []
             
             total_volume = global_var.USED_VOLUME / box_packer.root_nodes[0].get_volume() * 100
             total_volume = round(total_volume, 4)
@@ -426,12 +428,13 @@ class PlannerController:
         try:
             if old_unit == new_unit:
                 return number
-            elif(new_unit == 'in' or old_unit == 'in'):
+            if(new_unit == 'in'):
                 new_unit = 'inch'
+            if(old_unit == 'in'):
                 old_unit = 'inch'
             old_num = '{} {}'.format(number,old_unit)
             num = converts(old_num , new_unit)
-            return round(float(num), 4)
+            return round(float(num), 2)
         except Exception as identifier:
             logger.error("{}.".format(str(identifier)))
             result = {'mes' : str(identifier), 'status' : "system_error"}
