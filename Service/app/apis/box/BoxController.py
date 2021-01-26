@@ -272,7 +272,7 @@ class BoxController:
                         item["fld_box_width"] :float( boxes['width']),
                         item["fld_box_height"] :float( boxes['height']),
                         item["fld_box_depth"] :float( boxes['depth']),
-                        item["fld_box_quantity"] :float( boxes['qty']),
+                        item["fld_box_quantity"] :int( boxes['qty']),
                         item["fld_box_unit_id"] : ObjectId(boxes['unit']),
                         item["fld_box_color_id"] : ObjectId(boxes['color']),
                         item['fld_box_latest_updated'] : date
