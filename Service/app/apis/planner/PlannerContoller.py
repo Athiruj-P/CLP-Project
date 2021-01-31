@@ -379,6 +379,7 @@ class PlannerController:
                     box_width = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
                     # box_depth = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
                     new_box = Box.Box()
+                    new_box.id = str(box['_id'])
                     new_box.name = "{}-{}".format(box[item['fld_box_name']], number+1)
                     new_box.width = box_width
                     new_box.height = box_height
@@ -390,7 +391,7 @@ class PlannerController:
             
             # Pack all boxes
             box_packer.pack()
-
+            
 
             # Get boxes all result
             # arr_stack = {}
@@ -407,7 +408,8 @@ class PlannerController:
             total_volume = round(total_volume, 4)
             container_detail = {
                 'total_volume' : total_volume,
-                'unfit_boxes' : global_var.UNFITTED_ITEMS,
+                'unfit_boxes' : box_packer.format_unfitted_item(),
+                # 'unfit_boxes' : global_var.UNFITTED_ITEMS,
             }
             result = {
                 'container_detail' : container_detail,

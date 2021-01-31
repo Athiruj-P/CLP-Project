@@ -9,6 +9,7 @@ logger = logging.getLogger("planner_controller")
 
 class Box:
     def __init__(self):
+        self.id = ""
         self.name = ""
         self.width = 0
         self.height = 0
@@ -36,6 +37,7 @@ class Box:
     # Author : Athiruj Poositaporn
     def get_detail(self):
         return {
+            'box_id' : self.id,
             'box_name' : self.name,
             'box_width' : self.width,
             'box_height' : self.height,

@@ -133,7 +133,7 @@ class Node:
                     z = self.position[2] + box_d
                     self.right.position = [x,y,z] 
             # return fit (True)
-                logger.info('------------') 
+                 
             return fit
         
         # return not fit (False)

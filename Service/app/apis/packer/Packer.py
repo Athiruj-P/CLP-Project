@@ -94,3 +94,39 @@ class Packer:
                 self.get_stack(root.center)
             if(root.right != None and opt):
                 self.get_stack(root.right)
+    
+    # format_unfitted_item
+    # Description : ฟังก์ชัน
+    # Author : Athiruj Poositaporn
+    def format_unfitted_item(self):
+        tmp = global_var.UNFITTED_ITEMS
+        tmp_arr = []
+        tmp_id = []
+        tmp_name = []
+        if(tmp):
+            # logger.info(*tmp)
+
+            # for item in tmp:
+            #     tmp_name.append(item['box_name'][:item['box_name'].rfind("_")])
+            
+            tmp.sort(key=lambda x: (x['box_id']), reverse=False)
+            for item in tmp:
+                tmp_id.append(item['box_id'])
+                tmp_id = list(dict.fromkeys(tmp_id))
+            
+            for box_id in tmp_id:
+                tmp_dict = {}
+                tmp_num = 0
+                for item in tmp:
+                    if(item['box_id'] == box_id):
+                        tmp_num = tmp_num + 1
+                        tmp_dict = item
+                        tmp_dict['box_unfitted'] = tmp_num
+                        tmp_dict['box_name'] = tmp_dict['box_name'][:tmp_dict['box_name'].rfind("-")]
+                tmp_arr.append(tmp_dict)
+            
+        return tmp_arr
+            
+            
+
+        
