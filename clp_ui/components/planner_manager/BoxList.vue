@@ -1,5 +1,9 @@
 <template>
-  <div dense class="bg-gray-200 overflow-y-auto overflow-x-hidden" style="height:56.5vh">
+  <div
+    dense
+    class="bg-gray-200 overflow-y-auto overflow-x-hidden"
+    style="height:56.5vh"
+  >
     <div v-for="(item, index) in $store.state.box.boxes" :key="index">
       <v-card class="h-20" color="#E5E7EB" tile>
         <v-row
@@ -34,8 +38,8 @@
               <span>Qty: {{ item.box_quantity }}</span>
             </div>
             <div class="text-sm text-gray-600 flex justify-between">
-              <span>Loaded: X</span>
-              <span>Unloaded: X</span>
+              <span v-if="$store.state.planner_manage.render_data">Loaded: <span class="text-green-600">{{cal_loaded(item)}}</span></span>
+              <span v-if="$store.state.planner_manage.render_data">Unloaded: <span class="text-red-600">{{cal_unloaded(item)}}</span></span>
             </div>
           </v-col>
           <v-col md="2" class="flex justify-center items-center my-0 pl-4 pr-0">
@@ -45,8 +49,14 @@
       </v-card>
       <v-divider color="white" class="mt-0.5"></v-divider>
     </div>
-    <div v-if="$store.state.box.boxes.length === 0" class="h-full flex justify-center items-center">
-      <span class="text-gray-600  font-semibold">Click <v-icon dense class="mx-1">fas fa-plus</v-icon> to add new boxes</span>
+    <div
+      v-if="$store.state.box.boxes.length === 0"
+      class="h-full flex justify-center items-center"
+    >
+      <span class="text-gray-600  font-semibold"
+        >Click <v-icon dense class="mx-1">fas fa-plus</v-icon> to add new
+        boxes</span
+      >
     </div>
   </div>
 </template>
@@ -55,6 +65,31 @@
 import EditBoxDialog from "@/components/planner_manager/EditBoxDialog";
 import box from "@/mixins/box";
 export default {
-  mixins: [box]
+  mixins: [box],
+  methods: {
+    cal_loaded(box) {
+      var number = box.box_quantity
+      const unfit_boxes = this.$store.state.planner_manage.render_data
+        .container_detail.unfit_boxes;
+      unfit_boxes.forEach((obj, index) => {
+        if(obj.box_name === box.box_name){
+          number = number - obj.box_unfitted
+        }
+      });
+      return number
+    },
+    cal_unloaded(box) {
+      var number = 0
+      const unfit_boxes = this.$store.state.planner_manage.render_data
+        .container_detail.unfit_boxes;
+      unfit_boxes.forEach((obj, index) => {
+        if(obj.box_name === box.box_name){
+          number = obj.box_unfitted
+        }
+        return number
+      });
+      return number
+    },
+  }
 };
 </script>

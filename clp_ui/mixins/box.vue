@@ -113,8 +113,7 @@ export default {
       qty = Number(qty);
       let status;
       status = false;
-      if (!Number.isInteger(qty) || qty < 1) {
-      } else {
+      if (Number.isInteger(qty) && qty >= 1 && qty <= 100) {
         status = true;
         this.err_msg.length = "";
       }

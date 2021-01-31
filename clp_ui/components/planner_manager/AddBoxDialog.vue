@@ -160,6 +160,7 @@ export default {
     qty_rules: [
       v => !!v || "Required",
       v => v >= 1 || "Quantity must be above 1",
+      v => v <= 100 || "Quantity must be below 100",
       v => Number.isInteger(Number(v)) || "Quantity must be integer"
     ],
     pattern: /^([\wก-๙]+ )+[\wก-๙]+$|^[\wก-๙]+$/,
