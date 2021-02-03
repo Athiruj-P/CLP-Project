@@ -176,7 +176,13 @@ def add_box_by_excel():
 
         excel_cont = ExcelController()
 
-        boxes = excel_cont.get_excel_box(box_data)
+        # boxes = excel_cont.get_excel_box(box_data)
+        rs_arr = excel_cont.get_excel_box(box_data)
+        if(rs_arr['status'] != 'success'):
+            return rs_arr , 200
+        else:
+            boxes = rs_arr['data']
+
         box_data.boxes = boxes 
         result = excel_cont.add_box_by_excel(box_data)
         
