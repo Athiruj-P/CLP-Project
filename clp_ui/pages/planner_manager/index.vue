@@ -110,7 +110,20 @@
             class="absolute bottom-0 left-0 flex flex-col justify-center w-full"
           >
             <div class="pb-2 pt-8 px-2">
-              <v-btn block elevation="2" color="indigo">
+              <input
+                type="file"
+                ref="excel_file"
+                style="display: none"
+                @change="upload_file"
+              />
+              <v-btn
+                block
+                elevation="2"
+                color="indigo"
+                :loading="btn_excel_status"
+                :disabled="btn_excel_status"
+                @click="$refs.excel_file.click()"
+              >
                 <span class="text-white">Browse file</span>
               </v-btn>
             </div>
@@ -118,6 +131,8 @@
               <v-btn
                 v-if="$store.state.box.boxes.length > 0"
                 block
+                :loading="btn_render_status"
+                :disabled="btn_render_status"
                 color="warning"
                 @click="render_container"
               >
@@ -154,10 +169,15 @@ import AddBoxDialog from "@/components/planner_manager/AddBoxDialog";
 import BoxList from "@/components/planner_manager/BoxList";
 import Graph3D from "@/components/planner_manager/Graph3D";
 import StackTabs from "@/components/planner_manager/StackTabs";
+import alert from "@/mixins/alert";
 export default {
   layout: "planner_manager",
-  mixins: [login, box, stack],
+  mixins: [login, box, stack, alert],
   async beforeMount() {
+    if (this.$store.state.planner_manage.axios_cancel_token !== null) {
+      this.$store.state.planner_manage.axios_cancel_token.cancel("Abort requests");
+    }
+    this.set_axios_cancel_token();
     if (process.browser) {
       var local_store_selected_planner = localStorage.getItem(
         "selected_planner"
@@ -180,13 +200,43 @@ export default {
       } else {
         this.$router.push("planner");
       }
+      console.log(this.$store.state.planner_manage.selected_planner);
     }
   },
   data: () => ({
     selected_planner: null,
-    planner_name: null
+    planner_name: null,
+    btn_excel_status: false,
+    btn_render_status: false
   }),
-  methods: {},
+  methods: {
+    upload_file() {
+      if (this.$refs.excel_file.files[0]) {
+        const file = this.$refs.excel_file.files[0];
+        const extension = file.name
+          .split(".")
+          .pop()
+          .toLowerCase();
+        if (extension == "xlsx" || extension == "xls") {
+          console.log(file);
+          this.add_box_by_excel(file);
+        } else {
+          const err_msg_file = "File extension must be *.xlsx or *.xls";
+          this.show_alert({
+            status: "error",
+            mes: err_msg_file
+          });
+        }
+      }
+    },
+    set_btn_excel_status(status) {
+      this.btn_excel_status = status;
+    },
+    set_btn_render_status(status) {
+      this.btn_render_status = status;
+    }
+  },
+  watch: {},
   async destroyed() {
     localStorage.removeItem("selected_planner");
     localStorage.removeItem("boxes");
