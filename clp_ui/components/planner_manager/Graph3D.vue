@@ -130,11 +130,17 @@ export default {
     },
     "$store.state.planner_manage.selected_stack_list"(data) {
       this.boxes_stack = this.$store.state.planner_manage.selected_stack_list;
+      this.set_container();
       this.plot_redraw();
     },
     "$store.state.planner_manage.selected_planner"(data) {
-      this.set_container();
-      this.plot_redraw();
+      // this.set_container();
+      // this.plot_redraw();
+    },
+    "$store.state.box.boxes"(data) {
+      if (data.length === 0) {
+        this.$store.commit("planner_manage/set_selected_stack_list", []);
+      }
     }
   },
   destroyed() {
