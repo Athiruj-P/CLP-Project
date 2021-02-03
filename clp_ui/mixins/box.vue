@@ -2,22 +2,33 @@
 import conversions from "conversions";
 export default {
   methods: {
+    set_axios_cancel_token() {
+      const CancelToken = this.$axios.CancelToken;
+      const source = CancelToken.source();
+      this.$store.commit("planner_manage/set_axios_cancel_token", source);
+    },
     unit_convert(number, old_unit, new_unit) {
       if (old_unit !== new_unit)
         return conversions(number, old_unit, new_unit).toFixed(2);
       else return number;
     },
     async get_all_box() {
-      let data = new FormData();
-      data.append("user_id", this.$store.state.user_id);
-      data.append(
-        "pln_id",
-        this.$store.state.planner_manage.selected_planner._id
-      );
-      let boxes = await this.$axios.$post("get_all_box", data);
-      this.$store.commit("box/set_boxes", boxes);
-      localStorage.removeItem("boxes");
-      localStorage.setItem("boxes", JSON.stringify(boxes));
+      try {
+        let data = new FormData();
+        data.append("user_id", this.$store.state.user_id);
+        data.append(
+          "pln_id",
+          this.$store.state.planner_manage.selected_planner._id
+        );
+        const config = {
+          cancelToken: this.$store.state.planner_manage.axios_cancel_token.token
+        };
+        let boxes = await this.$axios.$post("get_all_box", data, config);
+        boxes.reverse();
+        this.$store.commit("box/set_boxes", boxes);
+        localStorage.removeItem("boxes");
+        localStorage.setItem("boxes", JSON.stringify(boxes));
+      } catch {}
     },
     async get_box_std() {
       let data = new FormData();
@@ -34,6 +45,34 @@ export default {
       this.$store.commit("box/set_colors", colors);
     },
     //
+    async add_box_by_excel(file) {
+      let data = new FormData();
+      var set_status = this.set_btn_excel_status;
+      console.log("add_box_by_excel");
+      console.log(this.$store.state.planner_manage.selected_planner._id);
+      data.append("user_id", this.$store.state.user_id);
+      data.append(
+        "pln_id",
+        this.$store.state.planner_manage.selected_planner._id
+      );
+      data.append("file", file);
+      set_status(true);
+      const config = {
+        onUploadProgress: function(progressEvent) {
+          var percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          console.log(percentCompleted);
+          if (percentCompleted === 100) {
+            set_status(false);
+          }
+        }
+      };
+      let result = await this.$axios.$post("add_box_by_excel", data, config);
+      this.$refs.excel_file.value = null;
+      this.get_all_box();
+      this.show_alert(result);
+    },
     async add_box() {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);

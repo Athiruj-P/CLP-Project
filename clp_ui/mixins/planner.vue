@@ -5,6 +5,7 @@ export default {
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       let planners = await this.$axios.$post("get_all_planner", data);
+      planners.reverse()
       this.$store.commit("planner/set_planner", planners);
       localStorage.removeItem("planners");
       localStorage.setItem("planners", JSON.stringify(planners));

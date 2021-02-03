@@ -17,6 +17,9 @@ export default {
       data.append("username", this.$store.state.username);
       await this.$axios.$post("logout", data);
       this.$store.commit("clear_login");
+      this.$store.commit("planner_manage/clear_value");
+      this.$store.commit("planner/clear_value");
+      this.$store.commit("box/clear_value");
       localStorage.clear();
       this.$router.push("login");
     }
