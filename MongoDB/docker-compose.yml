@@ -1,0 +1,31 @@
+# Docker compose MongoDB and Mongo-express
+version: "3"
+
+services:
+  database:
+    image: mongo
+    container_name: "clp_mongo_container"
+    environment:
+      - MONGO_INITDB_DATABASE=CLP_DB
+      # - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      # - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+    volumes:
+      # copy init-mongo.js to /docker-entrypoint-initdb.d/ as a read only file
+      # /docker-entrypoint-initdb.d is a folder that already created inside the mongo container
+      # used for initiating database
+      - ./init-mongo.js:/docker-entry-point-initdb.d/init-mongo.js:ro
+
+      # map folder to save data in local folder "mongo-volumn"
+      # /data/db is a mongodbb container folder
+      - clp-mongo-volumn:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - clp_network
+    restart: always
+volumes:
+  clp-mongo-volumn:
+
+networks:
+  clp_network:
+    external: true
