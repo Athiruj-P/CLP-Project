@@ -38,6 +38,7 @@ export default {
       this.$store.commit("planner/set_colors", color);
     },
     async add_planner() {
+      // this.btn_add_status
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       data.append("name", this.$store.state.planner_dialog.name);

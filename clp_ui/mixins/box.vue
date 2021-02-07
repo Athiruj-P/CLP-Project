@@ -46,10 +46,9 @@ export default {
     },
     //
     async add_box_by_excel(file) {
+      this.$store.commit("planner_manage/set_is_box_list_change", true);
       let data = new FormData();
       var set_status = this.set_btn_excel_status;
-      console.log("add_box_by_excel");
-      console.log(this.$store.state.planner_manage.selected_planner._id);
       data.append("user_id", this.$store.state.user_id);
       data.append(
         "pln_id",
@@ -62,7 +61,6 @@ export default {
           var percentCompleted = Math.round(
             (progressEvent.loaded * 100) / progressEvent.total
           );
-          console.log(percentCompleted);
           if (percentCompleted === 100) {
             set_status(false);
           }
@@ -74,6 +72,7 @@ export default {
       this.show_alert(result);
     },
     async add_box() {
+      this.$store.commit("planner_manage/set_is_box_list_change", true);
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       data.append(
@@ -94,6 +93,7 @@ export default {
     },
     //
     async edit_box() {
+      this.$store.commit("planner_manage/set_is_box_list_change", true);
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       data.append("box_id", this.obj_box._id);
@@ -111,6 +111,7 @@ export default {
     },
     //
     async delete_box() {
+      this.$store.commit("planner_manage/set_is_box_list_change", true);
       let data = new FormData();
       data.append("user_id", this.$store.state.user_id);
       data.append("box_id", this.obj_box._id);

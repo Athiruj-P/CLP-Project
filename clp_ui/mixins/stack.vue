@@ -22,6 +22,7 @@ export default {
         this.$store.commit("planner_manage/set_render_data", render_result);
         localStorage.removeItem("render_result");
         localStorage.setItem("render_result", JSON.stringify(render_result));
+        this.$store.commit("planner_manage/set_is_box_list_change", false);
       } catch {}
     }
   }
