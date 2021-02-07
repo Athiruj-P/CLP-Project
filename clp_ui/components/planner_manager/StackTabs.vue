@@ -67,7 +67,8 @@
 
           <v-list
             v-if="$store.state.planner_manage.render_data"
-            height="300px"
+            height="auto"
+            max-height="300px"
             class="overflow-y-auto"
           >
             <v-list-item @click="click_menu('0000')">
@@ -89,7 +90,11 @@
           <v-list dense style="height:70%; background-color:#E5E7EB">
             <!-- <v-list-item-group v-model="selected_container" color="primary"> -->
             <!-- <v-list-item-group color="primary" class="overflow-y-auto" > -->
-            <v-list-item v-for="(item, index) in selected_menu" :key="index" class="mb-2">
+            <v-list-item
+              v-for="(item, index) in selected_menu"
+              :key="index"
+              class="mb-2"
+            >
               <v-list-item-icon>
                 <v-icon large :color="`#${item.box_color}`"
                   >fas fa-dice-d6</v-icon
@@ -147,7 +152,9 @@ export default {
     selected_all: [],
     selected_stack_list: []
   }),
-  mounted() {},
+  mounted() {
+    console.log(this.$store.state.planner_manage.render_data);
+  },
   methods: {
     // Stack list
     click_all_stack() {

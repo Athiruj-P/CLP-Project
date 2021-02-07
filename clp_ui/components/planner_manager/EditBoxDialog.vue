@@ -294,7 +294,10 @@ export default {
         JSON.stringify(this.$store.state.box_dialog.validation_status)
       );
       status.name = false;
-      if (this.name.length < 3 || this.name.length > 20) {
+      if (!this.name) {
+        this.err_msg.name =
+          "Box name must contain between 3 and 20 characters.";
+      } else if (this.name.length < 3 || this.name.length > 20) {
         this.err_msg.name =
           "Box name must contain between 3 and 20 characters.";
       } else if (this.name.search(this.pattern)) {
@@ -344,7 +347,11 @@ export default {
       }
       this.$store.commit("box_dialog/set_validation_status", status);
       this.check_btn_active();
-      console.log(this.$store.state.box_dialog.validation_status);
+    },
+    name(newVal) {
+      if (!newVal) {
+        this.on_keyup_name();
+      }
     }
   }
 };

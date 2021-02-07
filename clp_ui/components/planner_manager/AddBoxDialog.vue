@@ -84,7 +84,10 @@
         </v-row>
         <v-row>
           <v-col md="12">
-            <BoxSizeTabs :show="dialog" :unit="$store.state.planner_manage.selected_planner.pln_unit" />
+            <BoxSizeTabs
+              :show="dialog"
+              :unit="$store.state.planner_manage.selected_planner.pln_unit"
+            />
           </v-col>
         </v-row>
         <!-- Size -->
@@ -183,6 +186,7 @@ export default {
       this.qty = this.$store.state.box_dialog.qty;
       this.unit = this.$store.state.planner_manage.selected_planner.pln_unit;
       this.err_msg.name = "";
+      this.set_selected_color();
     },
     on_keyup_name() {
       let status = JSON.parse(
@@ -199,6 +203,23 @@ export default {
         status.name = true;
       }
       this.$store.commit("box_dialog/set_name", this.name);
+      this.$store.commit("box_dialog/set_validation_status", status);
+      this.check_btn_active();
+      console.log("Key up");
+      console.log(this.$store.state.box_dialog.validation_status);
+    },
+    set_selected_color() {
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.box_dialog.validation_status)
+      );
+      status.color = false;
+      if (Number.isInteger(Number(this.selected_color))) {
+        status.color = true;
+        this.$store.commit(
+          "box_dialog/set_color",
+          this.$store.state.box.colors[this.selected_color]._id
+        );
+      }
       this.$store.commit("box_dialog/set_validation_status", status);
       this.check_btn_active();
     },
@@ -227,20 +248,7 @@ export default {
       this.check_btn_active();
     },
     selected_color(newValue, oldValue) {
-      let status = JSON.parse(
-        JSON.stringify(this.$store.state.box_dialog.validation_status)
-      );
-      status.color = false;
-      if (Number.isInteger(Number(newValue))) {
-        status.color = true;
-        this.$store.commit(
-          "box_dialog/set_color",
-          this.$store.state.box.colors[newValue]._id
-        );
-      }
-      this.$store.commit("box_dialog/set_validation_status", status);
-      this.check_btn_active();
-      console.log(this.$store.state.box_dialog.validation_status);
+      this.set_selected_color();
     }
   }
 };
