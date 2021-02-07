@@ -9,12 +9,12 @@ services:
     #   - service-volumn:/app/log
     ports:
       - 5000:5000
-    # networks: 
-    #   - my_network
+    networks: 
+      - clp_network
     restart: always
 # volumes:
 #   service-volumn:
 #   db-file-volumn:
-# networks:
-#     my_network:
-#         external: true    
+networks:
+    clp_network:
+        external: true    
