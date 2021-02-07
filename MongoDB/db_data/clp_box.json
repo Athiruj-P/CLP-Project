@@ -1,0 +1,2211 @@
+[{
+  "_id": {
+    "$oid": "5ff985832abc0041e55b85fa"
+  },
+  "box_name": "Box01",
+  "box_width": 3.94,
+  "box_height": 3.94,
+  "box_depth": 3.94,
+  "box_quantity": 2,
+  "box_unit_id": {
+    "$oid": "5ff0191b35949adbaba807e1"
+  },
+  "box_color_id": {
+    "$oid": "5ff016fb35949adbaba807ce"
+  },
+  "box_created_date": "2021-01-09 17:29:23.102610",
+  "box_latest_updated": "2021-01-31 22:00:53.642646",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ff9877b53a092c1b24d160e"
+  },
+  "box_name": "Box ชุดที่ 2",
+  "box_width": 10,
+  "box_height": 10,
+  "box_depth": 10,
+  "box_quantity": 4,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0177235949adbaba807d4"
+  },
+  "box_created_date": "2021-01-09 17:37:47.797591",
+  "box_latest_updated": "2021-01-25 23:48:40.112526",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ff9f1704eaeac0e8d8d58ef"
+  },
+  "box_name": "Box022222",
+  "box_width": 10,
+  "box_height": 10,
+  "box_depth": 10,
+  "box_quantity": 4,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff014d935949adbaba807cc"
+  },
+  "box_created_date": "2021-01-10 01:09:52.759579",
+  "box_latest_updated": "2021-01-10 01:11:03.850117",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82da"
+  },
+  "box_name": "box1",
+  "box_width": 10,
+  "box_height": 10,
+  "box_depth": 10,
+  "box_quantity": 2,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff014d935949adbaba807cc",
+  "box_created_date": "2021-01-10 17:03:11.852571",
+  "box_latest_updated": "2021-01-10 17:03:11.852571",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82db"
+  },
+  "box_name": "box2",
+  "box_width": 20,
+  "box_height": 10,
+  "box_depth": 10,
+  "box_quantity": 3,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016e735949adbaba807cd",
+  "box_created_date": "2021-01-10 17:03:11.852745",
+  "box_latest_updated": "2021-01-10 17:03:11.852745",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82dc"
+  },
+  "box_name": "box3",
+  "box_width": 30,
+  "box_height": 10,
+  "box_depth": 30,
+  "box_quantity": 4,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016fb35949adbaba807ce",
+  "box_created_date": "2021-01-10 17:03:11.852860",
+  "box_latest_updated": "2021-01-10 17:03:11.852860",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82dd"
+  },
+  "box_name": "box4",
+  "box_width": 40,
+  "box_height": 10,
+  "box_depth": 40,
+  "box_quantity": 5,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0170435949adbaba807cf",
+  "box_created_date": "2021-01-10 17:03:11.853064",
+  "box_latest_updated": "2021-01-10 17:03:11.853064",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82de"
+  },
+  "box_name": "box5",
+  "box_width": 50,
+  "box_height": 10,
+  "box_depth": 50,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0173735949adbaba807d0",
+  "box_created_date": "2021-01-10 17:03:11.853182",
+  "box_latest_updated": "2021-01-10 17:03:11.853182",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82df"
+  },
+  "box_name": "box6",
+  "box_width": 10,
+  "box_height": 30,
+  "box_depth": 10,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0175635949adbaba807d1",
+  "box_created_date": "2021-01-10 17:03:11.853289",
+  "box_latest_updated": "2021-01-10 17:03:11.853289",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e0"
+  },
+  "box_name": "box7",
+  "box_width": 20,
+  "box_height": 40,
+  "box_depth": 20,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176435949adbaba807d2",
+  "box_created_date": "2021-01-10 17:03:11.853393",
+  "box_latest_updated": "2021-01-10 17:03:11.853393",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e1"
+  },
+  "box_name": "box8",
+  "box_width": 30,
+  "box_height": 50,
+  "box_depth": 30,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176b35949adbaba807d3",
+  "box_created_date": "2021-01-10 17:03:11.853496",
+  "box_latest_updated": "2021-01-10 17:03:11.853496",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e2"
+  },
+  "box_name": "box9",
+  "box_width": 40,
+  "box_height": 10,
+  "box_depth": 10,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177235949adbaba807d4",
+  "box_created_date": "2021-01-10 17:03:11.853617",
+  "box_latest_updated": "2021-01-10 17:03:11.853617",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e3"
+  },
+  "box_name": "box10",
+  "box_width": 50,
+  "box_height": 20,
+  "box_depth": 10,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177d35949adbaba807d5",
+  "box_created_date": "2021-01-10 17:03:11.853721",
+  "box_latest_updated": "2021-01-10 17:03:11.853721",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e4"
+  },
+  "box_name": "box11",
+  "box_width": 10,
+  "box_height": 30,
+  "box_depth": 10,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0178a35949adbaba807d6",
+  "box_created_date": "2021-01-10 17:03:11.853823",
+  "box_latest_updated": "2021-01-10 17:03:11.853823",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e5"
+  },
+  "box_name": "box12",
+  "box_width": 20,
+  "box_height": 10,
+  "box_depth": 30,
+  "box_quantity": 6,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179235949adbaba807d7",
+  "box_created_date": "2021-01-10 17:03:11.853962",
+  "box_latest_updated": "2021-01-10 17:03:11.853962",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e6"
+  },
+  "box_name": "box13",
+  "box_width": 76.2,
+  "box_height": 25.4,
+  "box_depth": 101.6,
+  "box_quantity": 12,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0179935949adbaba807d8"
+  },
+  "box_created_date": "2021-01-10 17:03:11.854083",
+  "box_latest_updated": "2021-01-26 18:15:47.479359",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e7"
+  },
+  "box_name": "box14",
+  "box_width": 40,
+  "box_height": 10,
+  "box_depth": 50,
+  "box_quantity": 20,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017a035949adbaba807d9"
+  },
+  "box_created_date": "2021-01-10 17:03:11.854215",
+  "box_latest_updated": "2021-01-26 18:15:36.219868",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "5ffad0df77b64b4a582b82e8"
+  },
+  "box_name": "box15",
+  "box_width": 127,
+  "box_height": 25.4,
+  "box_depth": 25.4,
+  "box_quantity": 20,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017a835949adbaba807da"
+  },
+  "box_created_date": "2021-01-10 17:03:11.854334",
+  "box_latest_updated": "2021-01-26 16:14:29.501520",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "600a8ff72356f72e67988c48"
+  },
+  "box_name": "Test box set 1",
+  "box_width": 4.33,
+  "box_height": 3.94,
+  "box_depth": 6.69,
+  "box_quantity": 2,
+  "box_unit_id": {
+    "$oid": "5ff0191b35949adbaba807e1"
+  },
+  "box_color_id": {
+    "$oid": "5ff0178a35949adbaba807d6"
+  },
+  "box_created_date": "2021-01-22 15:42:31.782126",
+  "box_latest_updated": "2021-01-31 22:01:23.533165",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "600a90752356f72e67988c49"
+  },
+  "box_name": "Test box set 1",
+  "box_width": 14,
+  "box_height": 6,
+  "box_depth": 20,
+  "box_quantity": 10,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0179235949adbaba807d7"
+  },
+  "box_created_date": "2021-01-22 15:44:37.250349",
+  "box_latest_updated": "2021-01-22 15:44:37.250349",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "600a98d62356f72e67988c4a"
+  },
+  "box_name": "Box ชุดที่ 2",
+  "box_width": 10,
+  "box_height": 10,
+  "box_depth": 10,
+  "box_quantity": 4,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0177235949adbaba807d4"
+  },
+  "box_created_date": "2021-01-22 16:20:22.163052",
+  "box_latest_updated": "2021-01-22 16:25:24.702177",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "600f115f2d10d89f69afa92e"
+  },
+  "box_name": "jmp",
+  "box_width": 78,
+  "box_height": 32,
+  "box_depth": 89,
+  "box_quantity": 100,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0177d35949adbaba807d5"
+  },
+  "box_created_date": "2021-01-26 01:43:43.162433",
+  "box_latest_updated": "2021-01-27 01:39:01.740031",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "600f118c2d10d89f69afa92f"
+  },
+  "box_name": "nfc",
+  "box_width": 17,
+  "box_height": 18,
+  "box_depth": 25,
+  "box_quantity": 13,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff016fb35949adbaba807ce"
+  },
+  "box_created_date": "2021-01-26 01:44:28.066229",
+  "box_latest_updated": "2021-01-27 01:34:07.661143",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "60105f8da1b91b9bb28609d4"
+  },
+  "box_name": "sdg",
+  "box_width": 31,
+  "box_height": 26,
+  "box_depth": 36,
+  "box_quantity": 30,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0176435949adbaba807d2"
+  },
+  "box_created_date": "2021-01-27 01:29:33.710347",
+  "box_latest_updated": "2021-02-03 18:08:38.515602",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "60105fc6a1b91b9bb28609d5"
+  },
+  "box_name": "sdl",
+  "box_width": 35,
+  "box_height": 8,
+  "box_depth": 90,
+  "box_quantity": 7,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0176435949adbaba807d2"
+  },
+  "box_created_date": "2021-01-27 01:30:30.471036",
+  "box_latest_updated": "2021-01-27 01:34:12.669834",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6010601ca1b91b9bb28609d6"
+  },
+  "box_name": "aaa",
+  "box_width": 90,
+  "box_height": 39,
+  "box_depth": 56,
+  "box_quantity": 77,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017af35949adbaba807db"
+  },
+  "box_created_date": "2021-01-27 01:31:56.995783",
+  "box_latest_updated": "2021-01-27 01:33:47.038401",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "60106166a1b91b9bb28609da"
+  },
+  "box_name": "det",
+  "box_width": 31,
+  "box_height": 26,
+  "box_depth": 36,
+  "box_quantity": 66,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0176b35949adbaba807d3"
+  },
+  "box_created_date": "2021-01-27 01:37:26.225270",
+  "box_latest_updated": "2021-01-27 01:38:36.920304",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601061dea1b91b9bb28609dc"
+  },
+  "box_name": "hdz",
+  "box_width": 11,
+  "box_height": 6,
+  "box_depth": 17,
+  "box_quantity": 60,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017af35949adbaba807db"
+  },
+  "box_created_date": "2021-01-27 01:39:26.590490",
+  "box_latest_updated": "2021-02-03 18:08:54.125737",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "60106381a1b91b9bb28609de"
+  },
+  "box_name": "qwqw",
+  "box_width": 230,
+  "box_height": 230,
+  "box_depth": 600,
+  "box_quantity": 2,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017c635949adbaba807dd"
+  },
+  "box_created_date": "2021-01-27 01:46:25.450548",
+  "box_latest_updated": "2021-01-27 20:45:45.000304",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6016d81d0b41233a78f5ce94"
+  },
+  "box_name": "Test box 1",
+  "box_width": 141,
+  "box_height": 135,
+  "box_depth": 145,
+  "box_quantity": 10,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017c635949adbaba807dd"
+  },
+  "box_created_date": "2021-01-31 23:17:33.007291",
+  "box_latest_updated": "2021-01-31 23:45:20.080989",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6016de620b41233a78f5ce96"
+  },
+  "box_name": "Test box 2",
+  "box_width": 91,
+  "box_height": 73,
+  "box_depth": 46,
+  "box_quantity": 13,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0175635949adbaba807d1"
+  },
+  "box_created_date": "2021-01-31 23:44:18.883054",
+  "box_latest_updated": "2021-02-07 19:25:46.496839",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6016de750b41233a78f5ce97"
+  },
+  "box_name": "Test box 3",
+  "box_width": 15,
+  "box_height": 15,
+  "box_depth": 15,
+  "box_quantity": 40,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0177235949adbaba807d4"
+  },
+  "box_created_date": "2021-01-31 23:44:37.255083",
+  "box_latest_updated": "2021-02-03 17:20:11.410605",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6018bd3489056d358b6913b6"
+  },
+  "box_name": "Box 1",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 30,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017a035949adbaba807d9"
+  },
+  "box_created_date": "2021-02-02 09:47:16.578115",
+  "box_latest_updated": "2021-02-03 02:08:42.238543",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6018bdb289056d358b6913b7"
+  },
+  "box_name": "Box 2",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 100,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0176435949adbaba807d2"
+  },
+  "box_created_date": "2021-02-02 09:49:22.133521",
+  "box_latest_updated": "2021-02-03 02:08:48.880811",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019a565c17ef6fb3da5d6bc"
+  },
+  "box_name": "111",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 13,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017a835949adbaba807da"
+  },
+  "box_created_date": "2021-02-03 02:17:57.154440",
+  "box_latest_updated": "2021-02-03 02:18:23.782694",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019a649c17ef6fb3da5d6be"
+  },
+  "box_name": "222",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 18,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017c635949adbaba807dd"
+  },
+  "box_created_date": "2021-02-03 02:21:45.679644",
+  "box_latest_updated": "2021-02-03 02:22:09.502508",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019a684c17ef6fb3da5d6bf"
+  },
+  "box_name": "333",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 33,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017bb35949adbaba807dc"
+  },
+  "box_created_date": "2021-02-03 02:22:44.418806",
+  "box_latest_updated": "2021-02-03 02:26:32.760228",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019a7a0c17ef6fb3da5d6c0"
+  },
+  "box_name": "111",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 66,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017a835949adbaba807da"
+  },
+  "box_created_date": "2021-02-03 02:27:28.744836",
+  "box_latest_updated": "2021-02-03 02:27:53.792710",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019a8a2c17ef6fb3da5d6c1"
+  },
+  "box_name": "111",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 44,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017d635949adbaba807df"
+  },
+  "box_created_date": "2021-02-03 02:31:46.238486",
+  "box_latest_updated": "2021-02-03 02:38:53.294585",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019ab55c17ef6fb3da5d6c2"
+  },
+  "box_name": "qwertgfhjn",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 44,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017ce35949adbaba807de"
+  },
+  "box_created_date": "2021-02-03 02:43:17.249173",
+  "box_latest_updated": "2021-02-03 02:44:06.779919",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c3"
+  },
+  "box_name": "box1",
+  "box_width": 6,
+  "box_height": 19,
+  "box_depth": 55,
+  "box_quantity": 88,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff014d935949adbaba807cc",
+  "box_created_date": "2021-02-03 02:45:22.048913",
+  "box_latest_updated": "2021-02-06 00:08:46.451285",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c4"
+  },
+  "box_name": "box2",
+  "box_width": 27,
+  "box_height": 19,
+  "box_depth": 7,
+  "box_quantity": 46,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016e735949adbaba807cd",
+  "box_created_date": "2021-02-03 02:45:22.049078",
+  "box_latest_updated": "2021-02-06 00:08:54.117653",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c5"
+  },
+  "box_name": "Test box 3",
+  "box_width": 15,
+  "box_height": 15,
+  "box_depth": 15,
+  "box_quantity": 40,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0177235949adbaba807d4"
+  },
+  "box_created_date": "2021-02-03 02:45:22.049215",
+  "box_latest_updated": "2021-02-06 00:08:58.877976",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c6"
+  },
+  "box_name": "box4",
+  "box_width": 5,
+  "box_height": 20,
+  "box_depth": 44,
+  "box_quantity": 76,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0170435949adbaba807cf",
+  "box_created_date": "2021-02-03 02:45:22.049329",
+  "box_latest_updated": "2021-02-06 00:09:27.362974",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c7"
+  },
+  "box_name": "box5",
+  "box_width": 59,
+  "box_height": 72,
+  "box_depth": 84,
+  "box_quantity": 81,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0173735949adbaba807d0",
+  "box_created_date": "2021-02-03 02:45:22.049438",
+  "box_latest_updated": "2021-02-06 00:09:15.986015",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c8"
+  },
+  "box_name": "box6",
+  "box_width": 44,
+  "box_height": 51,
+  "box_depth": 68,
+  "box_quantity": 79,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0175635949adbaba807d1",
+  "box_created_date": "2021-02-03 02:45:22.049577",
+  "box_latest_updated": "2021-02-06 00:09:04.521024",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6c9"
+  },
+  "box_name": "box7",
+  "box_width": 15,
+  "box_height": 87,
+  "box_depth": 75,
+  "box_quantity": 9,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176435949adbaba807d2",
+  "box_created_date": "2021-02-03 02:45:22.049699",
+  "box_latest_updated": "2021-02-03 02:45:22.049699",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6ca"
+  },
+  "box_name": "box8",
+  "box_width": 20,
+  "box_height": 93,
+  "box_depth": 50,
+  "box_quantity": 91,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176b35949adbaba807d3",
+  "box_created_date": "2021-02-03 02:45:22.049817",
+  "box_latest_updated": "2021-02-03 02:45:22.049817",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6cb"
+  },
+  "box_name": "box9",
+  "box_width": 67,
+  "box_height": 90,
+  "box_depth": 46,
+  "box_quantity": 20,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177235949adbaba807d4",
+  "box_created_date": "2021-02-03 02:45:22.049936",
+  "box_latest_updated": "2021-02-03 02:45:22.049936",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6cc"
+  },
+  "box_name": "box10",
+  "box_width": 20,
+  "box_height": 27,
+  "box_depth": 94,
+  "box_quantity": 65,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177d35949adbaba807d5",
+  "box_created_date": "2021-02-03 02:45:22.050053",
+  "box_latest_updated": "2021-02-03 02:45:22.050053",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6cd"
+  },
+  "box_name": "box11",
+  "box_width": 19,
+  "box_height": 2,
+  "box_depth": 59,
+  "box_quantity": 3,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0178a35949adbaba807d6",
+  "box_created_date": "2021-02-03 02:45:22.050183",
+  "box_latest_updated": "2021-02-03 02:45:22.050183",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6ce"
+  },
+  "box_name": "box12",
+  "box_width": 16,
+  "box_height": 33,
+  "box_depth": 16,
+  "box_quantity": 98,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179235949adbaba807d7",
+  "box_created_date": "2021-02-03 02:45:22.050301",
+  "box_latest_updated": "2021-02-06 00:08:25.720787",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6cf"
+  },
+  "box_name": "box13",
+  "box_width": 98,
+  "box_height": 60,
+  "box_depth": 50,
+  "box_quantity": 37,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179935949adbaba807d8",
+  "box_created_date": "2021-02-03 02:45:22.050418",
+  "box_latest_updated": "2021-02-03 02:45:22.050418",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d0"
+  },
+  "box_name": "box14",
+  "box_width": 14,
+  "box_height": 26,
+  "box_depth": 1,
+  "box_quantity": 18,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a035949adbaba807d9",
+  "box_created_date": "2021-02-03 02:45:22.050556",
+  "box_latest_updated": "2021-02-03 02:45:22.050556",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d1"
+  },
+  "box_name": "box15",
+  "box_width": 75,
+  "box_height": 61,
+  "box_depth": 70,
+  "box_quantity": 27,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a835949adbaba807da",
+  "box_created_date": "2021-02-03 02:45:22.050675",
+  "box_latest_updated": "2021-02-03 02:45:22.050675",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d2"
+  },
+  "box_name": "box16",
+  "box_width": 29,
+  "box_height": 5,
+  "box_depth": 1,
+  "box_quantity": 91,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017af35949adbaba807db",
+  "box_created_date": "2021-02-03 02:45:22.050790",
+  "box_latest_updated": "2021-02-06 00:08:09.781567",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d3"
+  },
+  "box_name": "box17",
+  "box_width": 82,
+  "box_height": 44,
+  "box_depth": 4,
+  "box_quantity": 56,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017bb35949adbaba807dc",
+  "box_created_date": "2021-02-03 02:45:22.050906",
+  "box_latest_updated": "2021-02-03 02:45:22.050906",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d4"
+  },
+  "box_name": "box18",
+  "box_width": 93,
+  "box_height": 69,
+  "box_depth": 13,
+  "box_quantity": 92,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017c635949adbaba807dd",
+  "box_created_date": "2021-02-03 02:45:22.051021",
+  "box_latest_updated": "2021-02-03 03:02:27.340764",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d5"
+  },
+  "box_name": "box19",
+  "box_width": 91,
+  "box_height": 88,
+  "box_depth": 15,
+  "box_quantity": 14,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017ce35949adbaba807de",
+  "box_created_date": "2021-02-03 02:45:22.051148",
+  "box_latest_updated": "2021-02-06 00:08:01.736083",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "6019abd2c17ef6fb3da5d6d6"
+  },
+  "box_name": "box20",
+  "box_width": 55,
+  "box_height": 80,
+  "box_depth": 78,
+  "box_quantity": 65,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017d635949adbaba807df",
+  "box_created_date": "2021-02-03 02:45:22.051266",
+  "box_latest_updated": "2021-02-06 00:07:55.159859",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a849688e285f80f2cbea3"
+  },
+  "box_name": "test",
+  "box_width": 11,
+  "box_height": 10,
+  "box_depth": 17,
+  "box_quantity": 1,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff017a835949adbaba807da"
+  },
+  "box_created_date": "2021-02-03 18:10:14.685401",
+  "box_latest_updated": "2021-02-03 18:10:14.685401",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbea6"
+  },
+  "box_name": "box1",
+  "box_width": 40,
+  "box_height": 98,
+  "box_depth": 97,
+  "box_quantity": 52,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff014d935949adbaba807cc",
+  "box_created_date": "2021-02-03 18:12:27.466323",
+  "box_latest_updated": "2021-02-03 18:12:27.466323",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbea7"
+  },
+  "box_name": "box2",
+  "box_width": 41,
+  "box_height": 59,
+  "box_depth": 35,
+  "box_quantity": 39,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016e735949adbaba807cd",
+  "box_created_date": "2021-02-03 18:12:27.466506",
+  "box_latest_updated": "2021-02-03 18:12:27.466506",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbea8"
+  },
+  "box_name": "box3",
+  "box_width": 77,
+  "box_height": 68,
+  "box_depth": 90,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016fb35949adbaba807ce",
+  "box_created_date": "2021-02-03 18:12:27.466647",
+  "box_latest_updated": "2021-02-03 18:14:18.763321",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbea9"
+  },
+  "box_name": "box4",
+  "box_width": 99,
+  "box_height": 53,
+  "box_depth": 80,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0170435949adbaba807cf",
+  "box_created_date": "2021-02-03 18:12:27.466784",
+  "box_latest_updated": "2021-02-03 18:12:27.466784",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeaa"
+  },
+  "box_name": "box5",
+  "box_width": 92,
+  "box_height": 98,
+  "box_depth": 14,
+  "box_quantity": 79,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0173735949adbaba807d0",
+  "box_created_date": "2021-02-03 18:12:27.466934",
+  "box_latest_updated": "2021-02-03 18:14:06.214598",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeab"
+  },
+  "box_name": "box6",
+  "box_width": 83,
+  "box_height": 21,
+  "box_depth": 28,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0175635949adbaba807d1",
+  "box_created_date": "2021-02-03 18:12:27.467074",
+  "box_latest_updated": "2021-02-03 18:14:22.634693",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeac"
+  },
+  "box_name": "box7",
+  "box_width": 36,
+  "box_height": 19,
+  "box_depth": 12,
+  "box_quantity": 19,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176435949adbaba807d2",
+  "box_created_date": "2021-02-03 18:12:27.467210",
+  "box_latest_updated": "2021-02-03 18:12:27.467210",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbead"
+  },
+  "box_name": "box8",
+  "box_width": 92,
+  "box_height": 95,
+  "box_depth": 96,
+  "box_quantity": 13,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176b35949adbaba807d3",
+  "box_created_date": "2021-02-03 18:12:27.467366",
+  "box_latest_updated": "2021-02-03 18:12:27.467366",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeae"
+  },
+  "box_name": "box9",
+  "box_width": 71,
+  "box_height": 62,
+  "box_depth": 79,
+  "box_quantity": 65,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177235949adbaba807d4",
+  "box_created_date": "2021-02-03 18:12:27.467507",
+  "box_latest_updated": "2021-02-03 18:14:31.214938",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeaf"
+  },
+  "box_name": "box10",
+  "box_width": 17,
+  "box_height": 23,
+  "box_depth": 88,
+  "box_quantity": 38,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177d35949adbaba807d5",
+  "box_created_date": "2021-02-03 18:12:27.467697",
+  "box_latest_updated": "2021-02-03 18:12:27.467697",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb0"
+  },
+  "box_name": "box11",
+  "box_width": 62,
+  "box_height": 51,
+  "box_depth": 70,
+  "box_quantity": 92,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0178a35949adbaba807d6"
+  },
+  "box_created_date": "2021-02-03 18:12:27.467860",
+  "box_latest_updated": "2021-02-03 18:14:40.622928",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb1"
+  },
+  "box_name": "box12",
+  "box_width": 68,
+  "box_height": 69,
+  "box_depth": 44,
+  "box_quantity": 59,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179235949adbaba807d7",
+  "box_created_date": "2021-02-03 18:12:27.468014",
+  "box_latest_updated": "2021-02-03 18:12:27.468014",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb2"
+  },
+  "box_name": "box13",
+  "box_width": 21,
+  "box_height": 84,
+  "box_depth": 4,
+  "box_quantity": 12,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179935949adbaba807d8",
+  "box_created_date": "2021-02-03 18:12:27.468145",
+  "box_latest_updated": "2021-02-03 18:12:27.468145",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb3"
+  },
+  "box_name": "box14",
+  "box_width": 51,
+  "box_height": 37,
+  "box_depth": 22,
+  "box_quantity": 49,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a035949adbaba807d9",
+  "box_created_date": "2021-02-03 18:12:27.468325",
+  "box_latest_updated": "2021-02-03 18:12:27.468325",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb4"
+  },
+  "box_name": "box15",
+  "box_width": 82,
+  "box_height": 29,
+  "box_depth": 18,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a835949adbaba807da",
+  "box_created_date": "2021-02-03 18:12:27.468465",
+  "box_latest_updated": "2021-02-03 18:12:27.468465",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb5"
+  },
+  "box_name": "box16",
+  "box_width": 32,
+  "box_height": 45,
+  "box_depth": 16,
+  "box_quantity": 53,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017af35949adbaba807db",
+  "box_created_date": "2021-02-03 18:12:27.468627",
+  "box_latest_updated": "2021-02-03 18:12:27.468627",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb6"
+  },
+  "box_name": "box17",
+  "box_width": 47,
+  "box_height": 36,
+  "box_depth": 4,
+  "box_quantity": 43,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017bb35949adbaba807dc",
+  "box_created_date": "2021-02-03 18:12:27.468797",
+  "box_latest_updated": "2021-02-03 18:12:27.468797",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb7"
+  },
+  "box_name": "box18",
+  "box_width": 92,
+  "box_height": 30,
+  "box_depth": 82,
+  "box_quantity": 69,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017c635949adbaba807dd",
+  "box_created_date": "2021-02-03 18:12:27.469177",
+  "box_latest_updated": "2021-02-03 18:14:51.294798",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb8"
+  },
+  "box_name": "box19",
+  "box_width": 94,
+  "box_height": 74,
+  "box_depth": 81,
+  "box_quantity": 80,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017ce35949adbaba807de",
+  "box_created_date": "2021-02-03 18:12:27.469347",
+  "box_latest_updated": "2021-02-03 18:13:44.948660",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601a851b88e285f80f2cbeb9"
+  },
+  "box_name": "box20",
+  "box_width": 92,
+  "box_height": 32,
+  "box_depth": 47,
+  "box_quantity": 30,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017d635949adbaba807df",
+  "box_created_date": "2021-02-03 18:12:27.469482",
+  "box_latest_updated": "2021-02-03 18:12:27.469482",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d1d345e1ce302d37e62de"
+  },
+  "box_name": "Box 1",
+  "box_width": 41,
+  "box_height": 35,
+  "box_depth": 45,
+  "box_quantity": 10,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0170435949adbaba807cf"
+  },
+  "box_created_date": "2021-02-05 17:25:56.289555",
+  "box_latest_updated": "2021-02-06 00:56:24.789127",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601d7e1c5e1ce302d37e62df"
+  },
+  "box_name": "Box 2",
+  "box_width": 31,
+  "box_height": 26,
+  "box_depth": 36,
+  "box_quantity": 20,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0175635949adbaba807d1"
+  },
+  "box_created_date": "2021-02-06 00:19:24.280632",
+  "box_latest_updated": "2021-02-06 00:19:24.280632",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d86a85e1ce302d37e62ea"
+  },
+  "box_name": "Box 3",
+  "box_width": 31,
+  "box_height": 13,
+  "box_depth": 36,
+  "box_quantity": 20,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0177235949adbaba807d4"
+  },
+  "box_created_date": "2021-02-06 00:55:52.778568",
+  "box_latest_updated": "2021-02-06 00:55:52.778568",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d882b5e1ce302d37e62ec"
+  },
+  "box_name": "123",
+  "box_width": 12.2,
+  "box_height": 10.24,
+  "box_depth": 14.17,
+  "box_quantity": 19,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0176435949adbaba807d2"
+  },
+  "box_created_date": "2021-02-06 01:02:19.657989",
+  "box_latest_updated": "2021-02-06 01:02:19.657989",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62ed"
+  },
+  "box_name": "box1",
+  "box_width": 40,
+  "box_height": 98,
+  "box_depth": 97,
+  "box_quantity": 52,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff014d935949adbaba807cc",
+  "box_created_date": "2021-02-06 01:02:47.594010",
+  "box_latest_updated": "2021-02-06 01:02:47.594010",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62ee"
+  },
+  "box_name": "box2",
+  "box_width": 41,
+  "box_height": 59,
+  "box_depth": 35,
+  "box_quantity": 39,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016e735949adbaba807cd",
+  "box_created_date": "2021-02-06 01:02:47.594184",
+  "box_latest_updated": "2021-02-06 01:02:47.594184",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62ef"
+  },
+  "box_name": "box3",
+  "box_width": 77,
+  "box_height": 68,
+  "box_depth": 90,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016fb35949adbaba807ce",
+  "box_created_date": "2021-02-06 01:02:47.594381",
+  "box_latest_updated": "2021-02-06 01:02:47.594381",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f0"
+  },
+  "box_name": "box4",
+  "box_width": 99,
+  "box_height": 53,
+  "box_depth": 80,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0170435949adbaba807cf",
+  "box_created_date": "2021-02-06 01:02:47.594518",
+  "box_latest_updated": "2021-02-06 01:02:47.594518",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f1"
+  },
+  "box_name": "box5",
+  "box_width": 92,
+  "box_height": 98,
+  "box_depth": 14,
+  "box_quantity": 79,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0173735949adbaba807d0",
+  "box_created_date": "2021-02-06 01:02:47.594685",
+  "box_latest_updated": "2021-02-06 01:02:47.594685",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f2"
+  },
+  "box_name": "box6",
+  "box_width": 83,
+  "box_height": 21,
+  "box_depth": 28,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0175635949adbaba807d1",
+  "box_created_date": "2021-02-06 01:02:47.594835",
+  "box_latest_updated": "2021-02-06 01:02:47.594835",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f3"
+  },
+  "box_name": "box7",
+  "box_width": 36,
+  "box_height": 19,
+  "box_depth": 12,
+  "box_quantity": 19,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176435949adbaba807d2",
+  "box_created_date": "2021-02-06 01:02:47.595004",
+  "box_latest_updated": "2021-02-06 01:02:47.595004",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f4"
+  },
+  "box_name": "box8",
+  "box_width": 92,
+  "box_height": 95,
+  "box_depth": 96,
+  "box_quantity": 13,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176b35949adbaba807d3",
+  "box_created_date": "2021-02-06 01:02:47.595201",
+  "box_latest_updated": "2021-02-06 01:02:47.595201",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f5"
+  },
+  "box_name": "box9",
+  "box_width": 71,
+  "box_height": 62,
+  "box_depth": 79,
+  "box_quantity": 65,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177235949adbaba807d4",
+  "box_created_date": "2021-02-06 01:02:47.595350",
+  "box_latest_updated": "2021-02-06 01:02:47.595350",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f6"
+  },
+  "box_name": "box10",
+  "box_width": 17,
+  "box_height": 23,
+  "box_depth": 88,
+  "box_quantity": 38,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177d35949adbaba807d5",
+  "box_created_date": "2021-02-06 01:02:47.595529",
+  "box_latest_updated": "2021-02-06 01:02:47.595529",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f7"
+  },
+  "box_name": "box11",
+  "box_width": 62,
+  "box_height": 51,
+  "box_depth": 70,
+  "box_quantity": 92,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0178a35949adbaba807d6",
+  "box_created_date": "2021-02-06 01:02:47.595742",
+  "box_latest_updated": "2021-02-06 01:02:47.595742",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f8"
+  },
+  "box_name": "box12",
+  "box_width": 68,
+  "box_height": 69,
+  "box_depth": 44,
+  "box_quantity": 59,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179235949adbaba807d7",
+  "box_created_date": "2021-02-06 01:02:47.595891",
+  "box_latest_updated": "2021-02-06 01:02:47.595891",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62f9"
+  },
+  "box_name": "box13",
+  "box_width": 21,
+  "box_height": 84,
+  "box_depth": 4,
+  "box_quantity": 12,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179935949adbaba807d8",
+  "box_created_date": "2021-02-06 01:02:47.596042",
+  "box_latest_updated": "2021-02-06 01:02:47.596042",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62fa"
+  },
+  "box_name": "box14",
+  "box_width": 51,
+  "box_height": 37,
+  "box_depth": 22,
+  "box_quantity": 49,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a035949adbaba807d9",
+  "box_created_date": "2021-02-06 01:02:47.596179",
+  "box_latest_updated": "2021-02-06 01:02:47.596179",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62fb"
+  },
+  "box_name": "box15",
+  "box_width": 82,
+  "box_height": 29,
+  "box_depth": 18,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a835949adbaba807da",
+  "box_created_date": "2021-02-06 01:02:47.596313",
+  "box_latest_updated": "2021-02-06 01:02:47.596313",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62fc"
+  },
+  "box_name": "box16",
+  "box_width": 32,
+  "box_height": 45,
+  "box_depth": 16,
+  "box_quantity": 53,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017af35949adbaba807db",
+  "box_created_date": "2021-02-06 01:02:47.596447",
+  "box_latest_updated": "2021-02-06 01:02:47.596447",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62fd"
+  },
+  "box_name": "box17",
+  "box_width": 47,
+  "box_height": 36,
+  "box_depth": 4,
+  "box_quantity": 43,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017bb35949adbaba807dc",
+  "box_created_date": "2021-02-06 01:02:47.596581",
+  "box_latest_updated": "2021-02-06 01:02:47.596581",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62fe"
+  },
+  "box_name": "box18",
+  "box_width": 92,
+  "box_height": 30,
+  "box_depth": 82,
+  "box_quantity": 69,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017c635949adbaba807dd",
+  "box_created_date": "2021-02-06 01:02:47.596715",
+  "box_latest_updated": "2021-02-06 01:02:47.596715",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e62ff"
+  },
+  "box_name": "box19",
+  "box_width": 94,
+  "box_height": 74,
+  "box_depth": 81,
+  "box_quantity": 80,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017ce35949adbaba807de",
+  "box_created_date": "2021-02-06 01:02:47.596868",
+  "box_latest_updated": "2021-02-06 01:04:15.289841",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601d88475e1ce302d37e6300"
+  },
+  "box_name": "box20",
+  "box_width": 92,
+  "box_height": 32,
+  "box_depth": 47,
+  "box_quantity": 30,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017d635949adbaba807df",
+  "box_created_date": "2021-02-06 01:02:47.597018",
+  "box_latest_updated": "2021-02-06 01:04:23.324957",
+  "box_status": 0
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6304"
+  },
+  "box_name": "box1",
+  "box_width": 40,
+  "box_height": 98,
+  "box_depth": 97,
+  "box_quantity": 52,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff014d935949adbaba807cc",
+  "box_created_date": "2021-02-06 01:07:28.503283",
+  "box_latest_updated": "2021-02-06 01:07:28.503283",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6305"
+  },
+  "box_name": "box2",
+  "box_width": 41,
+  "box_height": 59,
+  "box_depth": 35,
+  "box_quantity": 39,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016e735949adbaba807cd",
+  "box_created_date": "2021-02-06 01:07:28.503448",
+  "box_latest_updated": "2021-02-06 01:07:28.503448",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6306"
+  },
+  "box_name": "box3",
+  "box_width": 77,
+  "box_height": 68,
+  "box_depth": 90,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016fb35949adbaba807ce",
+  "box_created_date": "2021-02-06 01:07:28.503581",
+  "box_latest_updated": "2021-02-06 01:07:28.503581",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6307"
+  },
+  "box_name": "box4",
+  "box_width": 99,
+  "box_height": 53,
+  "box_depth": 80,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0170435949adbaba807cf",
+  "box_created_date": "2021-02-06 01:07:28.503710",
+  "box_latest_updated": "2021-02-06 01:07:28.503710",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6308"
+  },
+  "box_name": "box5",
+  "box_width": 92,
+  "box_height": 98,
+  "box_depth": 14,
+  "box_quantity": 79,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0173735949adbaba807d0",
+  "box_created_date": "2021-02-06 01:07:28.503875",
+  "box_latest_updated": "2021-02-06 01:07:28.503875",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6309"
+  },
+  "box_name": "box6",
+  "box_width": 83,
+  "box_height": 21,
+  "box_depth": 28,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0175635949adbaba807d1",
+  "box_created_date": "2021-02-06 01:07:28.504067",
+  "box_latest_updated": "2021-02-06 01:07:28.504067",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e630a"
+  },
+  "box_name": "box7",
+  "box_width": 36,
+  "box_height": 19,
+  "box_depth": 12,
+  "box_quantity": 19,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176435949adbaba807d2",
+  "box_created_date": "2021-02-06 01:07:28.504198",
+  "box_latest_updated": "2021-02-06 01:07:28.504198",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e630b"
+  },
+  "box_name": "box8",
+  "box_width": 92,
+  "box_height": 95,
+  "box_depth": 96,
+  "box_quantity": 13,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176b35949adbaba807d3",
+  "box_created_date": "2021-02-06 01:07:28.504323",
+  "box_latest_updated": "2021-02-06 01:07:28.504323",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e630c"
+  },
+  "box_name": "box9",
+  "box_width": 71,
+  "box_height": 62,
+  "box_depth": 79,
+  "box_quantity": 65,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177235949adbaba807d4",
+  "box_created_date": "2021-02-06 01:07:28.504447",
+  "box_latest_updated": "2021-02-06 01:07:28.504447",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e630d"
+  },
+  "box_name": "box10",
+  "box_width": 17,
+  "box_height": 23,
+  "box_depth": 88,
+  "box_quantity": 38,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177d35949adbaba807d5",
+  "box_created_date": "2021-02-06 01:07:28.504570",
+  "box_latest_updated": "2021-02-06 01:07:28.504570",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e630e"
+  },
+  "box_name": "box11",
+  "box_width": 62,
+  "box_height": 51,
+  "box_depth": 70,
+  "box_quantity": 92,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0178a35949adbaba807d6",
+  "box_created_date": "2021-02-06 01:07:28.504693",
+  "box_latest_updated": "2021-02-06 01:07:28.504693",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e630f"
+  },
+  "box_name": "box12",
+  "box_width": 68,
+  "box_height": 69,
+  "box_depth": 44,
+  "box_quantity": 59,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179235949adbaba807d7",
+  "box_created_date": "2021-02-06 01:07:28.504842",
+  "box_latest_updated": "2021-02-06 01:07:28.504842",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6310"
+  },
+  "box_name": "box13",
+  "box_width": 21,
+  "box_height": 84,
+  "box_depth": 4,
+  "box_quantity": 12,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179935949adbaba807d8",
+  "box_created_date": "2021-02-06 01:07:28.504984",
+  "box_latest_updated": "2021-02-06 01:07:28.504984",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6311"
+  },
+  "box_name": "box14",
+  "box_width": 51,
+  "box_height": 37,
+  "box_depth": 22,
+  "box_quantity": 49,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a035949adbaba807d9",
+  "box_created_date": "2021-02-06 01:07:28.505135",
+  "box_latest_updated": "2021-02-06 01:07:28.505135",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6312"
+  },
+  "box_name": "box15",
+  "box_width": 82,
+  "box_height": 29,
+  "box_depth": 18,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a835949adbaba807da",
+  "box_created_date": "2021-02-06 01:07:28.505274",
+  "box_latest_updated": "2021-02-06 01:07:28.505274",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6313"
+  },
+  "box_name": "box16",
+  "box_width": 32,
+  "box_height": 45,
+  "box_depth": 16,
+  "box_quantity": 53,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017af35949adbaba807db",
+  "box_created_date": "2021-02-06 01:07:28.505411",
+  "box_latest_updated": "2021-02-06 01:07:28.505411",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6314"
+  },
+  "box_name": "box17",
+  "box_width": 47,
+  "box_height": 36,
+  "box_depth": 4,
+  "box_quantity": 43,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017bb35949adbaba807dc",
+  "box_created_date": "2021-02-06 01:07:28.505547",
+  "box_latest_updated": "2021-02-06 01:07:28.505547",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6315"
+  },
+  "box_name": "box18",
+  "box_width": 92,
+  "box_height": 30,
+  "box_depth": 82,
+  "box_quantity": 69,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017c635949adbaba807dd",
+  "box_created_date": "2021-02-06 01:07:28.505683",
+  "box_latest_updated": "2021-02-06 01:07:28.505683",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6316"
+  },
+  "box_name": "box19",
+  "box_width": 94,
+  "box_height": 74,
+  "box_depth": 81,
+  "box_quantity": 80,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017ce35949adbaba807de",
+  "box_created_date": "2021-02-06 01:07:28.505841",
+  "box_latest_updated": "2021-02-06 01:07:28.505841",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d89605e1ce302d37e6317"
+  },
+  "box_name": "box20",
+  "box_width": 92,
+  "box_height": 32,
+  "box_depth": 47,
+  "box_quantity": 30,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017d635949adbaba807df",
+  "box_created_date": "2021-02-06 01:07:28.505996",
+  "box_latest_updated": "2021-02-06 01:07:28.505996",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d90ad5e1ce302d37e631a"
+  },
+  "box_name": "aaa",
+  "box_width": 11,
+  "box_height": 10,
+  "box_depth": 17,
+  "box_quantity": 1,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff014d935949adbaba807cc"
+  },
+  "box_created_date": "2021-02-06 01:38:37.382754",
+  "box_latest_updated": "2021-02-06 01:38:37.382754",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d91c95e1ce302d37e631b"
+  },
+  "box_name": "aaa",
+  "box_width": 11,
+  "box_height": 10,
+  "box_depth": 17,
+  "box_quantity": 53,
+  "box_unit_id": {
+    "$oid": "5ff0189b35949adbaba807e0"
+  },
+  "box_color_id": {
+    "$oid": "5ff0179935949adbaba807d8"
+  },
+  "box_created_date": "2021-02-06 01:43:21.836535",
+  "box_latest_updated": "2021-02-06 01:46:21.752247",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e631e"
+  },
+  "box_name": "box1",
+  "box_width": 40,
+  "box_height": 98,
+  "box_depth": 97,
+  "box_quantity": 52,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff014d935949adbaba807cc",
+  "box_created_date": "2021-02-06 01:56:20.767164",
+  "box_latest_updated": "2021-02-06 01:56:20.767164",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e631f"
+  },
+  "box_name": "box2",
+  "box_width": 41,
+  "box_height": 59,
+  "box_depth": 35,
+  "box_quantity": 39,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016e735949adbaba807cd",
+  "box_created_date": "2021-02-06 01:56:20.767351",
+  "box_latest_updated": "2021-02-06 01:56:20.767351",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6320"
+  },
+  "box_name": "box3",
+  "box_width": 77,
+  "box_height": 68,
+  "box_depth": 90,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff016fb35949adbaba807ce",
+  "box_created_date": "2021-02-06 01:56:20.767500",
+  "box_latest_updated": "2021-02-06 01:56:20.767500",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6321"
+  },
+  "box_name": "box4",
+  "box_width": 99,
+  "box_height": 53,
+  "box_depth": 80,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0170435949adbaba807cf",
+  "box_created_date": "2021-02-06 01:56:20.767668",
+  "box_latest_updated": "2021-02-06 01:56:20.767668",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6322"
+  },
+  "box_name": "box5",
+  "box_width": 92,
+  "box_height": 98,
+  "box_depth": 14,
+  "box_quantity": 79,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0173735949adbaba807d0",
+  "box_created_date": "2021-02-06 01:56:20.767831",
+  "box_latest_updated": "2021-02-06 01:56:20.767831",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6323"
+  },
+  "box_name": "box6",
+  "box_width": 83,
+  "box_height": 21,
+  "box_depth": 28,
+  "box_quantity": 62,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0175635949adbaba807d1",
+  "box_created_date": "2021-02-06 01:56:20.767977",
+  "box_latest_updated": "2021-02-06 01:56:20.767977",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6324"
+  },
+  "box_name": "box7",
+  "box_width": 36,
+  "box_height": 19,
+  "box_depth": 12,
+  "box_quantity": 19,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176435949adbaba807d2",
+  "box_created_date": "2021-02-06 01:56:20.768120",
+  "box_latest_updated": "2021-02-06 01:56:20.768120",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6325"
+  },
+  "box_name": "box8",
+  "box_width": 92,
+  "box_height": 95,
+  "box_depth": 96,
+  "box_quantity": 13,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0176b35949adbaba807d3",
+  "box_created_date": "2021-02-06 01:56:20.768262",
+  "box_latest_updated": "2021-02-06 01:56:20.768262",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6326"
+  },
+  "box_name": "box9",
+  "box_width": 71,
+  "box_height": 62,
+  "box_depth": 79,
+  "box_quantity": 65,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177235949adbaba807d4",
+  "box_created_date": "2021-02-06 01:56:20.768403",
+  "box_latest_updated": "2021-02-06 01:56:20.768403",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6327"
+  },
+  "box_name": "box10",
+  "box_width": 17,
+  "box_height": 23,
+  "box_depth": 88,
+  "box_quantity": 38,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0177d35949adbaba807d5",
+  "box_created_date": "2021-02-06 01:56:20.768545",
+  "box_latest_updated": "2021-02-06 01:56:20.768545",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6328"
+  },
+  "box_name": "box11",
+  "box_width": 62,
+  "box_height": 51,
+  "box_depth": 70,
+  "box_quantity": 92,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0178a35949adbaba807d6",
+  "box_created_date": "2021-02-06 01:56:20.768711",
+  "box_latest_updated": "2021-02-06 01:56:20.768711",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6329"
+  },
+  "box_name": "box12",
+  "box_width": 68,
+  "box_height": 69,
+  "box_depth": 44,
+  "box_quantity": 59,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179235949adbaba807d7",
+  "box_created_date": "2021-02-06 01:56:20.768870",
+  "box_latest_updated": "2021-02-06 01:56:20.768870",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e632a"
+  },
+  "box_name": "box13",
+  "box_width": 21,
+  "box_height": 84,
+  "box_depth": 4,
+  "box_quantity": 12,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff0179935949adbaba807d8",
+  "box_created_date": "2021-02-06 01:56:20.769013",
+  "box_latest_updated": "2021-02-06 01:56:20.769013",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e632b"
+  },
+  "box_name": "box14",
+  "box_width": 51,
+  "box_height": 37,
+  "box_depth": 22,
+  "box_quantity": 49,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a035949adbaba807d9",
+  "box_created_date": "2021-02-06 01:56:20.769172",
+  "box_latest_updated": "2021-02-06 01:56:20.769172",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e632c"
+  },
+  "box_name": "box15",
+  "box_width": 82,
+  "box_height": 29,
+  "box_depth": 18,
+  "box_quantity": 64,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017a835949adbaba807da",
+  "box_created_date": "2021-02-06 01:56:20.769317",
+  "box_latest_updated": "2021-02-06 01:56:20.769317",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e632d"
+  },
+  "box_name": "box16",
+  "box_width": 32,
+  "box_height": 45,
+  "box_depth": 16,
+  "box_quantity": 53,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017af35949adbaba807db",
+  "box_created_date": "2021-02-06 01:56:20.769458",
+  "box_latest_updated": "2021-02-06 01:56:20.769458",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e632e"
+  },
+  "box_name": "box17",
+  "box_width": 47,
+  "box_height": 36,
+  "box_depth": 4,
+  "box_quantity": 43,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017bb35949adbaba807dc",
+  "box_created_date": "2021-02-06 01:56:20.769613",
+  "box_latest_updated": "2021-02-06 01:56:20.769613",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e632f"
+  },
+  "box_name": "box18",
+  "box_width": 92,
+  "box_height": 30,
+  "box_depth": 82,
+  "box_quantity": 69,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017c635949adbaba807dd",
+  "box_created_date": "2021-02-06 01:56:20.769760",
+  "box_latest_updated": "2021-02-06 01:56:20.769760",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6330"
+  },
+  "box_name": "box19",
+  "box_width": 94,
+  "box_height": 74,
+  "box_depth": 81,
+  "box_quantity": 80,
+  "box_unit_id": "5ff0189b35949adbaba807e0",
+  "box_color_id": "5ff017ce35949adbaba807de",
+  "box_created_date": "2021-02-06 01:56:20.769912",
+  "box_latest_updated": "2021-02-06 01:56:20.769912",
+  "box_status": 1
+},{
+  "_id": {
+    "$oid": "601d94d45e1ce302d37e6331"
+  },
+  "box_name": "box20",
+  "box_width": 36.22,
+  "box_height": 12.6,
+  "box_depth": 18.5,
+  "box_quantity": 100,
+  "box_unit_id": {
+    "$oid": "5ff0191b35949adbaba807e1"
+  },
+  "box_color_id": {
+    "$oid": "5ff017d635949adbaba807df"
+  },
+  "box_created_date": "2021-02-06 01:56:20.770052",
+  "box_latest_updated": "2021-02-06 01:59:03.701704",
+  "box_status": 1
+}]
