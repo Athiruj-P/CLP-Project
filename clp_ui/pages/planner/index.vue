@@ -42,15 +42,12 @@
 
     <v-main class="m-5">
       <v-row>
-        <v-col md="3">
+        <v-col md="3 z-50">
           <AddDialog />
         </v-col>
       </v-row>
-      <v-row>
-        <div
-          v-if="this.$store.state.planner.planners"
-          class="flex flex-wrap overflow-y-auto"
-        >
+      <v-row v-if="this.$store.state.planner.planners.length">
+        <div class="flex flex-wrap overflow-y-auto">
           <div
             v-for="(item, index) in this.$store.state.planner.planners"
             :key="index"
@@ -59,7 +56,14 @@
             <PlannerCard :planner="item" />
           </div>
         </div>
-        <p v-else class="">Click + Add planner to create your plan</p>
+      </v-row>
+      <v-row
+        v-else
+        class="absolute -top-10 left-0 h-screen w-full flex align-center justify-center"
+      >
+        <p class="font-semibold text-3xl text-gray-600">
+          Click + Add planner to create your plan
+        </p>
       </v-row>
     </v-main>
 
@@ -131,7 +135,8 @@ export default {
     text_alert: "",
     color_alert: "",
     icon_alert: "",
-    timeout: 2000
+    timeout: 2000,
+    show_planner_list: false,
   }),
   computed: {
     change_alert() {
@@ -147,6 +152,13 @@ export default {
         this.icon_alert = "fas fa-exclamation-circle";
       } else {
         // this.$store.commit("planner/get_all_planner", planners);
+      }
+    },
+    "$store.state.planner.planners"(newValue) {
+      if (newValue.length === 0) {
+        this.show_planner_list = false;
+      } else {
+        this.show_planner_list = true;
       }
     }
   }

@@ -249,7 +249,10 @@ export default {
       );
 
       status.name = false;
-      if (this.name.length < 3 || this.name.length > 20) {
+      if (!this.name) {
+        this.err_msg.name =
+          "Planner name must contain minimum 3 characters and maximum 20 characters.";
+      } else if (this.name.length < 3 || this.name.length > 20) {
         this.err_msg.name =
           "Planner name must contain minimum 3 characters and maximum 20 characters.";
       } else if (this.name.search(this.pattern)) {
@@ -280,6 +283,11 @@ export default {
       this.$store.commit("set_main_unit", { un_id, un_abb });
       this.$store.commit("planner_dialog/set_unit", un_id);
       this.$store.commit("planner_dialog/set_validation_status", status);
+    },
+    name(newVal) {
+      if (!newVal) {
+        this.on_keyup_name();
+      }
     }
   }
 };

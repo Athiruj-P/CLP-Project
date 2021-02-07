@@ -1,7 +1,13 @@
 <template>
   <v-dialog v-model="dialog" persistent width="600">
     <template v-slot:activator="{ attrs }">
-      <v-btn color="primary" dark v-bind="attrs" @click="open_dialog">
+      <v-btn
+        color="primary"
+        v-bind="attrs"
+        :loading="btn_add_status"
+        :disabled="$store.state.planner.planners.length === 30 ? true : false"
+        @click="open_dialog"
+      >
         <v-icon left>fas fa-plus</v-icon>
         Add planner
       </v-btn>
@@ -126,13 +132,11 @@ import planner from "@/mixins/planner";
 import alert from "@/mixins/alert";
 export default {
   mixins: [planner, alert],
-  props: {
-    // show: {
-    //   type: Boolean,
-    //   required: true
-    // }
-  },
+  props: {},
   data: () => ({
+    btn_add_status: false,
+    btn_add_diasble: false,
+    show_btn_add: true,
     pattern: /^([\wก-๙]+ )+[\wก-๙]+$|^[\wก-๙]+$/,
     dialog: false,
     name: "",
@@ -151,9 +155,12 @@ export default {
       this.name = this.$store.state.planner_dialog.name;
       this.unit = 0;
       this.err_msg.name = "";
+      this.set_unit();
     },
     on_keyup_name() {
-      var status = this.$store.state.planner_dialog.validation_status;
+      let status = JSON.parse(
+        JSON.stringify(this.$store.state.planner_dialog.validation_status)
+      );
       status.name = false;
       if (this.name.length < 3 || this.name.length > 20) {
         this.err_msg.name =
@@ -167,15 +174,9 @@ export default {
       this.$store.commit("planner_dialog/set_name", this.name);
       this.$store.commit("planner_dialog/set_validation_status", status);
       this.check_btn_active();
+      console.log(this.$store.state.planner_dialog.validation_status);
     },
-    close_dialog() {
-      this.dialog = false;
-      this.btn_active = false;
-      this.clear_dialog();
-    }
-  },
-  watch: {
-    async unit(newValue, oldValue) {
+    set_unit() {
       let status = JSON.parse(
         JSON.stringify(this.$store.state.planner_dialog.validation_status)
       );
@@ -186,6 +187,18 @@ export default {
       this.$store.commit("set_main_unit", { un_id, un_abb });
       this.$store.commit("planner_dialog/set_unit", un_id);
       this.$store.commit("planner_dialog/set_validation_status", status);
+    },
+    close_dialog() {
+      this.dialog = false;
+      this.btn_active = false;
+      this.clear_dialog();
+      console.log("close_dialog");
+      console.log(this.$store.state.planner_dialog.validation_status);
+    }
+  },
+  watch: {
+    async unit(newValue, oldValue) {
+      this.set_unit();
     }
   }
 };
