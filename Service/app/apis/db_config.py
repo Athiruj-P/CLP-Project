@@ -1,8 +1,10 @@
+db_host = "172.26.0.2"
 db_username = "clp_admin"
 db_password = "clp_admin"
 db_name = "CLP_DB"
 item = {
-    "db_host" : "mongodb+srv://"+(db_username)+":"+(db_password)+"@cluster-ap.akjvz.mongodb.net/"+(db_name)+"?retryWrites=true&w=majority",
+    # "db_host" : "mongodb+srv://"+(db_username)+":"+(db_password)+"@cluster-ap.akjvz.mongodb.net/"+(db_name)+"?retryWrites=true&w=majority",
+    "db_host" : "mongodb://{}/{}".format(db_host,db_name),
     "db_name": "CLP_DB",
     "db_col_user" : "clp_user",
     "db_col_unit" : "clp_unit",
