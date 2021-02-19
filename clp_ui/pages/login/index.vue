@@ -14,6 +14,7 @@
 
           <v-text-field
             class="ml-3 mr-3"
+            id="login-input"
             v-model="username"
             label="Username"
             required
@@ -21,13 +22,14 @@
           </v-text-field>
           <v-text-field
             class="ml-3 mr-3"
+            id="password-input"
             type="password"
             v-model="password"
             label="Password"
             required
           ></v-text-field>
 
-          <v-btn class="btn-login" block color="primary" @click="login">
+          <v-btn class="btn-login" id="btn-login" block color="primary" @click="login">
             Login
           </v-btn>
         </v-card>

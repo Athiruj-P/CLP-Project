@@ -129,6 +129,7 @@
             </div>
             <div class="pb-1 px-2">
               <v-btn
+                id="btn-render-active"
                 v-if="$store.state.box.boxes.length > 0"
                 block
                 :loading="btn_render_status"
@@ -139,7 +140,7 @@
                 Render
               </v-btn>
               <div v-else class="cursor-not-allowed">
-                <v-btn block color="warning" :disabled="true">
+                <v-btn id="btn-render-inactive" block color="warning" :disabled="true">
                   Render
                 </v-btn>
               </div>
