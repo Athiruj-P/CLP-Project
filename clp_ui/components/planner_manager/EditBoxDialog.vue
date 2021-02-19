@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" scrollable persistent width="600">
     <template v-slot:activator="{ attrs }">
-      <v-btn icon v-bind="attrs" @click="open_dialog">
+      <v-btn id="btn-modal-edit-box" icon v-bind="attrs" @click="open_dialog">
         <v-icon>fas fa-ellipsis-h</v-icon>
       </v-btn>
     </template>
@@ -25,6 +25,7 @@
             <v-row>
               <v-col md="10" class="flex items-center pr-0 pb-0 pt-5">
                 <v-text-field
+                  id="edit-box-name-input"
                   dense
                   outlined
                   v-model="name"
@@ -64,6 +65,7 @@
             <v-row>
               <v-col md="10" align-self="center" class="pr-0 pb-0 pt-5">
                 <v-text-field
+                  id="edit-box-qty-input"
                   type="number"
                   :rules="qty_rules"
                   dense
@@ -103,7 +105,10 @@
                   v-for="(item, index) in $store.state.box.colors"
                   :key="index"
                 >
-                  <v-list-item v-if="index <= 9">
+                  <v-list-item
+                    :id="'edit-box-color-' + index"
+                    v-if="index <= 9"
+                  >
                     <v-list-item-icon class="mx-auto flex justify-center">
                       <v-icon medium :color="`#${item.color_hex}`"
                         >fas fa-dice-d6</v-icon
@@ -118,7 +123,7 @@
                   v-for="(item, index) in $store.state.box.colors"
                   :key="index"
                 >
-                  <v-list-item v-if="index > 9">
+                  <v-list-item :id="'edit-box-color-' + index" v-if="index > 9">
                     <v-list-item-icon class="mx-auto flex justify-center">
                       <v-icon medium :color="`#${item.color_hex}`"
                         >fas fa-dice-d6</v-icon
@@ -149,7 +154,7 @@
           offset-y
         >
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="error" dark v-bind="attrs" v-on="on">
+            <v-btn id="btn-delete-box" color="error" dark v-bind="attrs" v-on="on">
               Delete
             </v-btn>
           </template>
@@ -167,7 +172,7 @@
                 Cancel
               </v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="error" @click="delete_box">
+              <v-btn id="btn-cf-delete-box" color="error" @click="delete_box">
                 Yes
               </v-btn>
             </v-card-actions>
@@ -175,6 +180,7 @@
         </v-menu>
         <!-- Delete section -->
         <v-btn
+          id="btn-edit-box"
           color="warning"
           @click="edit_box"
           :disabled="this.$store.state.box_dialog.btn_active"

@@ -6,7 +6,7 @@
     <v-card
       outlined
       elevation="3"
-      class="cursor-pointer"
+      class="cursor-pointer planner-card"
       @click="planner_manager"
     >
       <v-list-item three-line>

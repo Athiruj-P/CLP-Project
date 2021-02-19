@@ -1,7 +1,13 @@
 <template>
   <v-dialog v-model="dialog" scrollable persistent width="600">
     <template v-slot:activator="{ attrs }">
-      <v-btn color="white" icon v-bind="attrs" @click="open_dialog">
+      <v-btn
+        id="btn-modal-add-box"
+        color="white"
+        icon
+        v-bind="attrs"
+        @click="open_dialog"
+      >
         <v-icon>fas fa-plus</v-icon>
       </v-btn>
     </template>
@@ -25,6 +31,7 @@
             <v-row>
               <v-col md="10" class="flex items-center pr-0 pb-0 pt-5">
                 <v-text-field
+                  id="add-box-name-input"
                   dense
                   outlined
                   v-model="name"
@@ -64,6 +71,7 @@
             <v-row>
               <v-col md="10" align-self="center" class="pr-0 pb-0 pt-5">
                 <v-text-field
+                  id="add-box-qty-input"
                   type="number"
                   :rules="qty_rules"
                   dense
@@ -102,7 +110,7 @@
                   v-for="(item, index) in $store.state.box.colors"
                   :key="index"
                 >
-                  <v-list-item v-if="index <= 9">
+                  <v-list-item :id="'add-box-color-' + index" v-if="index <= 9">
                     <v-list-item-icon class="mx-auto flex justify-center">
                       <v-icon medium :color="`#${item.color_hex}`"
                         >fas fa-dice-d6</v-icon
@@ -117,7 +125,7 @@
                   v-for="(item, index) in $store.state.box.colors"
                   :key="index"
                 >
-                  <v-list-item v-if="index > 9">
+                  <v-list-item :id="'add-box-color-' + index" v-if="index > 9">
                     <v-list-item-icon class="mx-auto flex justify-center">
                       <v-icon medium :color="`#${item.color_hex}`"
                         >fas fa-dice-d6</v-icon
@@ -141,6 +149,7 @@
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn
+          id="btn-add-box"
           color="primary"
           @click="add_box"
           :disabled="this.$store.state.box_dialog.btn_active"

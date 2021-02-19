@@ -3,6 +3,7 @@
     <template v-slot:activator="{ attrs }">
       <v-btn
         color="primary"
+        id="btn-modal-add-planner"
         v-bind="attrs"
         :loading="btn_add_status"
         :disabled="$store.state.planner.planners.length === 30 ? true : false"
@@ -32,6 +33,7 @@
             <v-row>
               <v-col md="10" class="flex items-center pr-0 pb-0 pt-5">
                 <v-text-field
+                  id="add-planner-name-input"
                   dense
                   :pattern="pattern"
                   outlined
@@ -80,6 +82,7 @@
                     :key="index"
                   >
                     <v-radio
+                      :id="'add-planner-unit-' + index"
                       class="m-2"
                       :label="item.un_abb"
                       :value="index"
@@ -115,6 +118,7 @@
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn
+          id="btn-add-planner"
           color="primary"
           @click="add_planner"
           :disabled="this.$store.state.planner_dialog.btn_active"

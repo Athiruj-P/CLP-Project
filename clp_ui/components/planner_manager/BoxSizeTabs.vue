@@ -5,8 +5,8 @@
     </v-card-title> -->
 
     <v-tabs v-model="tab" background-color="transparent" grow>
-      <v-tab>Box</v-tab>
-      <v-tab>Custom</v-tab>
+      <v-tab id="std-box-tab">Box</v-tab>
+      <v-tab id="custom-box-tab">Custom</v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
@@ -18,6 +18,7 @@
                 <v-list-item
                   v-for="(item, index) in $store.state.box.std_boxes"
                   :key="index"
+                  :id="'box-' + index"
                 >
                   <v-list-item-icon>
                     <v-icon>fas fa-dice-d6</v-icon>
@@ -32,16 +33,22 @@
                           `${unit_convert(
                             item.box_std_width,
                             item.box_std_unit,
-                            $store.state.planner_manage.selected_planner.pln_unit
+                            $store.state.planner_manage.selected_planner
+                              .pln_unit
                           )} x ${unit_convert(
                             item.box_std_height,
                             item.box_std_unit,
-                            $store.state.planner_manage.selected_planner.pln_unit
+                            $store.state.planner_manage.selected_planner
+                              .pln_unit
                           )} x ${unit_convert(
                             item.box_std_depth,
                             item.box_std_unit,
-                            $store.state.planner_manage.selected_planner.pln_unit
-                          )} ${$store.state.planner_manage.selected_planner.pln_unit}`
+                            $store.state.planner_manage.selected_planner
+                              .pln_unit
+                          )} ${
+                            $store.state.planner_manage.selected_planner
+                              .pln_unit
+                          }`
                         }}
                       </span>
                     </div>
@@ -60,11 +67,14 @@
               <v-col md="4" class="pb-0">
                 <v-row class="my-2 mx-0 flex justify-center">
                   <span class="text-base font-normal text-black"
-                    >Width [{{ $store.state.planner_manage.selected_planner.pln_unit }}]</span
+                    >Width [{{
+                      $store.state.planner_manage.selected_planner.pln_unit
+                    }}]</span
                   >
                 </v-row>
                 <v-row class="my-2">
                   <v-text-field
+                    id="box-width-input"
                     type="number"
                     dense
                     outlined
@@ -79,11 +89,14 @@
               <v-col md="4" class="pb-0">
                 <v-row class="my-2 mx-0 flex justify-center">
                   <span class="text-base font-normal text-black"
-                    >Height [{{ $store.state.planner_manage.selected_planner.pln_unit }}]</span
+                    >Height [{{
+                      $store.state.planner_manage.selected_planner.pln_unit
+                    }}]</span
                   >
                 </v-row>
                 <v-row class="my-2">
                   <v-text-field
+                    id="box-height-input"
                     type="number"
                     dense
                     outlined
@@ -98,11 +111,14 @@
               <v-col md="4" class="pb-0">
                 <v-row class="my-2 mx-0 flex justify-center">
                   <span class="text-base font-normal text-black"
-                    >Depth [{{ $store.state.planner_manage.selected_planner.pln_unit }}]</span
+                    >Depth [{{
+                      $store.state.planner_manage.selected_planner.pln_unit
+                    }}]</span
                   >
                 </v-row>
                 <v-row class="my-2">
                   <v-text-field
+                    id="box-depth-input"
                     type="number"
                     dense
                     outlined

@@ -5,8 +5,8 @@
     </v-card-title> -->
 
     <v-tabs v-model="tab" background-color="transparent" grow>
-      <v-tab>Container</v-tab>
-      <v-tab>Custom</v-tab>
+      <v-tab id="std-container-tab">Container</v-tab>
+      <v-tab id="custom-container-tab">Custom</v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
@@ -18,6 +18,7 @@
                 <v-list-item
                   v-for="(item, index) in $store.state.planner.std_containers"
                   :key="index"
+                  :id="'container-'+index"
                 >
                   <v-list-item-icon>
                     <v-icon>fab fa-codepen</v-icon>
@@ -63,6 +64,7 @@
                 </v-row>
                 <v-row class="my-2">
                   <v-text-field
+                    id="planner-width-input"
                     type="number"
                     dense
                     outlined
@@ -80,6 +82,7 @@
                 </v-row>
                 <v-row class="my-2">
                   <v-text-field
+                    id="planner-height-input"
                     type="number"
                     dense
                     outlined
@@ -97,6 +100,7 @@
                 </v-row>
                 <v-row class="my-2">
                   <v-text-field
+                    id="planner-depth-input"
                     type="number"
                     dense
                     outlined
@@ -258,13 +262,13 @@ export default {
     },
     async show(newValue, oldValue) {
       // if (newValue) {
-        this.tab = this.$store.state.planner_dialog.tab;
-        this.width = this.$store.state.planner_dialog.width;
-        this.height = this.$store.state.planner_dialog.height;
-        this.depth = this.$store.state.planner_dialog.depth;
-        this.selected_container = this.$store.state.planner_dialog.selected_container;
+      this.tab = this.$store.state.planner_dialog.tab;
+      this.width = this.$store.state.planner_dialog.width;
+      this.height = this.$store.state.planner_dialog.height;
+      this.depth = this.$store.state.planner_dialog.depth;
+      this.selected_container = this.$store.state.planner_dialog.selected_container;
       // }
-        this.err_msg.length = "";
+      this.err_msg.length = "";
     }
   },
   mounted: function() {

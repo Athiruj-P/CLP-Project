@@ -2,12 +2,12 @@
   <v-dialog v-model="dialog" persistent width="600">
     <template v-slot:activator="{ attrs }">
       <div v-if="edit_icon()">
-        <v-btn icon v-bind="attrs" @click="open_dialog">
+        <v-btn class="btn-modal-edit-planner-1" icon v-bind="attrs" @click="open_dialog">
           <v-icon>fas fa-ellipsis-h</v-icon>
         </v-btn>
       </div>
       <div v-else>
-        <v-btn color="white" icon v-bind="attrs" @click="open_dialog">
+        <v-btn id="btn-modal-edit-planner-2" color="white" icon v-bind="attrs" @click="open_dialog">
           <v-icon>fas fa-ellipsis-h</v-icon>
         </v-btn>
       </div>
@@ -32,6 +32,7 @@
             <v-row>
               <v-col md="10" class="flex items-center pr-0 pb-0 pt-5">
                 <v-text-field
+                  id="edit-planner-name-input"
                   dense
                   :pattern="pattern"
                   outlined
@@ -80,6 +81,7 @@
                     :key="index"
                   >
                     <v-radio
+                      :id="'edit-planner-unit-' + index"
                       class="m-2"
                       :label="item.un_abb"
                       :value="index"
@@ -124,7 +126,7 @@
           offset-y
         >
           <template v-slot:activator="{ on, attrs }">
-            <v-btn color="error" dark v-bind="attrs" v-on="on">
+            <v-btn id="btn-delete-planner" color="error" dark v-bind="attrs" v-on="on">
               Delete
             </v-btn>
           </template>
@@ -142,7 +144,7 @@
                 Cancel
               </v-btn>
               <v-spacer></v-spacer>
-              <v-btn color="error" @click="delete_planner">
+              <v-btn id="btn-cf-delete-planner" color="error" @click="delete_planner">
                 Yes
               </v-btn>
             </v-card-actions>
@@ -150,6 +152,7 @@
         </v-menu>
         <!-- Delete section -->
         <v-btn
+          id="btn-edit-planner"
           color="warning"
           @click="edit_planner"
           :disabled="this.$store.state.planner_dialog.btn_active"
