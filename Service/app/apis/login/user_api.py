@@ -26,11 +26,11 @@ def login():
         # logger.info("{} {}".format(username,password))
         # Check null value
         if not username:
-            result = {"mes": "Missing username parameter" , 'status' : 'error'}
+            result = {"mes": "Blank username." , 'status' : 'error'}
             return result, 200
         # Check null value
         elif not password:
-            result = {"mes": "Missing password parameter" , 'status' : 'error'}
+            result = {"mes": "Blank password." , 'status' : 'error'}
             return result, 200
             
         # Query user from DB
