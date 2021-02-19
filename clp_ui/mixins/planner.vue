@@ -91,7 +91,7 @@ export default {
       if (this.$store.state.main_unit.un_abb === "cm") {
         var lower = cm_lower;
         var upper = cm_upper;
-      } else if (this.$store.state.main_unit.un_abb === "in") {
+      } else if (this.$store.state.main_unit.un_abb === "inch") {
         var lower = in_lower;
         var upper = in_upper;
       }

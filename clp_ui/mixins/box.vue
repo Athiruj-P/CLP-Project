@@ -129,7 +129,7 @@ export default {
       if (un_abb === "cm") {
         var lower = cm_lower;
         var upper = cm_upper;
-      } else if (un_abb === "in") {
+      } else if (un_abb === "inch") {
         var lower = in_lower;
         var upper = in_upper;
       }
