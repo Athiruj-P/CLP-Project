@@ -113,6 +113,7 @@
               <input
                 type="file"
                 ref="excel_file"
+                accept=".xlsx, .xls"
                 style="display: none"
                 @change="upload_file"
               />
