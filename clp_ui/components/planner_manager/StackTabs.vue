@@ -240,6 +240,7 @@ export default {
       //   }
       this.selected_all = ["all"];
       this.click_all_stack();
+      this.click_menu('0000');
     }
     // selected_menu(newVal) {
     //   console.log(newVal);
