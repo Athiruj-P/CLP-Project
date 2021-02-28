@@ -61,19 +61,19 @@ export default {
     // this.plot_redraw();
   },
   methods: {
-    set_container() {
-      this.plot_data = [];
-      this.CON_X = this.$store.state.planner_manage.selected_planner.pln_width;
-      this.CON_Z = this.$store.state.planner_manage.selected_planner.pln_height;
-      this.CON_Y = this.$store.state.planner_manage.selected_planner.pln_depth;
-      const container = new Box(
-        [0, this.CON_X, 0, this.CON_X, 0, this.CON_X, 0, this.CON_X], // X (Width)
-        [0, 0, this.CON_Y, this.CON_Y, 0, 0, this.CON_Y, this.CON_Y], // Y (Depth)
-        [0, 0, 0, 0, this.CON_Z, this.CON_Z, this.CON_Z, this.CON_Z], // Z (Height)
-        0.1
-      );
-      this.plot_data.push(container.data);
-    },
+    // set_container() {
+    //   this.plot_data = [];
+    //   this.CON_X = this.$store.state.planner_manage.selected_planner.pln_width;
+    //   this.CON_Z = this.$store.state.planner_manage.selected_planner.pln_height;
+    //   this.CON_Y = this.$store.state.planner_manage.selected_planner.pln_depth;
+    //   const container = new Box(
+    //     [0, this.CON_X, 0, this.CON_X, 0, this.CON_X, 0, this.CON_X], // X (Width)
+    //     [0, 0, this.CON_Y, this.CON_Y, 0, 0, this.CON_Y, this.CON_Y], // Y (Depth)
+    //     [0, 0, 0, 0, this.CON_Z, this.CON_Z, this.CON_Z, this.CON_Z], // Z (Height)
+    //     0.1
+    //   );
+    //   this.plot_data.push(container.data);
+    // },
     init_plotly() {
       var layout = {
         hoverlabel: { bgcolor: "#FFF" },
@@ -116,12 +116,12 @@ export default {
       }
       this.plot_data = data;
       // Temporary
-    },
-    plot_redraw() {
-      this.plot_graph();
-      this.$refs.container.data = this.plot_data;
-      this.Plotly.redraw(this.$refs.container);
     }
+    // plot_redraw() {
+    //   this.plot_graph();
+    //   this.$refs.container.data = this.plot_data;
+    //   this.Plotly.redraw(this.$refs.container);
+    // }
   },
   watch: {
     "$store.state.planner_manage.render_data"(render_data) {
@@ -134,6 +134,7 @@ export default {
       this.plot_redraw();
     },
     "$store.state.planner_manage.selected_planner"(data) {
+      this.render_container();
       // this.set_container();
       // this.plot_redraw();
     },
