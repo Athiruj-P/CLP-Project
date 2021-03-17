@@ -72,8 +72,6 @@ class BoxController:
                 query_result = query_result[item['fld_user_planners']][0]
                 pln_boxes = query_result[item['fld_pln_boxes']]
                 arr = []
-                # for index in range(len(query_result)):
-                #     query_result[index] = str(query_result[index])
                 for box_id in pln_boxes:
                     query_box_detail = clp_box.find_one(
                         { '_id' : box_id}
@@ -99,9 +97,6 @@ class BoxController:
                 result = {'mes' : str(identifier), 'status' : "system_error"}
             return result
     
-    # def get_box(self, box_data = BoxData()):
-    #     pass
-
     # add_box
     # Description : ฟังก์ชันเพิ่มข้อมูลของ 1 Box ให้แก่ planner_id และ user_id
     # Author : Athiruj Poositaporn 
@@ -324,7 +319,6 @@ class BoxController:
     def is_number(self, number):
         try:
             float(number)
-            # int(number)
             return True
         except ValueError:
             return False

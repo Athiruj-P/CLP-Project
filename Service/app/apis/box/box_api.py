@@ -1,6 +1,7 @@
 # Box_api
 # Description : API ของการจัดการกล่องบรรจุสินค้า
 # Author : Athiruj Poositaporn
+
 from flask import Flask, request, jsonify ,Blueprint
 import datetime, pytz
 from pymongo import MongoClient
@@ -16,7 +17,7 @@ box_api = Blueprint('box_api', __name__)
 logger = logging.getLogger("box_api")
 
 #get_box_std
-#Description :
+#Description : ฟังก์ชันดึงข้อมูลของ Box ขนาดมาตราฐานทั้งหมด
 #Author : Athiruj Poositaporn
 @box_api.route("/get_box_std", methods=['POST'])
 def get_box_std():
@@ -42,7 +43,7 @@ def get_box_std():
         return result , 200
 
 #get_all_box
-#Description :
+#Description :ฟังก์ชันดึงข้อมูลของ Box ทั้งหมดตาม planner_id
 #Author : Athiruj Poositaporn
 @box_api.route("/get_all_box", methods=['POST'])
 def get_all_box():
@@ -73,7 +74,7 @@ def get_all_box():
         return result , 200
 
 #get_all_color
-#Description :
+#Description : ฟังก์ชันดึงข้อมูลสีทั้งหมด
 #Author : Athiruj Poositaporn
 @box_api.route("/get_all_color", methods=['POST'])
 def get_all_color():
@@ -100,7 +101,7 @@ def get_all_color():
         return result , 200
 
 #add_box
-#Description :
+#Description : ฟังก์ชันเพิ่มข้อมูลของ 1 Box ให้แก่ planner_id และ user_id
 #Author : Athiruj Poositaporn
 @box_api.route("/add_box", methods=['POST'])
 def add_box():
@@ -148,7 +149,7 @@ def add_box():
         return result , 200
 
 #add_box_by_excel
-#Description :
+#Description : ฟังก์ชันเพิ่มข้อมูลของ Box จากไฟล์ Excel ให้แก่ planner_id และ user_id
 #Author : Athiruj Poositaporn
 @box_api.route("/add_box_by_excel", methods=['POST'])
 def add_box_by_excel():
@@ -176,7 +177,6 @@ def add_box_by_excel():
 
         excel_cont = ExcelController()
 
-        # boxes = excel_cont.get_excel_box(box_data)
         rs_arr = excel_cont.get_excel_box(box_data)
         if(rs_arr['status'] != 'success'):
             return rs_arr , 200
@@ -195,7 +195,7 @@ def add_box_by_excel():
         return result , 200
 
 #edit_box
-#Description :
+#Description : ฟังก์ชันแก้ไขข้อมูลของ 1 Box ตาม planner_id และ user_id
 #Author : Athiruj Poositaporn
 @box_api.route("/edit_box", methods=['POST'])
 def edit_box():
