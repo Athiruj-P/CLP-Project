@@ -17,7 +17,6 @@ class Box:
         self.unit = ""
         self.color = ""
         self.rotation_type = 0
-        self.fixed_direction = False
 
     # get_volume
     # Description : ฟังก์ชันคำนวณปริมาตรของ Box

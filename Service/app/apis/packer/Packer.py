@@ -38,7 +38,6 @@ class Packer:
         if not node.box:            
             response = node.put_item(box)
             
-            # global BASE_BOXES
             if not response:
                 return not fitted
             else:
@@ -46,6 +45,7 @@ class Packer:
                 if(z == 0):
                     global_var.BASE_BOXES.append(node)
                 return fitted
+        
         # เปลี่ยน Node เพื่อหาที่ใส่กล่อง
         if node.left:
             if self.pack_to_node(node.left, box):
@@ -72,7 +72,7 @@ class Packer:
             key=lambda box: box.get_volume(), reverse=bigger_first
         )
 
-        # global UNFITTED_ITEMS
+        # ลูปสำหรับนำแต่ละกล่องไปใส่ในตู้
         for node in self.root_nodes:
             for box in self.boxes:
                 fited = self.pack_to_node(node, box)
@@ -85,8 +85,6 @@ class Packer:
     def get_stack(self, root, opt=True):
         # opt ใช้บังคับไม่ให้ Node ที่เป็นฐานไปดึงข้อมูลจากส่วนอื่นที่ไม่ใช่ "ด้านบน" หรือ Left node
         if(root.box):
-            # file.write(root.get_box_dimension()+"\n")
-            # global_var.BOXES_STACK.append(root.get_box_dimension())
             global_var.BOXES_STACK_DETAIL.append(root.get_box_detail())
             if(root.left != None):
                 self.get_stack(root.left)
@@ -96,7 +94,7 @@ class Packer:
                 self.get_stack(root.right)
     
     # format_unfitted_item
-    # Description : ฟังก์ชัน
+    # Description : ฟังก์ชันจัดเรียงรูปแบบของข้อมูลของกล่องที่ไม่สามารถนำไปใส่ในตู้ได้
     # Author : Athiruj Poositaporn
     def format_unfitted_item(self):
         tmp = global_var.UNFITTED_ITEMS
@@ -104,12 +102,9 @@ class Packer:
         tmp_id = []
         tmp_name = []
         if(tmp):
-            # logger.info(*tmp)
-
-            # for item in tmp:
-            #     tmp_name.append(item['box_name'][:item['box_name'].rfind("_")])
-            
+            # เรียงลำดับของกล่องตาม box_id
             tmp.sort(key=lambda x: (x['box_id']), reverse=False)
+            
             for item in tmp:
                 tmp_id.append(item['box_id'])
                 tmp_id = list(dict.fromkeys(tmp_id))

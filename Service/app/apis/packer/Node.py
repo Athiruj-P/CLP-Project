@@ -4,7 +4,6 @@
 
 from .RotationType import RotationType
 from .Box import Box
-# from .global_var import START_POSITION, USED_VOLUME
 from . import global_var
 import logging
 import logging.config
@@ -68,7 +67,7 @@ class Node:
         fit = False
 
         # Loop ตามการหมุนของกล่องเพื่อหาด้านที่ fit กับพื้นที่
-        # เริ่มจากกล่องในมุมแบบเดิมก่อน แล้วถ้าใสไม่ได้ค่อยเปลี่ยนแนวกล่อง
+        # เริ่มจากกล่องในแนวแบบเดิมก่อน แล้วถ้าใสไม่ได้ค่อยเปลี่ยนแนวกล่อง
         for i in range(0, len(RotationType.ALL)):
             if(box.fixed_direction):
                 if(i == 0 or i == 3):
@@ -94,7 +93,6 @@ class Node:
             # เก็บกล่องไปที่ node ปัจจุบัน
             if fit:
                 self.box = box
-                # global USED_VOLUME
                 global_var.USED_VOLUME += box.get_volume()
                 # ตรวจสอบพื้นที่ว่างด้านบนกล่อง (ด้าน height)
                 if(self.height - box_h > 0):
@@ -103,7 +101,6 @@ class Node:
                     new_height = self.height - box_h
                     new_depth = box_d #depth
                     self.left = Node(new_width,new_height,new_depth)
-                    # (width)
                     x = self.position[0]
                     y = self.position[1] + box_h
                     z = self.position[2]
@@ -133,7 +130,6 @@ class Node:
                     z = self.position[2] + box_d
                     self.right.position = [x,y,z] 
             # return fit (True)
-                 
             return fit
         
         # return not fit (False)

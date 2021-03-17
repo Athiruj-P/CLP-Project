@@ -23,7 +23,6 @@ def login():
     try:
         username = request.form.get('username', None)
         password = request.form.get('password', None)
-        # logger.info("{} {}".format(username,password))
         # Check null value
         if not username:
             result = {"mes": "Blank username." , 'status' : 'error'}

@@ -1,3 +1,7 @@
+# RotationType
+# Description : สำหรับเก็บข้อมูลประเภทการหมุนของกล่องบรรจุสินค้า
+# Author : Athiruj Poositaporn
+
 class RotationType:
     RT_WHD = 0
     RT_HWD = 1
