@@ -407,9 +407,11 @@ class PlannerController:
             total_volume = global_var.USED_VOLUME / box_packer.root_nodes[0].get_volume() * 100
             total_volume = round(total_volume, 4)
             container_detail = {
+                'used_volume' : global_var.USED_VOLUME,
+                'free_volume' : box_packer.root_nodes[0].get_volume() - global_var.USED_VOLUME,
                 'total_volume' : total_volume,
                 'unfit_boxes' : box_packer.format_unfitted_item(),
-                # 'unfit_boxes' : global_var.UNFITTED_ITEMS,
+                'unfit_boxes' : global_var.UNFITTED_ITEMS,
             }
             result = {
                 'container_detail' : container_detail,
