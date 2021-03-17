@@ -150,8 +150,6 @@ export default {
         this.text_alert = newValue.mes;
         this.color_alert = "red";
         this.icon_alert = "fas fa-exclamation-circle";
-      } else {
-        // this.$store.commit("planner/get_all_planner", planners);
       }
     },
     "$store.state.planner.planners"(newValue) {

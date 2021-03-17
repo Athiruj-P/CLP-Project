@@ -45,9 +45,6 @@ export default {
       required: true
     }
   },
-  //   data: () => ({
-  //     card_data: this.planner
-  //   }),
   methods: {
     planner_manager() {
       this.$store.commit("planner_manage/set_selected_planner", this.planner);

@@ -24,7 +24,6 @@
                     <v-icon>fas fa-dice-d6</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <!-- <v-list-item-title v-text="item.con_std_name"></v-list-item-title> -->
                     <div class="flex  justify-between">
                       <span>{{ item.box_std_name }}</span>
                       <span>
@@ -215,9 +214,6 @@ export default {
     }
   },
   watch: {
-    async tab(newValue, oldValue) {
-      // this.selected_container = null;
-    },
     async width(newValue, oldValue) {
       this.change_width();
       this.clear_selected_box();
@@ -260,33 +256,13 @@ export default {
         this.change_depth();
       }
     },
-
-    // async unit(newValue, oldValue) {
-    //   const obj_con = this.$store.state.planner.std_containers[this.selected_box];
-    //   if (this.tab === 0 && newValue === obj_con.con_std_unit) {
-    //     this.width = obj_con.con_std_width;
-    //     this.change_width();
-    //     this.height = obj_con.con_std_height;
-    //     this.change_height();
-    //     this.depth = obj_con.con_std_depth;
-    //     this.change_depth();
-    //   } else {
-    //     this.width = this.unit_convert(this.width, oldValue, newValue);
-    //     this.change_width();
-    //     this.height = this.unit_convert(this.height, oldValue, newValue);
-    //     this.change_height();
-    //     this.depth = this.unit_convert(this.depth, oldValue, newValue);
-    //     this.change_depth();
-    //   }
-    // },
     async show(newValue, oldValue) {
-      // if (newValue) {
       this.tab = this.$store.state.box_dialog.tab;
       this.width = this.$store.state.box_dialog.width;
       this.height = this.$store.state.box_dialog.height;
       this.depth = this.$store.state.box_dialog.depth;
       this.selected_box = this.$store.state.box_dialog.selected_box;
-      // }
+
       this.err_msg.length = "";
       console.log(this.tab);
       console.log(this.width);

@@ -35,7 +35,6 @@
                   )} ${$store.state.planner_manage.selected_planner.pln_unit}`
                 }}
               </span>
-              <!-- <span>Qty: {{ item.box_quantity }}</span> -->
             </div>
             <div class="text-sm text-gray-600 flex justify-between">
               <span>Qty: {{ item.box_quantity }}</span>

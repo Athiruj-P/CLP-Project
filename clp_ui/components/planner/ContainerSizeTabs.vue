@@ -1,9 +1,5 @@
 <template>
   <v-card>
-    <!-- <v-card-title class="text-center justify-center py-2">
-      <span class="text-base font-normal">Size</span>
-    </v-card-title> -->
-
     <v-tabs v-model="tab" background-color="transparent" grow>
       <v-tab id="std-container-tab">Container</v-tab>
       <v-tab id="custom-container-tab">Custom</v-tab>
@@ -24,7 +20,6 @@
                     <v-icon>fab fa-codepen</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <!-- <v-list-item-title v-text="item.con_std_name"></v-list-item-title> -->
                     <div class="flex  justify-between">
                       <span>{{ item.con_std_name }}</span>
                       <span>
@@ -261,13 +256,11 @@ export default {
       }
     },
     async show(newValue, oldValue) {
-      // if (newValue) {
       this.tab = this.$store.state.planner_dialog.tab;
       this.width = this.$store.state.planner_dialog.width;
       this.height = this.$store.state.planner_dialog.height;
       this.depth = this.$store.state.planner_dialog.depth;
       this.selected_container = this.$store.state.planner_dialog.selected_container;
-      // }
       this.err_msg.length = "";
     }
   },

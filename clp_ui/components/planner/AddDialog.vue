@@ -87,7 +87,6 @@
                       :label="item.un_abb"
                       :value="index"
                     ></v-radio>
-                    <!-- <v-radio class="m-2" label="in" value="radio-2"></v-radio> -->
                   </v-radio-group>
                 </v-row>
               </v-col>

@@ -88,8 +88,6 @@
 
         <v-container>
           <v-list dense style="height:70%; background-color:#E5E7EB">
-            <!-- <v-list-item-group v-model="selected_container" color="primary"> -->
-            <!-- <v-list-item-group color="primary" class="overflow-y-auto" > -->
             <v-list-item
               v-for="(item, index) in selected_menu"
               :key="index"
@@ -130,7 +128,6 @@
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <!-- </v-list-item-group> -->
           </v-list>
         </v-container>
       </v-tab-item>
@@ -233,18 +230,10 @@ export default {
   },
   watch: {
     "$store.state.planner_manage.render_data"(data) {
-      //   if (!this.init) {
-      //     this.init = true;
-      //     this.selected_all = ["all"];
-      //     this.click_all_stack();
-      //   }
       this.selected_all = ["all"];
       this.click_all_stack();
       this.click_menu('0000');
     }
-    // selected_menu(newVal) {
-    //   console.log(newVal);
-    // }
   }
 };
 </script>

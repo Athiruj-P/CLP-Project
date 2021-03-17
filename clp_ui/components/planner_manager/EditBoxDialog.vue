@@ -261,10 +261,6 @@ export default {
         )
       );
       this.$store.commit("box_dialog/set_unit", pln_unit);
-      //   this.$store.commit(
-      //     "box_dialog/set_unit",
-      //     this.$store.state.main_unit.un_id
-      //   );
       this.$store.commit("box_dialog/set_qty", this.obj_box.box_quantity);
       this.$store.commit("box_dialog/set_color", this.obj_box.box_color);
       this.$store.commit("box_dialog/set_tab", 1);
