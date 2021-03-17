@@ -54,6 +54,7 @@ class PlannerController:
                 box_cont = BoxController()
                 pln_unit = box_cont.get_unit(rs_arr[index][item['fld_pln_unit_id']])
                 rs_arr[index]['pln_unit'] = pln_unit
+                
                 # Store ACTIVE planner
                 arr.append(rs_arr[index])
             return arr
@@ -373,11 +374,10 @@ class PlannerController:
                 qty = box[item['fld_box_quantity']]
                 for number in range(qty):
                     box_unit = box['box_unit']
-                    # box_width = self.unit_converter(box[item['fld_box_width']], box_unit, planner_unit)
                     box_depth = self.unit_converter(box[item['fld_box_width']], box_unit, planner_unit)
                     box_height = self.unit_converter(box[item['fld_box_height']], box_unit, planner_unit)
                     box_width = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
-                    # box_depth = self.unit_converter(box[item['fld_box_depth']], box_unit, planner_unit)
+
                     new_box = Box.Box()
                     new_box.id = str(box['_id'])
                     new_box.name = "{}-{}".format(box[item['fld_box_name']], number+1)
@@ -392,15 +392,11 @@ class PlannerController:
             # Pack all boxes
             box_packer.pack()
             
-
             # Get boxes all result
-            # arr_stack = {}
             arr_stack = []
-            logger.info("len(global_var.UNFITTED_ITEMS) : {}".format(len(global_var.UNFITTED_ITEMS)))
             global_var.BASE_BOXES.sort(key=lambda x: (x.position[2]), reverse=False)
             for index in range(len(global_var.BASE_BOXES)):
                 box_packer.get_stack(root = global_var.BASE_BOXES[index], opt = False)
-                # arr_stack['stack_{}'.format(index)] = global_var.BOXES_STACK_DETAIL
                 arr_stack.append(global_var.BOXES_STACK_DETAIL)
                 global_var.BOXES_STACK_DETAIL = []
             

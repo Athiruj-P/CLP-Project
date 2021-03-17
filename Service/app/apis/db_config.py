@@ -1,9 +1,8 @@
-db_host = "172.26.0.2"
+db_host = "172.26.0.2" # From mongoDB in docker network
 db_username = "clp_admin"
 db_password = "clp_admin"
 db_name = "CLP_DB"
 item = {
-    # "db_host" : "mongodb+srv://"+(db_username)+":"+(db_password)+"@cluster-ap.akjvz.mongodb.net/"+(db_name)+"?retryWrites=true&w=majority",
     "db_host" : "mongodb://{}/{}".format(db_host,db_name),
     "db_name": "CLP_DB",
     "db_col_user" : "clp_user",
@@ -75,12 +74,4 @@ item = {
     "fld_role_id" : "role_id",
     "fld_role_name" : "role_name",
 
-    "db_file_path" : "db_file",
-    "ml_path" : "ml_model",
-    "ref_path" : "ref_model",
-
-    # Font
-    "thai_font_folder" : "thai_font",
-    "THSarabunNewBold" : "THSarabunNewBold.ttf",
-    
 }
