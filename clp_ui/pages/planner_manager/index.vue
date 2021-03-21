@@ -109,24 +109,31 @@
             style="height:17%"
             class="absolute bottom-0 left-0 flex flex-col justify-center w-full"
           >
-            <div class="pb-2 pt-8 px-2">
-              <input
-                type="file"
-                ref="excel_file"
-                accept=".xlsx, .xls"
-                style="display: none"
-                @change="upload_file"
-              />
-              <v-btn
-                block
-                elevation="2"
-                color="indigo"
-                :loading="btn_excel_status"
-                :disabled="btn_excel_status"
-                @click="$refs.excel_file.click()"
-              >
-                <span class="text-white">Browse file</span>
-              </v-btn>
+            <div class="pb-2 pt-8 px-2 ml-3">
+              <v-row>
+                <v-col md="6">
+                  <input
+                    type="file"
+                    ref="excel_file"
+                    accept=".xlsx, .xls"
+                    style="display: none"
+                    @change="upload_file"
+                  />
+                  <v-btn
+                    block
+                    elevation="2"
+                    color="indigo"
+                    :loading="btn_excel_status"
+                    :disabled="btn_excel_status"
+                    @click="$refs.excel_file.click()"
+                  >
+                    <span class="text-white">Browse file</span>
+                  </v-btn>
+                </v-col>
+                <v-col md="6" class="pt-4">
+                  <a :href="excel_template"  download="" class="underline">Download template</a>
+                </v-col>
+              </v-row>
             </div>
             <div class="pb-1 px-2">
               <v-btn
@@ -141,7 +148,12 @@
                 Render
               </v-btn>
               <div v-else class="cursor-not-allowed">
-                <v-btn id="btn-render-inactive" block color="warning" :disabled="true">
+                <v-btn
+                  id="btn-render-inactive"
+                  block
+                  color="warning"
+                  :disabled="true"
+                >
                   Render
                 </v-btn>
               </div>
@@ -177,7 +189,9 @@ export default {
   mixins: [login, box, stack, alert],
   async beforeMount() {
     if (this.$store.state.planner_manage.axios_cancel_token !== null) {
-      this.$store.state.planner_manage.axios_cancel_token.cancel("Abort requests");
+      this.$store.state.planner_manage.axios_cancel_token.cancel(
+        "Abort requests"
+      );
     }
     this.set_axios_cancel_token();
     if (process.browser) {
@@ -209,7 +223,8 @@ export default {
     selected_planner: null,
     planner_name: null,
     btn_excel_status: false,
-    btn_render_status: false
+    btn_render_status: false,
+    excel_template:"/Box_template.xlsx",
   }),
   methods: {
     upload_file() {
